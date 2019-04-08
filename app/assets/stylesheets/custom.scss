@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome";
 /* universal */
 /* mixins, variables, etc. */
 
@@ -10,12 +11,58 @@ $gray-medium-light: #eaeaea;
   -webkit-box-sizing: border-box;
   box-sizing:         border-box;
 }
-
+.wrapper-container{
+  padding-top: 100px;
+}
+.g-nav{
+  padding: 0;
+ 	display: table;
+ 	table-layout: fixed;
+ 	text-align: center;
+ 	width: 100%;
+}
+.g-nav li{
+ 	display: table-cell;
+ 	vertical-align: middle;
+ 	border: 1px solid #FFF;
+}
+.g-nav li a{
+  background: #fff;
+	color:#000;
+	text-decoration: none;
+}
+.g-nav li> a:before{/*ナビゲーションメニュー共通の設定*/
+  display: block;
+	font-family: FontAwesome;
+	font-size: 1.5em;
+	padding-right: 10px;
+	border-right: 0.5px solid #000;
+}
+.search > a:before {/*各項目ごとのアイコン設定*/
+	content: '\f002';
+}
+.login > a:before {/*各項目ごとのアイコン設定*/
+	content: '\f2f6';
+}
 body {
   padding-top: 60px;
   // padding-top: 0;
 }
-
+.signup > a:before {/*各項目ごとのアイコン設定*/
+	content: '\f234';
+}
+.plus > a:before{
+  content: '\f5ac';
+}
+.bell > a:before{
+  content: '\f0f3';
+}
+.logout > a:before{
+  content: '\f2f5';
+}
+.mypage > a:before{
+  content: '\f007';
+}
 section {
   overflow: auto;
 }
@@ -63,10 +110,10 @@ p {
 /* header */
 
 #logo {
-  float: left;
+  // float: left;
   margin-right: 10px;
   font-size: 2.0em;
-  font-family: 'Bookman Old Style';
+  font-family: cursive;
   color: red;
   text-transform: uppercase;
   letter-spacing: -1px;
@@ -144,4 +191,18 @@ input {
   .form-control {
     color: $state-danger-text;
   }
+}
+
+.checkbox {
+  margin-top: -10px;
+  margin-bottom: 10px;
+  span {
+    margin-left: 20px;
+    font-weight: normal;
+  }
+}
+
+#session_remember_me {
+  width: auto;
+  margin-left: 0;
 }
