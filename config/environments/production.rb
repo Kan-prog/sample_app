@@ -1,3 +1,4 @@
+require 'mail-iso-2022-jp'
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   config.action_mailer.raise_delivery_errors = true
