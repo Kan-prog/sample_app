@@ -18,7 +18,6 @@ class UsersController < ApplicationController
       flash[:info] = "お客様のメールアドレスに登録確認メールを送りましたので確認お願いします。"
       redirect_to root_url
     else
-      # flash[:danger] = "入力内容が正しくありません。"
       render "new"
     end
   end
