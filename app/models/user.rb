@@ -1,7 +1,14 @@
 class User < ApplicationRecord
+  
+  has_many :microposts, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :likes, through: :favorites, source: :micropost
+  
+  
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save :downcase_email
   before_create :create_activation_digest
+  mount_uploader :picture, PictureUploader
   validates :name, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 255 },
@@ -9,7 +16,9 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
-  # validates :password, presence: true, length: { minimum: 6 } 
+  # validates :micropost_id, presence: true
+  validate  :picture_size
+  
   
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
@@ -68,6 +77,22 @@ class User < ApplicationRecord
     reset_sent_at < 2.hours.ago
   end
   
+  # 以下お気に入り機能
+  def like(micropost)
+    unless self == micropost.like_users
+      self.favorites.find_or_create_by(micropost_id: micropost.id)
+    end
+  end
+  
+  def unlike(micropost)
+    favorite = self.favorites.find_by(micropost_id: micropost.id)
+    favorite.destroy if favorite
+  end
+  
+  def like?(micropost)
+    self.likes.include?(micropost)
+  end
+  
   private
     # メールアドレス小文字化
     def downcase_email
@@ -78,6 +103,13 @@ class User < ApplicationRecord
     def create_activation_digest
       self.activation_token  = User.new_token
       self.activation_digest = User.digest(activation_token)
+    end
+    
+    # アップロードされた画像のサイズをバリデーションする
+    def picture_size
+      if picture.size > 5.megabytes
+        errors.add(:picture, "should be less than 5MB")
+      end
     end
   
 end

@@ -1,0 +1,41 @@
+<div class="row">
+  <aside class="col-xs-12">
+      <div class="col-xs-12 col-md-4 left-nav">
+        <% if @user == current_user %>
+          お知らせ一覧
+        <% end %>
+      </div>
+    <div class="col-xs-12 col-md-4 user-info">
+      <div class="user-img">
+      　　<%= image_tag current_user.picture.thumb.url, class: "img-circle" %>
+      </div>
+      <h1>
+        <%= current_user.name %>
+      </h1>
+    </div>
+      <div class="col-xs-12 col-md-4 right-nav">
+        <% if @user == current_user %>
+          <table class="table table-hover">
+            <thead>
+              <th>お役立ちリンク</th>
+            </thead>
+            <tbody>
+              <tr><td><%= link_to "お気に入りした商品", likes_user_path(current_user)%></td></tr>
+              <tr><td><%= link_to "コメントした商品", likes_user_path(current_user)%></td></tr>
+              <tr><td><%= link_to "ログアウト", logout_path, method: :delete %></td></tr>
+            </tbody>
+          </table> 
+        <% end %>
+      </div>
+  </aside>
+  <div class="col-xs-12">
+    <% if @user.microposts.any? %>
+      <h3>お気に入り一覧 <%= current_user.likes.count %>件</h3>
+      <ol class="microposts">
+        <%= render "microposts/micropost", microposts: @likes %>
+      </ol>
+      <%= will_paginate @likes %>
+    <% end %>
+  </div>
+</div>
+<li><%= link_to "プロフィール編集", edit_user_path(current_user)%></li>

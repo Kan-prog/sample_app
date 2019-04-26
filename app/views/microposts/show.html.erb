@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-xs-12 col-md-6">
+    <div class="item-info">
+      <div class="item-img">
+        <%= image_tag @micropost.picture.url if @micropost.picture? %>
+      </div>
+      <div class="name">
+        商品名：<%= @micropost.name %>
+      </div>
+      <div class="price">
+        検討価格：<%= @micropost.price %>
+      </div>
+      <div class="cost">
+        原価（税抜）：<%= @micropost.cost %>
+      </div>
+      <div class="content">
+        商品説明：<%= @micropost.content %>
+      </div>
+    </div>  
+  </div>
+  <div class="col-xs-12 col-md-6">
+    <div class="user-info">
+      <div class="user-img">
+        <%= image_tag @micropost.picture.url if @micropost.picture? %>
+      </div>
+      <div class="user-name">
+        <%= link_to @micropost.user.name, user_path(@micropost.user_id) %>
+      </div>
+      
+    </div>
+  </div>
+</div>

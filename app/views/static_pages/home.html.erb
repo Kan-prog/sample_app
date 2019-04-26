@@ -1,12 +1,8 @@
 <div class="center jumbotron">
+  <div class="main-img">
+    学生間での助け合い
+    <img src="../../assets/images/72538c8c0f532ef4944991779acd2672_m.jpg">
+  </div>
   
-  <!--<h1>Welcome to the Sample App</h1>-->
-
-  <!--<h2>-->
-  <!--  This is the home page for the-->
-  <!--  <a href="https://railstutorial.jp/">Ruby on Rails Tutorial</a>-->
-  <!--  sample application.-->
-  <!--</h2>-->
-
-  <!--<%#= link_to "Sign up now!", '#', class: "btn btn-lg btn-primary" %>-->
+  <%= render "microposts/micropost", microposts: @microposts %>
 </div>

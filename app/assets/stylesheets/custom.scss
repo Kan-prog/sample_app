@@ -52,13 +52,13 @@ body {
 	content: '\f234';
 }
 .plus > a:before{
-  content: '\f5ac';
+  content: '\f067';
 }
 .bell > a:before{
   content: '\f0f3';
 }
 .logout > a:before{
-  content: '\f2f5';
+  content: '\f70c';
 }
 .mypage > a:before{
   content: '\f007';
@@ -108,12 +108,14 @@ p {
   line-height: 1.7em;
 }
 /* header */
-
+header {
+  background: #fff;
+}
 #logo {
   // float: left;
   margin-right: 10px;
   font-size: 2.0em;
-  font-family: cursive;
+  font-family: "UD デジタル 教科書体 NK-B","UD Digi Kyokasho NK-B";
   color: red;
   text-transform: uppercase;
   letter-spacing: -1px;
@@ -205,4 +207,11 @@ input {
 #session_remember_me {
   width: auto;
   margin-left: 0;
+}
+.icon{
+  border-style: none;
+  background: #fff;
+}
+.fa-star{
+  color: orange;
 }

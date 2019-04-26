@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @microposts = @user.microposts.paginate(page: params[:page])
     # debugger
   end
   
@@ -23,11 +24,11 @@ class UsersController < ApplicationController
   end
   
   def edit
-    @user = User.find(params[:id])
+    @user = current_user
   end
   
   def update
-    @user = User.find(params[:id])
+    @user = current_user
     if @user.update_attributes(user_params)
       flash[:success] = "プロフィールを更新しました！"
       redirect_to @user
@@ -35,21 +36,16 @@ class UsersController < ApplicationController
       render 'edit'
     end  
   end
+  
+  def likes
+    @user = User.find(params[:id])
+    @likes = @user.likes.page(params[:page])
+  end
 
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password,
-                                   :password_confirmation)
-    end
-    
-     # ログイン済みユーザーかどうか確認
-    def logged_in_user
-      unless logged_in?
-        store_location
-        flash[:danger] = "ログインしてください。"
-        redirect_to login_url
-      end
+      params.require(:user).permit(:name, :email, :password,:password_confirmation, :picture)
     end
     
     # 正しいユーザーかどうか確認

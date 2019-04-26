@@ -1,3 +1,13 @@
 // Place all the styles related to the StaticPages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.main-img{
+  height: 40vh;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+  background: pink;
+  background-image: url(../images/72538c8c0f532ef4944991779acd2672_m.jpg);
+}
