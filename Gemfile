@@ -18,9 +18,11 @@ gem 'jbuilder',     '2.7.0'
 gem "font-awesome-rails"
 gem 'will_paginate',           '3.1.6'
 gem 'bootstrap-will_paginate', '1.0.0'
+gem 'ransack'
 
 group :development, :test do
   gem 'sqlite3', '1.3.13'
+  gem 'bullet'
   gem 'byebug',  '9.0.6', platform: :mri
 end
 

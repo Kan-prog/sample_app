@@ -7,6 +7,9 @@
       <div class="name">
         商品名：<%= @micropost.name %>
       </div>
+      <div class="genre">
+        カテゴリー：<%= @micropost.genres.map{|genre| genre.name}.join(', ') %>
+      </div>
       <div class="price">
         検討価格：<%= @micropost.price %>
       </div>
@@ -16,6 +19,7 @@
       <div class="content">
         商品説明：<%= @micropost.content %>
       </div>
+      <%= link_to @micropost.user.name + "との相談ルームへ", user_messages_path(@micropost.user) %>
     </div>  
   </div>
   <div class="col-xs-12 col-md-6">

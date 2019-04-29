@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'messages/index'
+
+  get 'messages/create'
+
+  get 'messages/destroy'
+
+  get 'chat_messages/index'
+
   root 'static_pages#home'
 
   get '/home', to: 'static_pages#home'
@@ -13,6 +21,7 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'
   
   resources :users do
+    resources :messages, only: [:index, :create, :destroy]
     member do
       get :likes
     end

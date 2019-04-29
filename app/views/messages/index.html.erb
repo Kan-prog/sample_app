@@ -1,0 +1,29 @@
+<h2>
+<%= @user.name %>との相談室
+<br>
+（1対1で商品に関する質問や商品授受の打ち合わせを、相手に失礼のないように行いましょう。）
+</h2>
+<% user = User.find_by(id: @message.receive_user_id) %>
+<% @messages.each do |message| %>
+  <div>
+    <div class="media-left">
+      <%= image_tag @user.picture.thumb.url, class: "img-circle" %>
+    </div>
+    <div class="media-body">
+      <div>
+        <%= link_to message.user.name, user_path(message.user) %> <span class="text-muted"><%= time_ago_in_words(message.created_at) %>前</span>
+      </div>
+      <div>
+        <%= message.content %><br>
+        <% if current_user == message.user %>
+          <%= link_to "取り消し", user_message_path(current_user, message), method: :delete, data: { confirm: "本当によろしいですか？" }, class: 'btn btn-danger btn-xs' %>
+        <% end %>
+      </div>
+    </div>
+    <hr>
+  </div>
+<% end %>
+
+<h2>メッセージ</h2>
+<%= render 'messages/form', message: @message %>
+<%= link_to "商品詳細へ戻る", :back %>

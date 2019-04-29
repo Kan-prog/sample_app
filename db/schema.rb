@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190426075545) do
+ActiveRecord::Schema.define(version: 20190429110517) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
@@ -20,6 +20,32 @@ ActiveRecord::Schema.define(version: 20190426075545) do
     t.index ["micropost_id"], name: "index_favorites_on_micropost_id"
     t.index ["user_id", "micropost_id"], name: "index_favorites_on_user_id_and_micropost_id", unique: true
     t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "content"
+    t.integer "user_id"
+    t.integer "receive_user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["receive_user_id"], name: "index_messages_on_receive_user_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "micropost_genres", force: :cascade do |t|
+    t.integer "micropost_id"
+    t.integer "genre_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["genre_id"], name: "index_micropost_genres_on_genre_id"
+    t.index ["micropost_id", "genre_id"], name: "index_micropost_genres_on_micropost_id_and_genre_id", unique: true
+    t.index ["micropost_id"], name: "index_micropost_genres_on_micropost_id"
   end
 
   create_table "microposts", force: :cascade do |t|
