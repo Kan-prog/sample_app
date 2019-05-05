@@ -2,6 +2,21 @@ class MicropostsController < ApplicationController
   before_action :logged_in_user, only: [:new, :create, :edit, :update, :destroy]
   before_action :correct_user,   only: [:edit, :update, :destroy]
   
+  def index
+    @genres = Genre.all
+    unless params[:q].blank?
+      @q = Micropost.search(search_params)
+      @result_microposts = @q.result.includes(:user).paginate(:page => params[:page])
+    else
+      @result_microposts = Micropost.all.includes(:user).paginate(:page => params[:page])
+    end
+  end
+  
+  def search
+    index
+    render :index
+  end
+  
   def new
     @micropost = Micropost.new
   end
@@ -30,18 +45,24 @@ class MicropostsController < ApplicationController
     @micropost = Micropost.find_by(id: params[:id])
     if @micropost.update(micropost_params)
         flash[:success] = "出品内容は正常に更新されました"
-        redirect_to root_url
+        redirect_to micropost_path(@micropost)
     else
         flash.now[:danger] = "出品内容は更新されませんでした"
         render :edit
     end
-    # @micropost = Micropost.find_by(id: current_user.microposts.id)
-    # if @micropost.update_attributes(micropost_params)
-    #   flash[:success] = "出品内容を更新しました！"
-    #   redirect_to @micropost
-    # else
-    #   render 'edit'
-    # end  
+  end
+  
+  def update_sold
+    @micropost = Micropost.find_by(id: params[:id])
+    if @micropost.sold == false
+      @micropost.update_attributes(sold: true)
+      flash[:success] = "出品を締め切りました"
+      redirect_to micropost_path(@micropost)
+    elsif @micropost.sold == true
+      @micropost.update_attributes(sold: false)
+      flash[:success] = "締め切り解除しました"
+      redirect_to micropost_path(@micropost)
+    end  
   end
   
   def destroy
@@ -52,12 +73,16 @@ class MicropostsController < ApplicationController
   
   private
 
-    # def micropost_params
-    #   params.require(:micropost).permit(:content, :picture, :name, :price, :cost)
-    # end
-    
     def micropost_params
-          params.require(:micropost).permit(:content, :picture, :name, :price, :cost, {genre_ids: []})
+      params.require(:micropost).permit(:content, :picture, :name, :price, :cost, {images:[]}, {genre_ids: []})
+    end
+    
+    def sold_params
+      params.require(:micropost).permit(:sold)
+    end
+    
+    def search_params
+      params.require(:q).permit(:name_cont,  :price_gteq, :price_lteq, :genres_id_in => [])
     end
     
     def correct_user

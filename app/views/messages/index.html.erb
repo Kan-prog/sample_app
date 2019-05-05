@@ -5,9 +5,9 @@
 </h2>
 <% user = User.find_by(id: @message.receive_user_id) %>
 <% @messages.each do |message| %>
-  <div>
-    <div class="media-left">
-      <%= image_tag @user.picture.thumb.url, class: "img-circle" %>
+  <div class = "<%= "visiter" unless @user == current_user %> <%= "owner" if @user == current_user %>">
+    <div class="media-left user-img-small">
+      <%= image_tag message.user.picture.thumb.url, class: "img-circle" %>
     </div>
     <div class="media-body">
       <div>
@@ -26,4 +26,3 @@
 
 <h2>メッセージ</h2>
 <%= render 'messages/form', message: @message %>
-<%= link_to "商品詳細へ戻る", :back %>

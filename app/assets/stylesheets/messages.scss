@@ -1,3 +1,19 @@
 // Place all the styles related to the messages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.visiter{
+  display: block;
+  float: left;
+  background-color: gray;
+}
+.owner{
+  display: block;
+  float: right;
+  background-color: pink;
+}
+.nav-tabs li{
+  padding: 0;
+}
+.nav-tabs a{
+  text-align: center;
+}

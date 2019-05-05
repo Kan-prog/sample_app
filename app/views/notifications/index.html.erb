@@ -1,0 +1,12 @@
+<h1>お知らせ一覧</h1>
+<div style="padding-top:100px">
+  <h4 class="sub-title">通知</h4>
+  <% if @notifications.exists? %>
+    <div class="users-index">
+      <%#= render "notification", notifications: @notifications %>
+      <%= will_paginate %>
+    </div>
+  <% else %>
+    <p>通知はありません</p>
+  <% end %>
+</div>

@@ -1,5 +1,7 @@
 <%= form_for message, :url => {:action => :create} do |f| %>
-  <%= f.text_field :content %>
-  <br>
-  <%= f.submit '送信' %>
+  <div class="field">
+    <%= f.label :content, "メッセージ入力" %>
+    <%= f.text_area :content, placeholder: "メッセージを入力しましょう。", class: "form-control" %>
+  </div>
+  <%= f.submit '送信', class: "btn btn-primary" %>
 <% end %>

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   get 'chat_messages/index'
 
-  root 'static_pages#home'
+  root 'microposts#index'
 
   get '/home', to: 'static_pages#home'
   get  '/about', to: 'static_pages#about'
@@ -21,13 +21,26 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'
   
   resources :users do
-    resources :messages, only: [:index, :create, :destroy]
+    resources :messages, only: [:index, :create, :destroy] do
+      collection do
+        get :your_message
+      end
+    end
     member do
       get :likes
     end
   end  
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
-  resources :microposts, only: [:new, :create, :edit, :update, :destroy, :show]
+  resources :microposts, only: [:index, :new, :create, :edit, :update, :destroy, :show] do
+    member do
+       get :update_sold
+       put :update_sold
+    end
+    collection do
+      match 'search' => 'microposts#search', via: [:get, :post], as: :search
+    end  
+  end  
   resources :favorites, only: [:create, :destroy]
+  resources :notifications, only: [:index, :destroy]
 end

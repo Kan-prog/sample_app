@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190429110517) do
+ActiveRecord::Schema.define(version: 20190502103016) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
@@ -56,10 +56,25 @@ ActiveRecord::Schema.define(version: 20190429110517) do
     t.string "picture"
     t.integer "price"
     t.integer "cost"
-    t.boolean "sold"
+    t.boolean "sold", default: false
     t.string "name"
     t.index ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_microposts_on_user_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer "visiter_id"
+    t.integer "visited_id"
+    t.integer "micropost_id"
+    t.integer "message_id"
+    t.string "action"
+    t.boolean "checked", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["message_id"], name: "index_notifications_on_message_id"
+    t.index ["micropost_id"], name: "index_notifications_on_micropost_id"
+    t.index ["visited_id"], name: "index_notifications_on_visited_id"
+    t.index ["visiter_id"], name: "index_notifications_on_visiter_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -1,0 +1,11 @@
+<% @notifications.each do |notification| %>
+  <% message = notification.message %>
+  <% post = notification.micropost %>
+  <% visiter = User.find_by(id: notification.visiter_id) %>
+  <div class="user-view clearfix">
+    <%= link_to user_path(notification.visiter_id) do %>
+      <%#=  image_tag visiter.picture.thumb.url, class: "user-thumb" %>
+    <% end %>
+    <%== notification_form(notification) %><span class="moderate-font"><%= " (#{time_ago_in_words(notification.created_at)}前)" %></span>
+  </div>
+<% end %>

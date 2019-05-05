@@ -2,14 +2,18 @@
 
 class PictureUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
-  process resize_to_limit: [300, 300]
+  process resize_to_fill: [75, 75]
   
   def default_url
     "default.jpg"
   end
 
   version :thumb do
-    process :resize_to_fill => [200, 200]
+    process :resize_to_fill => [100, 100]
+  end
+  
+  version :thumb_small do
+    process :resize_to_fill => [50, 50]
   end
   
   if Rails.env.production?

@@ -18,7 +18,7 @@
       <%= f.label :password_confirmation %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
 
-      <%= f.submit yield(:button_text), class: "btn btn-primary", data: { disable_with: "送信中..." } %>
+      <%= f.submit yield(:button_text), class: "btn btn-info col-xs-12", data: { disable_with: "送信中..." } %>
     <% end %>
   </div>
 </div>

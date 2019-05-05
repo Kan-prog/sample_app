@@ -12,7 +12,8 @@ $gray-medium-light: #eaeaea;
   box-sizing:         border-box;
 }
 .wrapper-container{
-  padding-top: 100px;
+  padding-top: 5vh;
+  width: 100vw;
 }
 .g-nav{
   padding: 0;
@@ -57,8 +58,8 @@ body {
 .bell > a:before{
   content: '\f0f3';
 }
-.logout > a:before{
-  content: '\f70c';
+.mail > a:before{
+  content: '\f0e0';
 }
 .mypage > a:before{
   content: '\f007';
@@ -172,7 +173,6 @@ aside {
 
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
-  width: 100%;
   margin-bottom: 15px;
   @include box_sizing;
 }

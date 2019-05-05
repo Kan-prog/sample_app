@@ -1,8 +1,13 @@
 // Place all the styles related to the Microposts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.micropost-wrapper{
+  display: flex;
+  flex-wrap: wrap-reverse;
+}
+
 .micropost{
- background: #fff;   
+background: #fff;   
  margin: 2vw;
  padding: 2vh;
  text-decoration: none;
@@ -18,3 +23,35 @@
   font-size: 80%;
   color: gray;
 }
+.sold{
+  border: #eee 1px solid;
+  margin: 0 auto;
+  position: relative;
+  background-color: #000;
+  background-color: black;
+}
+.sold::before{
+  content: "";
+  top: 0;
+  left: 0;
+  border-bottom: 4em solid transparent;
+  border-left: 4em solid #fa5e5e; /* ラベルの色はここで変更 */
+  position: absolute;
+  z-index: 100;
+}
+.sold::after{
+  content: "sold";
+  display: block;
+  top: 5px;
+  transform: rotate(-45deg);
+  color: #fff; /* 文字色はここで変更 */
+  left: 0;
+  position: absolute;
+  z-index: 101;
+}
+.sold:first-child .item-picture{
+  opacity: 0.6;
+}
+
+
+

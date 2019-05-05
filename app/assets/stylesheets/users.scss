@@ -13,3 +13,15 @@
 .user-name{
   text-align: center;
 }
+.user-img img{
+  width: 150px;
+  height: auto;
+}
+.user-img-small img{
+  width: 75px;
+}
+@media (max-width:767px) {
+  .user-img-small img{
+    width: 40px;
+  }
+}

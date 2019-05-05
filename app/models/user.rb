@@ -3,11 +3,14 @@ class User < ApplicationRecord
   has_many :microposts, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :likes, through: :favorites, source: :micropost
-  has_many :messages
+  has_many :messages, dependent: :destroy
   has_many :sent_messages, through: :messages, source: :receive_user
   has_many :reverses_of_message, class_name: 'Message', foreign_key: 'receive_user_id'
   has_many :received_messages, through: :reverses_of_message, source: :user
-  
+  # 自分が作った通知=active_notification
+  has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
+  # 自分宛ての通知=passive_notifications
+  has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
   
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save :downcase_email
@@ -20,7 +23,6 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
-  # validates :micropost_id, presence: true
   validate  :picture_size
   
   
@@ -96,6 +98,7 @@ class User < ApplicationRecord
   def like?(micropost)
     self.likes.include?(micropost)
   end
+  # ここまでお気に入り
   
   private
     # メールアドレス小文字化
