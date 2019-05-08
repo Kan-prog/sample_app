@@ -3,5 +3,7 @@
     <%= f.label :content, "メッセージ入力" %>
     <%= f.text_area :content, placeholder: "メッセージを入力しましょう。", class: "form-control" %>
   </div>
-  <%= f.submit '送信', class: "btn btn-primary" %>
+  <%= button_tag :type => "submit", :class =>"btn btn-info" do %>
+    送信 <i class="fa fa-paper-plane"></i>
+  <% end %>
 <% end %>

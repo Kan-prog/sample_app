@@ -6,9 +6,9 @@ class MicropostsController < ApplicationController
     @genres = Genre.all
     unless params[:q].blank?
       @q = Micropost.search(search_params)
-      @result_microposts = @q.result.includes(:user).paginate(:page => params[:page])
+      @result_microposts = @q.result.paginate(:page => params[:page])
     else
-      @result_microposts = Micropost.all.includes(:user).paginate(:page => params[:page])
+      @result_microposts = Micropost.all.paginate(:page => params[:page])
     end
   end
   
@@ -68,13 +68,13 @@ class MicropostsController < ApplicationController
   def destroy
     @micropost.destroy
     flash[:success] = "出品を取り消しました。"
-    redirect_to request.referrer || root_url
+    redirect_to root_url
   end
   
   private
 
     def micropost_params
-      params.require(:micropost).permit(:content, :picture, :name, :price, :cost, {images:[]}, {genre_ids: []})
+      params.require(:micropost).permit(:content, :picture, :picture_1, :picture_2, :picture_3, :name, :price, :cost, {genre_ids: []})
     end
     
     def sold_params

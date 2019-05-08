@@ -1,3 +1,5 @@
+<% provide(:title, '出品編集ページ') %>
+<h5>出品編集ページ</h5>
 <div class="col-xs-12 col-sm-offset-4 col-sm-4">
   <%= render 'shared/error_messages', user: @micropost %>
 </div>
@@ -7,7 +9,22 @@
     <%= form_for(@micropost, html: { multipart: true }) do |f| %>
       
       <span class="picture　col-xs-12 col-md-6 ">
-        <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+        <div class="form-group">
+          <%= f.label :picture, "画像1(商品一覧のサムネイルになります)" %>
+          <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+        </div>
+        <div class="form-group">
+        <%= f.label :picture_1, "画像2" %>  
+        <%= f.file_field :picture_1, accept: 'image/jpeg,image/gif,image/png' %>
+        </div>
+        <div class="form-group">
+        <%= f.label :picture_2, "画像3" %>    
+        <%= f.file_field :picture_2, accept: 'image/jpeg,image/gif,image/png' %>
+        </div>
+        <div class="form-group">
+        <%= f.label :picture_3, "画像4" %>    
+        <%= f.file_field :picture_3, accept: 'image/jpeg,image/gif,image/png' %>
+        </div>
       </span>
       <div class="col-xs-12 col-md-6">
         <%= f.label :name %>

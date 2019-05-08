@@ -41,3 +41,6 @@
 //       }
 //   });
 // });
+$(document).ready(function(){
+  $(".home").parent().parent().removeClass("container");
+})

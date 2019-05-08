@@ -1,4 +1,5 @@
-<h1>あなたのメッセージポスト</h1>
+<% provide(:title, 'メッセージ') %>
+<h5>あなたのメッセージポスト</h5>
 <!-- タブ・メニュー -->
 <ul class="nav nav-tabs">
 	<li class="active col-xs-6 col-md-1"><a href="#sampleContentA" data-toggle="tab">送信</a></li>
@@ -28,25 +29,26 @@
                   </div>
                   <div class="media-body">
                     <div>
-                      <%= link_to active_message.receive_user.name, user_path(active_message.receive_user.id) %> <span class="text-muted"><%= time_ago_in_words(active_message.created_at) %>前</span>
+                      あなた → <%= link_to active_message.receive_user.name,  user_messages_path(active_message.receive_user.id) %>
+                      <span class="text-muted"><%= time_ago_in_words(active_message.created_at) %>前</span>
                     </div>
                     <div>
                       <%= active_message.content %>
                       <%= link_to "取り消し", user_message_path(current_user,active_message), method: :delete, data: { confirm: "本当によろしいですか？" }, class: 'btn btn-danger btn-xs' %>
                     </div>
                   </div>
-                </td></tr>  
+                </td></tr>
           		  <% end %>
           		</tr>
         		</td>
       		</tr>
-      	</div>	
+      	</div>
     	</tbody>
     </table>
 	</div>
-	
+
 	<div class="tab-pane" id="sampleContentB">
-		<table class="table">	
+		<table class="table">
     	<tbody>
     	  <div class="tab-pane" id="receive_messages">
       		<tr class="receive_messages info">
@@ -74,15 +76,14 @@
                       <% unless @user == current_user %>
                         <%= link_to receive_message.user.name + "との相談ルームへ", user_messages_path(receive_message.user.id) %>
                       <% end %>
-                    </div>  
-                  </td></tr>  
+                    </div>
+                  </td></tr>
           		  <% end %>
         		  </tr>
       		  </td>
       		</tr>
-      	</div>	
+      	</div>
     	</tbody>
     </table>
 	</div>
 </div>
-  

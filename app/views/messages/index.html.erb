@@ -1,3 +1,4 @@
+<% if false %>
 <h2>
 <%= @user.name %>との相談室
 <br>
@@ -25,4 +26,55 @@
 <% end %>
 
 <h2>メッセージ</h2>
+<%= render 'messages/form', message: @message %>
+<% end %>
+<h2>
+<%= @user.name %>との相談室
+<br>
+（1対1で商品に関する質問や商品授受の打ち合わせを、相手に失礼のないように行いましょう。）
+</h2>
+ <!-- 受信メッセージのテンプレート -->
+      <div class="message message--received">
+        <% @receive_messages.each do |receive_message| %>
+          <div class="messages--received">
+            <div class="message__profile">
+              <%= image_tag receive_message.user.picture.thumb.url, class: "img-circle" %>
+            </div>
+            <div class="message__body">
+              <div class="message__user-name">
+                <%= link_to receive_message.user.name, user_path(receive_message.user.id) %>
+              </div>
+              <div class="message__text">
+                <%= receive_message.content %>
+              </div>
+              <div class="message__info">
+                <span class="text-muted"><%= time_ago_in_words(receive_message.created_at) %>前</span>
+              </div>
+            </div>
+          </div>  
+        <% end %>
+      </div><!-- /.message -->
+
+      <!-- 送信メッセージのテンプレート -->
+      <div class="message message--sent">
+        <% @active_messages.each do |active_message| %>
+          <div class="messages--sent">
+            <div class="message__profile">
+              <%= image_tag current_user.picture.thumb.url, class: "img-circle" %>
+            </div>
+            <div class="message__body">
+              <div class="message__user-name"></div>
+                <%= link_to active_message.receive_user.name, user_path(active_message.receive_user.id) %>
+              <div class="message__text">
+                <%= active_message.content %>
+              </div>
+              <div class="message__info">
+                 <span class="text-muted"><%= time_ago_in_words(active_message.created_at) %>前</span>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div><!-- /.message -->
+    </div>
+    <h2>メッセージ</h2>
 <%= render 'messages/form', message: @message %>

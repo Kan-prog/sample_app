@@ -4,8 +4,12 @@
   <% visiter = User.find_by(id: notification.visiter_id) %>
   <div class="user-view clearfix">
     <%= link_to user_path(notification.visiter_id) do %>
-      <%#=  image_tag visiter.picture.thumb.url, class: "user-thumb" %>
+    <div class="user-img-small">
+      <%=  image_tag visiter.picture.thumb.url, class: "user-thumb img-circle" %>
+    </div>  
     <% end %>
-    <%== notification_form(notification) %><span class="moderate-font"><%= " (#{time_ago_in_words(notification.created_at)}前)" %></span>
+    <%#== notification_form(notification) %><span class="moderate-font"><%= " (#{time_ago_in_words(notification.created_at)}前)" %></span>
   </div>
 <% end %>
+
+<!--users=User.includes(id: micropost.comments.user_id)-->

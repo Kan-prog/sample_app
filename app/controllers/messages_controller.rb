@@ -9,14 +9,16 @@ class MessagesController < ApplicationController
     # メッセージ全体の中から、send_idsとreceive_idsを共通して持つメールを特定
     @messages = Message.includes(:user).where(id: send_ids + receive_ids).order(created_at: :desc)
     @message = Message.new
+    @active_messages = Message.where(user_id: current_user.id).includes(:receive_user)
+    @receive_messages = Message.where(receive_user_id: current_user.id).includes(:user)
   end
 
   def create
     @user = User.find(params[:user_id])
     @message = current_user.messages.build(message_params)
     @message.receive_user_id = @user.id
-    @message.create_notification_by(current_user)
     if @message.save
+      @message.create_notification_by(current_user)
       flash[:success] = @user.name + 'さんへメッセージを送信しました。'
       redirect_back(fallback_location: root_path)
     else
@@ -34,7 +36,7 @@ class MessagesController < ApplicationController
   
   def your_message
     @active_messages = Message.where(user_id: current_user.id).includes(:receive_user)
-    @receive_messages = Message.where(receive_user_id: current_user.id)
+    @receive_messages = Message.where(receive_user_id: current_user.id).includes(:user)
   end
   
   private

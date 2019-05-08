@@ -7,7 +7,9 @@ class Micropost < ApplicationRecord
   has_many :notifications,dependent: :destroy
   default_scope -> { order(created_at: :desc) }
   mount_uploader :picture, PictureUploader
-  mount_uploader :pictures, PictureUploader
+  mount_uploader :picture_1, PictureUploader
+  mount_uploader :picture_2, PictureUploader
+  mount_uploader :picture_3, PictureUploader
   validates :user_id, presence: true
   validates :name, presence: true
   validates :cost, numericality: { only_integer: true }

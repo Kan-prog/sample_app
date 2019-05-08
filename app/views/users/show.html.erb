@@ -1,8 +1,8 @@
 <% provide(:title, @user.name) %>
 <% if current_user == @user %>
-  <h1>マイページ</h1>
+  <h5>マイページ</h5>
 <% else %>
-  <h1>ユーザー詳細ページ</h1>
+  <h5>ユーザー詳細ページ</h5>
 <% end %>
 <div class="row">
   <aside class="col-xs-12">
@@ -42,7 +42,7 @@
   </aside>
   <div class="col-xs-12">
     <% if @user.microposts.any? %>
-      <h3>出品物一覧 <%= @user.microposts.count %>件</h3>
+      <h5>出品物一覧 (<%= @user.microposts.count %>件)</h5>
       <ol class="microposts">
         <%= render "microposts/micropost", microposts: @microposts %>
       </ol>

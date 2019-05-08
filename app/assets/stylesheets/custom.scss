@@ -86,12 +86,24 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 3em;
+  font-size: 2em;
   letter-spacing: -2px;
   margin-bottom: 30px;
   text-align: center;
 }
 
+h5 {
+  font-size: 1.5em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #ddd;
+  padding: 2vh 0;
+}
+@media (max-width:767px) {
+  h5{
+    padding-top: 50px;
+  }
+}
 h2 {
   font-size: 1.2em;
   letter-spacing: -1px;
@@ -167,7 +179,9 @@ aside {
     }
   }
 }
-
+ol{
+  padding: 0;
+}
 
 /* forms */
 

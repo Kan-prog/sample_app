@@ -2,7 +2,7 @@
 
 class PictureUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
-  process resize_to_fill: [75, 75]
+  process resize_to_fill: [700, 700]
   
   def default_url
     "default.jpg"
@@ -12,14 +12,20 @@ class PictureUploader < CarrierWave::Uploader::Base
     process :resize_to_fill => [100, 100]
   end
   
-  version :thumb_small do
-    process :resize_to_fill => [50, 50]
+  version :large do
+    process :resize_to_fill => [500, 500]
   end
   
   if Rails.env.production?
     storage :fog
   else
     storage :file
+  end
+  
+  def auto
+    manipulate! do |picture|
+      picture.auto_orient
+    end
   end
 
   # Include RMagick or MiniMagick support:
@@ -35,7 +41,7 @@ class PictureUploader < CarrierWave::Uploader::Base
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
-
+  
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url
   #   # For Rails 3.1+ asset pipeline compatibility:

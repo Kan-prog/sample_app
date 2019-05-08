@@ -3,21 +3,32 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .micropost-wrapper{
   display: flex;
-  flex-wrap: wrap-reverse;
+  flex-wrap: wrap;
 }
 
 .micropost{
-background: #fff;   
- margin: 2vw;
- padding: 2vh;
+ width: 15vw;
+ background: #fff;   
+ margin: 0;
+ padding: 4vh;
  text-decoration: none;
+}
+.micropost div{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.micropost img{
+  width: 100%;
 }
 .name{
   color: #000;
   font-size: 120%;
 }
 .price{
-  font-size: 150%;
+  // font-size: 10%;
+  font-weight: bold;
+  color: red;
 }
 .timestamp{
   font-size: 80%;
@@ -52,6 +63,58 @@ background: #fff;
 .sold:first-child .item-picture{
   opacity: 0.6;
 }
-
-
+.item img{
+  width: 100%;
+}
+.main-img{
+  position: relative;
+}
+.main-img h1{
+  color: #fff;
+  font-size: 2.3em;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  -webkit-transform : translate(-50%,-50%);
+  transform : translate(-50%,-50%);
+  letter-spacing: 8px;
+  font-weight: bold;
+}
+.container-fluid{
+  padding: 0;
+}
+.main-img{
+  height: 50vh;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: cover;
+  background-image: url(72538c8c0f532ef4944991779acd2672_m.jpg);
+  object-fit: cover;
+  padding: 0;
+}
+@media (max-width:767px) {
+  .micropost{
+  width: 30vw;  
+  font-size: 100%;
+  padding: 2vh;
+  }
+  .item img{
+    width: 100%;
+  }
+  .main-img{
+    height: 30vh;
+  }
+  header a{
+    font-size: 0.8em;
+  }
+  .main-img h1{
+    font-size: 1.2em;
+    width: 250px;
+    letter-spacing: 1px;
+  }
+  .price{
+    font-size: 80%;
+  }
+}
 

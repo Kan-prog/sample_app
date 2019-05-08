@@ -4,16 +4,154 @@
 .visiter{
   display: block;
   float: left;
-  background-color: gray;
+  // background-color: gray;
 }
 .owner{
   display: block;
   float: right;
-  background-color: pink;
+  // background-color: pink;
 }
 .nav-tabs li{
   padding: 0;
 }
 .nav-tabs a{
   text-align: center;
+}
+
+.message-template,
+.favorite-template {
+  display: none;
+}
+
+.main-pane {
+}
+
+.message-list {
+  max-width: 650px;
+  min-height: calc(100vh - 51px - 46px + 6px);
+  margin: 0 auto 40px auto;
+  padding: 10px 10px 6px 10px;
+  border-width: 0 1px;
+  border-style: solid;
+  border-color: #ccc;
+  background-color: #f7f7ff;
+}
+
+.message {
+  clear: both;
+}
+.message__user-name {
+  font-size: 0.8rem;
+}
+
+.message__body {
+  position: relative;
+  max-width: 50vw;
+  overflow: hidden;
+  margin-bottom: 10px;
+  padding: 8px;
+  background-color: #e7e7e7;
+}
+
+.message__text,
+.favorite__text {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.message__info,
+.favorite__info {
+  text-align: right;
+}
+
+.message__time,
+.favorite__time {
+  font-size: 0.8rem;
+  color: #787878;
+}
+
+.message--received .message__body {
+  background-color: #e7e7e7;
+}
+
+.message--sent .message__body {
+  background-color: #d9f3d8;
+}
+
+.message--received .message__profile,
+.message--received .message__body {
+  float: left;
+}
+
+.message--sent .message__profile,
+.message--sent .message__body {
+  float: right;
+}
+
+.message--received .message__profile {
+  margin-right: 18px;
+  width: 46px;
+}
+
+.message--sent .message__profile {
+  margin-left: 18px;
+  width: 46px;
+}
+
+.message--received .message__body {
+  border-radius: 0 6px 6px 6px;
+}
+
+/* 三角形の耳 */
+.message--received .message__body:before {
+  position: absolute;
+  top: 0;
+  left: -10px;
+  content: " ";
+  border-width: 10px 0 0 10px;
+  border-style: solid;
+  border-color: #e7e7e7 transparent;
+}
+
+.message--sent .message__body {
+  border-radius: 6px 0 6px 6px;
+}
+
+/* 三角形の耳 */
+.message--sent .message__body:after {
+  position: absolute;
+  top: 0;
+  right: -10px;
+  content: " ";
+  border-width: 10px 10px 0 0;
+  border-style: solid;
+  border-color: #d9f3d8 transparent;
+}
+
+.comment-form {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-width: 650px;
+  margin: 0 auto;
+}
+.message .img-circle{
+  width: 46px;
+}
+.messages-received{
+  // float: left
+  display: inline;
+}  
+// 回り込み解除
+.messages--received:after,.messages--received:before {
+  clear: both;
+  content: "";
+  display: block;
+}
+.messages--sent:after,.messages--sent:before {
+  clear: both;
+  content: "";
+  display: block;
 }

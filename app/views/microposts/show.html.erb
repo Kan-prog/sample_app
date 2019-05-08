@@ -1,22 +1,67 @@
-<h1><%= @micropost.name %>の商品詳細ページ</h1>
+<% provide(:title, '商品詳細') %>
+<h5><%= @micropost.name %>の商品詳細ページ</h5>
 <div class="row">
-  <div class="col-xs-12 col-md-8">
+  <div class="col-xs-12 col-md-6">
     <div class="item-info">
       <div class="item-img">
-        <%= image_tag @micropost.picture.url if @micropost.picture? %>
+        <div id="sampleCarousel" class="carousel slide" data-ride="carousel">
+        	<ol class="carousel-indicators">
+        		<li class="active" data-target="#sampleCarousel" data-slide-to="0"></li>
+        		<% if @micropost.picture_1? %>
+        		  <li data-target="#sampleCarousel" data-slide-to="1"></li>
+        		<% end %>
+        		<% if @micropost.picture_2? %>
+        		  <li data-target="#sampleCarousel" data-slide-to="2"></li>
+        		<% end %>
+        		<% if @micropost.picture_3? %>
+        		  <li data-target="#sampleCarousel" data-slide-to="3"></li>
+        		<% end %>
+        	</ol>
+        	<div class="carousel-inner" role="listbox">
+        		<div class="item active">
+        			<%= image_tag @micropost.picture.url if @micropost.picture? %>
+        		</div>
+        		<% if @micropost.picture_1? %>
+        		<div class="item">
+        			<%= image_tag @micropost.picture_1.url if @micropost.picture_1? %>
+        		</div>
+        		<% end %>
+        		<% if @micropost.picture_2? %>
+        		<div class="item">
+        			<%= image_tag @micropost.picture_2.url if @micropost.picture_2? %>
+        		</div>
+        		<% end %>
+        		<% if @micropost.picture_3? %>
+        		<div class="item">
+        			<%= image_tag @micropost.picture_3.url if @micropost.picture_3? %>
+        		</div>
+        		<% end %>
+        	</div>
+        	<a class="left carousel-control" href="#sampleCarousel" role="button" data-slide="prev">
+        		<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        		<span class="sr-only">前へ</span>
+        	</a>
+        	<a class="right carousel-control" href="#sampleCarousel" role="button" data-slide="next">
+        		<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        		<span class="sr-only">次へ</span>
+        	</a>
+        </div>
       </div>
       <% if @micropost.user == current_user %>
         <% if @micropost.sold == false %>
           <%= form_for(@micropost, url: update_sold_micropost_path, html: { method: :put }) do |f| %>
             <%= hidden_field_tag :sold, true %>
-            <%= f.submit "出品を締め切る", class: "btn btn-danger"%>
+            <%= f.submit "出品を締め切る", class: "btn btn-info"%>
           <% end %>
         <% else %>
           <%= form_for(@micropost, url: update_sold_micropost_path, html: { method: :put }) do |f| %>
             <%= hidden_field_tag :sold, false %>
-            <%= f.submit "締め切り解除", class: "btn btn-info"%>
+            <%= f.submit "締め切り解除", class: "btn btn-warning"%>
           <% end %>
         <% end %>
+        <%= link_to "編集", edit_micropost_path(@micropost) %>
+        <%= link_to "取り消し", @micropost, method: :delete,
+                                           data: { confirm: "本当に取り消してよろしいですか？" } %>
       <% end %>
       <div class="name">
         商品名：<%= @micropost.name %>
@@ -42,10 +87,11 @@
       <% end %>  
     </div>  
   </div>
-  <div class="col-xs-12 col-md-4">
+  <div class="col-xs-12 col-md-4 col-md-offset-2">
     <div class="user-info">
+      <p class="text-muted">出品者情報</p>
       <div class="user-img">
-        <%= image_tag @micropost.user.picture.thumb.url class: "img-circle" %>
+        <%= image_tag @micropost.user.picture.thumb.url, class: "img-circle" %>
       </div>
       <div class="user-name">
         <%= link_to @micropost.user.name, user_path(@micropost.user_id) %>
