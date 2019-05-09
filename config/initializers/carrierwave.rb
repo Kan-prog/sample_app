@@ -4,7 +4,7 @@ require 'carrierwave/storage/fog'
 if Rails.env.production?
   CarrierWave.configure do |config|
     config.storage :fog
-    config.fog_provider = 'fog/aws'
+    # config.fog_provider = 'fog/aws'
     config.fog_directory  = 'unitra'
     config.asset_host = 'https://unitra.s3.amazonaws.com'
     config.fog_credentials = {
