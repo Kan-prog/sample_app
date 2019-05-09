@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8"/>
 </head>
-<h1>Sample App</h1>
+<h1>Unitra</h1>
 
-<p>ご利用ありがとうございます。 <%= @user.name %>様。</p>
+<p>Unitraのご利用ありがとうございます。 <%= @user.name %>様。</p>
 
 <p>
-リンクをクリックし、アカウント登録を確認していただくと、会員登録が完了致します。
+リンクをクリックし、アカウント登録を確認していただくと、会員登録が完了致します。なお、本メールには、返信できませんのでご了承ください。
 </p>
 
 <%= link_to "アカウント登録を確認する。", edit_account_activation_url(@user.activation_token,
