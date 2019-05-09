@@ -6,7 +6,6 @@ gem 'bcrypt',       '3.1.12'
 gem 'faker',        '1.4.2'
 gem 'carrierwave',  '0.10.0'
 gem 'mini_magick',  '3.8.0'
-gem 'fog',          '1.36.0'
 gem 'bootstrap-sass', '3.3.7'
 gem 'puma',         '3.9.1'
 gem 'sass-rails',   '5.0.6'
@@ -45,6 +44,7 @@ end
 group :production do
   gem 'pg', '0.20.0'
   gem 'rails_12factor', '0.0.2'
+  gem 'fog',          '1.36.0'
 end
 
 # Windows環境ではtzinfo-dataというgemを含める必要があります
