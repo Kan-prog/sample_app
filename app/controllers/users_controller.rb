@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   before_action :logged_in_user, only: [:edit, :update, :destroy, :likes, :user_message]
   before_action :correct_user,   only: [:edit, :update, :destroy, :user_message]
   
+  def index
+  end
   def show
     @user = User.find(params[:id])
     @microposts = @user.microposts.paginate(page: params[:page])

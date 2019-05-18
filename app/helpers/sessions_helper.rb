@@ -1,6 +1,7 @@
 module SessionsHelper
   def log_in(user)
     session[:user_id] = user.id
+    redirect_to @user
   end
   
   def remember(user)
@@ -33,6 +34,7 @@ module SessionsHelper
   def log_out
     session.delete(:user_id)
     @current_user = nil
+    flash[:success] = "ログアウトしました。"
   end
   
   # 永続的セッションを破棄する

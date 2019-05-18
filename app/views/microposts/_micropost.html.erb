@@ -9,7 +9,7 @@
         <% end %>  
         <div id="like_btn">
           <% if logged_in? %>
-              <%= render 'favorites/like_button', micropost: micropost %>
+            <%= render 'microposts/like_form', micropost: micropost %>
           <% end %>
         </div> 
         <span class="timestamp">

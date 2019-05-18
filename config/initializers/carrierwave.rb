@@ -1,6 +1,6 @@
-require 'carrierwave/storage/abstract'
-require 'carrierwave/storage/file'
-require 'carrierwave/storage/fog'
+# require 'carrierwave/storage/abstract'
+# require 'carrierwave/storage/file'
+# require 'carrierwave/storage/fog'
 if Rails.env.production?
   CarrierWave.configure do |config|
     config.fog_credentials = {
@@ -12,7 +12,7 @@ if Rails.env.production?
       path_style: true
     }
     config.fog_directory     =  ENV['S3_BUCKET']
-    config.asset_host = 'https://kan-unitra.s3.amazonaws.com'
+    # config.asset_host = 'https://kan-unitra.s3.amazonaws.com'
   end
 end
 

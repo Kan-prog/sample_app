@@ -6,9 +6,9 @@ class MicropostsController < ApplicationController
     @genres = Genre.all
     unless params[:q].blank?
       @q = Micropost.search(search_params)
-      @result_microposts = @q.result.paginate(:page => params[:page])
+      @result_microposts = @q.result.paginate(:page => params[:page]).includes(:user)
     else
-      @result_microposts = Micropost.all.paginate(:page => params[:page])
+      @result_microposts = Micropost.all.paginate(:page => params[:page]).includes(:user)
     end
   end
   

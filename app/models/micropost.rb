@@ -12,9 +12,10 @@ class Micropost < ApplicationRecord
   mount_uploader :picture_3, PictureUploader
   validates :user_id, presence: true
   validates :name, presence: true
+  validates :picture, presence: true
   validates :cost, numericality: { only_integer: true }
   validates :price, numericality: { only_integer: true }
-  validates :content, presence: true, length: { maximum: 255 }
+  validates :content, presence: true, length: { maximum: 500 }
   validates :sold, inclusion: {in: [true, false]}, allow_nil: true
   validate :picture_size
   

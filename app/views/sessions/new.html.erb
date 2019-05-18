@@ -1,7 +1,22 @@
 <% provide(:title, "Log in") %>
 <h1>ログイン</h1>
-<div class="row">
+<div class="row login-form">
   <div class="col-xs-12 col-sm-offset-4 col-sm-4">
+    <p>
+      <%= link_to '/auth/twitter', class: "btn btn-social btn-twitter" do %>
+        <span class="fa fa-twitter"></span> Twitterアカウントでログイン
+      <% end %>
+    </p>
+    <p>
+      <%= link_to '/auth/facebook', class: "btn btn-social btn-facebook" do %>
+        <span class="fa fa-facebook"></span> Facebookアカウントでログイン
+      <% end %>
+    </p>
+    <p>
+      <%= link_to '/auth/google_oauth2', class: "btn btn-social btn-google" do %>
+        <span class="fa fa-google"></span> Googleアカウントでログイン
+      <% end %>
+    </p>
     <%= form_for(:session, url: login_path) do |f| %>
 
       <%= f.label :email , "メールアドレス" %>

@@ -1,3 +1,16 @@
 // Place all the styles related to the notifications controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.notifications{
+  border-bottom: 1px #ddd solid;
+}
+.noti-message{
+  color: #a7a3a3;
+}
+.announce{
+  float: left;
+}
+.user-view .user-img-small{
+  float: left;
+  padding: 2vh 0;
+}

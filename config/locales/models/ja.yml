@@ -5,7 +5,7 @@ ja:
     attributes:
       user:
         id: ID
-        name: ニックネーム
+        name: ニックネーム(本名でなくても構いません)
         created_at: 登録日時
         updated_at: 更新日時
         birthday: 生年月日
@@ -15,3 +15,21 @@ ja:
         password_confirmation: パスワード（確認用）
       
       
+ja:
+  activerecord:
+    models:
+      micropost: 出品
+    attributes:
+      micropost:
+        id: ID
+        name: 商品名
+        created_at: 出品日時
+        updated_at: 更新日時
+        picture: トップ画像
+        picture_1: 画像２
+        picture_2: 画像３
+        picture_3: 画像４
+        price: 価格
+        cost: 原価
+        content: 説明文
+        genres: カテゴリー

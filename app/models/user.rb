@@ -24,6 +24,10 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
   validate  :picture_size
+  validates :name, presence: true, unless: :uid? #他省略
+  validates :email, presence: true, unless: :uid?
+  has_secure_password validations: false
+  validates :password, presence: true, unless: :uid?
   
   
   def User.digest(string)
@@ -83,6 +87,27 @@ class User < ApplicationRecord
     reset_sent_at < 2.hours.ago
   end
   
+  #auth hashからユーザ情報を取得
+  #データベースにユーザが存在するならユーザ取得して情報更新する；存在しないなら新しいユーザを作成する
+  def self.find_or_create_from_auth(auth)
+    n = 6
+    provider = auth[:provider]
+    uid = auth[:uid]
+    name = auth[:info][:name]
+    image = auth[:info][:image]
+    email = auth[:info][:email]
+    #ユーザはSNSで登録情報を変更するかもしれので、毎回データベースの情報も更新する
+    self.find_or_create_by(provider: provider, uid: uid) do |user|
+      user.name = name
+      user.picture = image
+      user.email = email
+      # パスワードを適当に用意＝＞バリデーション回避
+      user.password = format("%0#{n}d", SecureRandom.random_number(10**n))
+      user.remember_token = auth["credentials"]["token"]
+      user.save!
+    end
+  end
+  
   # 以下お気に入り機能
   def like(micropost)
     unless self == micropost.like_users
@@ -99,6 +124,12 @@ class User < ApplicationRecord
     self.likes.include?(micropost)
   end
   # ここまでお気に入り
+  
+  # ユーザーモデルにSNS認証が要求されたときにユーザーを生成する専用のメソッド
+  # authorizations.rbにて使われる
+  # def User.create_from_auth!(auth)
+  #   create(:name => auth['info']['name'], :picture => auth['info']['image'], :email => auth['info']['email'])
+  # end
   
   private
     # メールアドレス小文字化

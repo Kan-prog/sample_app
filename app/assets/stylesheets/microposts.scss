@@ -70,7 +70,11 @@
   position: relative;
 }
 .main-img h1{
-  color: #fff;
+  color: hotpink;
+  text-shadow:1px 1px 0 #000, -1px -1px 0 #000,
+              -1px 1px 0 #000, 1px -1px 0 #000,
+              0px 1px 0 #000,  0-1px 0 #000,
+              -1px 0 0 #000, 1px 0 0 #000;
   font-size: 2.3em;
   position: absolute;
   top: 40%;
@@ -79,6 +83,7 @@
   transform : translate(-50%,-50%);
   letter-spacing: 8px;
   font-weight: bold;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 .container-fluid{
   padding: 0;
@@ -89,7 +94,7 @@
   background-repeat: no-repeat;
   background-position: bottom;
   background-size: cover;
-  background-image: url(72538c8c0f532ef4944991779acd2672_m.jpg);
+  background-image: url(sky.jpg);
   object-fit: cover;
   padding: 0;
 }

@@ -1,6 +1,5 @@
 <h5>お知らせ一覧</h5>
-<div style="padding-top:100px">
-  <h4 class="sub-title">通知</h4>
+<div>
   <% if @notifications.exists? %>
     <div class="users-index">
       <%= render "notification", notifications: @notifications %>

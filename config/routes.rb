@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  
   get 'messages/index'
 
   get 'messages/create'
@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get 'messages/destroy'
 
   get 'chat_messages/index'
-
+  
   root 'microposts#index'
 
   get '/home', to: 'static_pages#home'
@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   post '/signup',  to: 'users#create'
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
+  # get '/auth/:provider/callback', to: 'sessions#create'
+  match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
   delete '/logout',  to: 'sessions#destroy'
   
   resources :users do

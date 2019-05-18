@@ -13,7 +13,6 @@
 //= require rails-ujs
 //= require jquery
 //= require bootstrap
-//= require turbolinks
 //= require_tree .
 //= require bxslider
 // $(document).ready(function() {
@@ -41,6 +40,7 @@
 //       }
 //   });
 // });
+// 除去 require turbolinks
 $(document).ready(function(){
   $(".home").parent().parent().removeClass("container");
 })

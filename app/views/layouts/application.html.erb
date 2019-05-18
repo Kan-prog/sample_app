@@ -55,11 +55,10 @@
           <%= yield %>
         </div>
       
-        <%= render "layouts/footer" %>
-        
-        <%= debug(params) if Rails.env.development? %>
-        
-        <%#= render "layouts/navbar"%>
+        <%#= debug(params) if Rails.env.development? %>
+        <div class="container">
+          <%= render "layouts/footer"%>
+        </div>
       </div>  
     </div>
   </body>

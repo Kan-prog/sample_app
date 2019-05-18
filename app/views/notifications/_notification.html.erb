@@ -1,15 +1,39 @@
 <% @notifications.each do |notification| %>
-  <% message = notification.message %>
-  <% post = notification.micropost %>
-  <% visiter = User.find_by(id: notification.visiter_id) %>
-  <div class="user-view clearfix">
-    <%= link_to user_path(notification.visiter_id) do %>
-    <div class="user-img-small">
-      <%=  image_tag visiter.picture.thumb.url, class: "user-thumb img-circle" %>
-    </div>  
-    <% end %>
-    <%#== notification_form(notification) %><span class="moderate-font"><%= " (#{time_ago_in_words(notification.created_at)}前)" %></span>
-  </div>
+  <div class="notifications">
+    <% message = notification.message %>
+    <% post = notification.micropost %>
+    <% visiter = User.find_by(id: notification.visiter_id) %>
+    <div class="user-view clearfix">
+      <%= link_to user_path(notification.visiter_id) do %>
+      <span class="user-img-small">
+        <%=  image_tag visiter.picture.thumb.url, class: "user-thumb img-circle" %>
+      </span>  
+      <% end %>
+      <%== notification_form(notification) %>
+      <% unless @visiter == current_user %>
+        <% case notification.action %>
+          <% when "favorite" then %>
+          <%# if notification.action = "favorite" %>
+            <div class="announce">
+              <%= @visiter.name %>が<%= link_to post.name, micropost_path(post.id)  %>をお気に入り登録しました
+            </div>
+            <span class="moderate-font">
+              (<%= time_ago_in_words(notification.created_at) %>前)
+            </span>
+          <%# elsif notification.action = "message"  %>
+          <% when "message" then%>
+            <div class="announce">
+              <%= link_to @visiter.name, user_path(notification.visiter_id) %>から相談メールが届きました
+            </div>
+            <div class="noti-message">
+              <%= @message.content %>
+            </div>
+            <span class="moderate-font">
+              (<%= time_ago_in_words(notification.created_at) %>前)
+            </span>
+          <%# end %>  
+        <% end %>
+      <% end %>
+    </div>
+  </div>  
 <% end %>
-
-<!--users=User.includes(id: micropost.comments.user_id)-->
