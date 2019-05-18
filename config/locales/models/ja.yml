@@ -1,23 +1,6 @@
 ja:
   activerecord:
     models:
-      user: ユーザー
-    attributes:
-      user:
-        id: ID
-        name: ニックネーム(本名でなくても構いません)
-        created_at: 登録日時
-        updated_at: 更新日時
-        birthday: 生年月日
-        email: メールアドレス
-        salon_id: サロン
-        password: パスワード
-        password_confirmation: パスワード（確認用）
-      
-      
-ja:
-  activerecord:
-    models:
       micropost: 出品
     attributes:
       micropost:

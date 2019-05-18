@@ -46,7 +46,7 @@ class SessionsController < ApplicationController
       log_in @user
       # session[:user_id] = user.id
       flash[:success] = "ようこそ"+ @user.name + "様！"
-      # redirect_to @user
+      redirect_to @user
     else #既存パタン
       # email,passwordログイン
       user = User.find_by(email: params[:session][:email].downcase)

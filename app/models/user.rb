@@ -125,12 +125,6 @@ class User < ApplicationRecord
   end
   # ここまでお気に入り
   
-  # ユーザーモデルにSNS認証が要求されたときにユーザーを生成する専用のメソッド
-  # authorizations.rbにて使われる
-  # def User.create_from_auth!(auth)
-  #   create(:name => auth['info']['name'], :picture => auth['info']['image'], :email => auth['info']['email'])
-  # end
-  
   private
     # メールアドレス小文字化
     def downcase_email
