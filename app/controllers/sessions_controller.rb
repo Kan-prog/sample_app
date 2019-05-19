@@ -45,6 +45,7 @@ class SessionsController < ApplicationController
       @user = User.find_or_create_from_auth(request.env['omniauth.auth'])
       log_in @user
       # session[:user_id] = user.id
+      params[:uid] = @user.id
       flash[:success] = "ようこそ"+ @user.name + "様！"
       redirect_to @user
     else #既存パタン

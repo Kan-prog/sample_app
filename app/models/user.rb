@@ -24,10 +24,10 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
   validate  :picture_size
-  validates :name, presence: true, unless: :uid? #他省略
-  validates :email, presence: true, unless: :uid?
-  has_secure_password validations: false
-  validates :password, presence: true, unless: :uid?
+  # validates :name, presence: true, unless: :uid? #他省略
+  # validates :email, presence: true, unless: :uid?
+  # has_secure_password validations: false
+  # validates :password, presence: true, unless: :uid?
   
   
   def User.digest(string)
