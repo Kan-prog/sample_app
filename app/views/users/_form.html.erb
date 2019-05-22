@@ -8,6 +8,10 @@
     
       <%= f.label :name %>
       <%= f.text_field :name, class: 'form-control' %>
+      
+      <%= f.label :gender %>
+      <%= f.select :gender, [["男", "男"], ["女", "女"]],class:"form-control" %>
+
 
       <%= f.label :email %>
       <%= f.email_field :email, class: 'form-control' %>

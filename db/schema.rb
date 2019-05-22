@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190517143125) do
+ActiveRecord::Schema.define(version: 20190519225444) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
@@ -96,6 +96,8 @@ ActiveRecord::Schema.define(version: 20190517143125) do
     t.string "picture"
     t.string "uid"
     t.string "provider"
+    t.string "gender"
+    t.string "grade"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

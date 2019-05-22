@@ -19,7 +19,16 @@
         <a href="<%= edit_user_path(current_user) %>" class="icon" role="button"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></a>
       <% end %>
       <h1>
-        <%= @user.name %>
+        <div class = "<%= "male" if @user.gender == "男" %> <%= "female" if @user.gender == "女" %>">
+          <%= @user.name %>
+        </div>
+        <div class="profile-inner">
+          <div class="profile-group">
+            <div class="title">
+              学年: <%= @user.grade %>
+            <div>
+          </div>
+        </div>  
       </h1>
       <% unless @user == current_user %>
         <%= link_to @user.name + "との相談ルームへ", user_messages_path(@user) %>

@@ -17,6 +17,14 @@
       <div class="col-xs-12 col-md-6">
         <%= f.label :name %>
         <%= f.text_field :name, placeholder: "○○字以内", class: 'form-control' %>
+        
+        <%= f.label :gender, class: "dropdown" %>
+        <%= f.select :gender, [["男", "男"], ["女", "女"]],class:"form-control dropdown-menu" %>
+        <br>
+        
+        <%= f.label :grade, class: "dropdown" %>
+        <%= f.select :grade, [["入学予定", "入学予定"], ["B1", "B1"], ["B2", "B2"], ["B3", "B3"], ["B4", "B4"], ["M1", "M1"], ["M2", "M2"], ["D1", "D1"], ["D2", "D2"], ["D3", "D3"], ["卒業生", "卒業生"]],class:"form-control dropdown-menu" %>
+        <br>
   
         <%= f.label :email %>
         <%= f.email_field :email, class: 'form-control' %>

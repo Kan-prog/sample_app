@@ -15,7 +15,7 @@
           <% when "favorite" then %>
           <%# if notification.action = "favorite" %>
             <div class="announce">
-              <%= @visiter.name %>が<%= link_to post.name, micropost_path(post.id)  %>をお気に入り登録しました
+              <%= link_to @visiter.name, user_path(@visiter.id) %>が<%= link_to post.name, micropost_path(post.id)  %>をお気に入り登録しました
             </div>
             <span class="moderate-font">
               (<%= time_ago_in_words(notification.created_at) %>前)

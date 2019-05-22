@@ -70,7 +70,7 @@
   position: relative;
 }
 .main-img h1{
-  color: hotpink;
+  color: #fff;
   text-shadow:1px 1px 0 #000, -1px -1px 0 #000,
               -1px 1px 0 #000, 1px -1px 0 #000,
               0px 1px 0 #000,  0-1px 0 #000,
@@ -94,9 +94,18 @@
   background-repeat: no-repeat;
   background-position: bottom;
   background-size: cover;
-  background-image: url(sky.jpg);
+  background-image: url(campus.jpg);
   object-fit: cover;
   padding: 0;
+}
+.main-img::before{
+    background-color: rgba(0,0,0,0.6);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    content: ' ';
 }
 @media (max-width:767px) {
   .micropost{
