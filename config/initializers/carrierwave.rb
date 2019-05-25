@@ -12,6 +12,8 @@ if Rails.env.production?
       path_style: true
     }
     config.fog_directory     =  ENV['S3_BUCKET']
+    config.asset_host = "https://s3.ap-northeast-1.amazonaws.com/unitra"
+    config.cache_storage = :fog
     # config.asset_host = 'https://kan-unitra.s3.amazonaws.com'
   end
 end
