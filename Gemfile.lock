@@ -214,6 +214,8 @@ GEM
       guard-compat (~> 1.2)
       minitest (>= 3.0)
     hashie (3.6.0)
+    heroku-deflater (0.6.3)
+      rack (>= 1.4.5)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
     ipaddress (0.8.3)
@@ -420,6 +422,7 @@ DEPENDENCIES
   font-awesome-rails
   guard (= 2.13.0)
   guard-minitest (= 2.4.4)
+  heroku-deflater
   jbuilder (= 2.7.0)
   jquery-rails (= 4.3.1)
   kaminari

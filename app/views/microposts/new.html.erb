@@ -52,7 +52,9 @@
           <%= f.label :content %>
           <%= f.text_area :content, placeholder: "商品の状態・詳しい内容などを記述しましょう。500字以内", class: "form-control" %>
         </div>
-        <%= f.submit "出品する", class: "btn btn-primary col-xs-12 col-md-offset-3 col-md-6", data: { disable_with: "送信中..." } %>
+        <%= button_tag :type => "submit", :class =>"btn btn-danger col-xs-12", data: { disable_with: "送信中..." } do %>
+          出品する <i class="fa fa-plus"></i>
+        <% end %>
       </div>
       
     <% end %>

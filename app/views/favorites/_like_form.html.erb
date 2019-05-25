@@ -2,8 +2,10 @@
   <div id="like-form-<%= micropost.id %>">
     <% if current_user.like?(micropost) %>
       <%= render 'favorites/unlike_button', micropost: micropost %>
+      <%#= render 'favorites/unlike_button' %>
     <% else %>
       <%= render 'favorites/like_button', micropost: micropost %>
+      <%#= render 'favorites/like_button' %>
     <% end %>
   </div>
 <% end %>

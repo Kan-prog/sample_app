@@ -11,7 +11,6 @@
   <% end %>
 <% end %>
 
-
 <%= form_for(current_user.favorites.find_by(micropost_id: micropost.id),
              html: { method: :delete },
              remote: true) do |f| %>
