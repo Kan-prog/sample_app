@@ -419,6 +419,7 @@ DEPENDENCIES
   dotenv-rails
   faker (= 1.4.2)
   fog (= 1.36.0)
+  fog-aws
   font-awesome-rails
   guard (= 2.13.0)
   guard-minitest (= 2.4.4)

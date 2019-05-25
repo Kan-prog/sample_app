@@ -28,6 +28,7 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'dotenv-rails'
+gem 'fog-aws'
 
 group :development, :test do
   gem 'sqlite3', '1.3.13'
