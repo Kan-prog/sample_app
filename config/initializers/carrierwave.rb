@@ -1,6 +1,6 @@
-# require 'carrierwave/storage/abstract'
-# require 'carrierwave/storage/file'
-# require 'carrierwave/storage/fog'
+require 'carrierwave/storage/abstract'
+require 'carrierwave/storage/file'
+require 'carrierwave/storage/fog'
 if Rails.env.production?
   CarrierWave.configure do |config|
     # config.fog_provider = 'fog/aws'
@@ -14,10 +14,8 @@ if Rails.env.production?
       path_style: true
     }
     config.fog_directory     =  ENV['S3_BUCKET']
-    # キャッシュの保存期間
     config.fog_attributes = { 'Cache-Control' => "max-age=#{365.day.to_i}" }
     config.asset_host = "https://s3.ap-northeast-1.amazonaws.com/kan-unitra"
-    # config.asset_host = 'https://kan-unitra.s3.amazonaws.com'
   end
 end
 
