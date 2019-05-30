@@ -40,4 +40,19 @@ class Micropost < ApplicationRecord
         errors.add(:picture, "5MB以下の容量の画像のみお使いいただけます。")
       end
     end
+    
+     # S3の画像を削除
+    def clean_s3
+      picture.remove!       #オリジナルの画像を削除    
+      poicture.thumb.remove! #thumb画像を削除
+      picture_1.remove!         
+      poicture_1.thumb.remove!
+      picture_2.remove!       
+      poicture_2.thumb.remove!
+      picture_3.remove!      
+      poicture_3.thumb.remove!
+    rescue Excon::Errors::Error => error
+      puts "Something gone wrong"
+      false
+    end
 end

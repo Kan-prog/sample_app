@@ -28,7 +28,8 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'dotenv-rails'
-gem 'fog-aws'
+
+
 
 group :development, :test do
   gem 'sqlite3', '1.3.13'
@@ -56,6 +57,7 @@ group :production do
   gem 'rails_12factor', '0.0.2'
   gem 'fog',          '1.36.0'
   gem 'heroku-deflater'
+  gem 'fog-aws'
 end
 
 # Windows環境ではtzinfo-dataというgemを含める必要があります

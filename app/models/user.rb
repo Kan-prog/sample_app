@@ -15,6 +15,7 @@ class User < ApplicationRecord
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save :downcase_email
   before_create :create_activation_digest
+  before_destroy :clean_s3
   mount_uploader :picture, PictureUploader
   validates :name, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
@@ -142,6 +143,15 @@ class User < ApplicationRecord
       if picture.size > 5.megabytes
         errors.add(:picture, "should be less than 5MB")
       end
+    end
+    
+    # S3の画像を削除
+    def clean_s3
+      picture.remove!       #オリジナルの画像を削除    
+      picture.thumb.remove! #thumb画像を削除
+    rescue Excon::Errors::Error => error
+      puts "Something gone wrong"
+      false
     end
   
 end

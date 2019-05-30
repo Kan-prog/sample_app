@@ -44,3 +44,10 @@
 $(document).ready(function(){
   $(".home").parent().parent().removeClass("container");
 })
+
+window.onload = function(){
+	$(function() {
+		$("#loading").fadeOut();
+		$("#container").fadeIn();
+	});
+}
