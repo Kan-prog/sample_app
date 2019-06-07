@@ -9,8 +9,12 @@ class MessagesController < ApplicationController
     # メッセージ全体の中から、send_idsとreceive_idsを共通して持つメールを特定
     @messages = Message.includes(:user).where(id: send_ids + receive_ids).order(created_at: :desc)
     @message = Message.new
+    # 送信したメッセージ
     @active_messages = Message.where(user_id: current_user.id).includes(:receive_user)
+    @user_active_messages = Message.where(id: send_ids).includes(:receive_user)
+    # 受信したメッセージ
     @receive_messages = Message.where(receive_user_id: current_user.id).includes(:user)
+    @user_receive_messages = Message.where(id: receive_ids).includes(:user)
   end
 
   def create
