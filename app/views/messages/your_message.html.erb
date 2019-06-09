@@ -36,6 +36,9 @@
                       <%= active_message.content %>
                       <%= link_to "取り消し", user_message_path(current_user,active_message), method: :delete, data: { confirm: "本当によろしいですか？" }, class: 'btn btn-danger btn-xs' %>
                     </div>
+                    <% unless @user == current_user %>
+                      <%= link_to active_message.receive_user.name + "との相談ルームへ", user_messages_path(active_message.receive_user.id) %>
+                    <% end %>
                   </div>
                 </td></tr>
           		  <% end %>

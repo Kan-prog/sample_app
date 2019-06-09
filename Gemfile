@@ -28,7 +28,7 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'dotenv-rails'
-
+gem 'aws-sdk', '~> 2'
 
 
 group :development, :test do

@@ -2,15 +2,34 @@
   <%= render 'shared/error_messages', user: user %>
 </div>  
 
-<div class="row">
+<div class="row login-form">
   <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+    <p>
+      <%= link_to '/auth/twitter', class: "btn btn-social btn-twitter" do %>
+        <span class="fa fa-twitter"></span> Twitterアカウントでログイン
+      <% end %>
+    </p>
+    <p>
+      <%= link_to '/auth/facebook', class: "btn btn-social btn-facebook" do %>
+        <span class="fa fa-facebook"></span> Facebookアカウントでログイン
+      <% end %>
+    </p>
+    <p>
+      <%= link_to '/auth/google_oauth2', class: "btn btn-social btn-google" do %>
+        <span class="fa fa-google"></span> Googleアカウントでログイン
+      <% end %>
+    </p>
     <%= form_for(user) do |f| %>
     
       <%= f.label :name %>
       <%= f.text_field :name, class: 'form-control' %>
       
       <%= f.label :gender %>
-      <%= f.select :gender, [["男", "男"], ["女", "女"]],class:"form-control" %>
+      <%= f.select :gender, [["男", "男"], ["女", "女"]],class:"form-control" %><br>
+      
+      <%= f.label :grade, class: "dropdown" %>
+      <%= f.select :grade, [["入学予定", "入学予定"], ["B1", "B1"], ["B2", "B2"], ["B3", "B3"], ["B4", "B4"], ["M1", "M1"], ["M2", "M2"], ["D1", "D1"], ["D2", "D2"], ["D3", "D3"], ["卒業生", "卒業生"]],class:"form-control dropdown-menu" %>
+      <br>
 
 
       <%= f.label :email %>
