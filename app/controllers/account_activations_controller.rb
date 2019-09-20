@@ -3,6 +3,9 @@ class AccountActivationsController < ApplicationController
     user = User.find_by(email: params[:email])
     if user && !user.activated? && user.authenticated?(:activation, params[:id])
       user.activate
+      if user.email.include?("@stn.nitech.ac.jp")
+        user.name = "名工大公式" + name
+      end
       log_in user
       flash[:success] = "登録が完了しました！"
       redirect_to user
@@ -11,4 +14,5 @@ class AccountActivationsController < ApplicationController
       redirect_to root_url
     end
   end
+  
 end
