@@ -28,11 +28,6 @@ College.create(id:2, name:'名古屋大学', last_email:'nagoya-u.jp')
 College.create(id:3, name:'名古屋市立大学', last_email:'ed.nagoya-cu.ac.jp')
 College.create(id:4, name:'名古屋外国語大学', last_email:'nufs.ac.jp')
 
-User.create(id:1, name:'test1', email:'test1@example.com', password:'test11', password_confirmation:'test11', activated:true, grade:'B1', gender:'男', college_id:'1')
-User.create(id:2, name:'test2', email:'test2@example.com', password:'test22', password_confirmation:'test22', activated:true, grade:'B2', gender:'男', college_id:'2')
-User.create(id:3, name:'test3', email:'test3@example.com', password:'test33', password_confirmation:'test33', activated:true, grade:'B3', gender:'女', college_id:'3')
-User.create(id:4, name:'test4', email:'test4@example.com', password:'test44', password_confirmation:'test44', activated:true, grade:'B4', gender:'女', college_id:'4')
-
 
 
 
