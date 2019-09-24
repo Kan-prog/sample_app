@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
   # 自分宛ての通知=passive_notifications
   has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
+  belongs_to :college
   
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save :downcase_email

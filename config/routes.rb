@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   # get '/auth/:provider/callback', to: 'sessions#create'
   match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
   delete '/logout',  to: 'sessions#destroy'
+  get  '/contact_index' =>'contacts#index'
+  post '/contact_confirm' => 'contacts#confirm'
+  post '/contact_done' => 'contacts#done'
   
   resources :users do
     resources :messages, only: [:index, :create, :destroy] do

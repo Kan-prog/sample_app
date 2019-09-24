@@ -1,4 +1,13 @@
 <% provide(:title, '商品詳細') %>
+
+<!--名前設定-->
+<% if @micropost.user.email.split("@").last == @micropost.user.college.last_email %>
+  <% micropost_user_name = fa_icon("check-circle", text: @micropost.user.name)%>
+<% else %>
+  <% micropost_user_name = @micropost.user.name %>
+<% end %>
+
+
 <h5><%= @micropost.name %>の商品詳細ページ</h5>
 <div class="row">
   <div class="col-xs-12 col-md-6">
@@ -94,7 +103,10 @@
         <%= image_tag @micropost.user.picture.thumb.url, class: "img-circle" %>
       </div>
       <div class="user-name">
-        <%= link_to @micropost.user.name, user_path(@micropost.user_id) %>
+        <%= link_to micropost_user_name, user_path(@micropost.user_id) %>
+      </div>
+      <div class="user_college">
+        <%= @micropost.user.college.name %>
       </div>
       
     </div>

@@ -51,7 +51,7 @@ class Micropost < ApplicationRecord
       poicture_2.thumb.remove!
       picture_3.remove!      
       poicture_3.thumb.remove!
-    rescue Excon::Errors::Error => error
+      rescue Excon::Errors::Error => error
       puts "Something gone wrong"
       false
     end

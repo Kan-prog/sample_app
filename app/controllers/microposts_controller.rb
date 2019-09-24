@@ -82,7 +82,7 @@ class MicropostsController < ApplicationController
     end
     
     def search_params
-      params.require(:q).permit(:name_cont,  :price_gteq, :price_lteq, :genres_id_in => [])
+      params.require(:q).permit(:name_cont, :user_college_name_cont,  :price_gteq, :price_lteq, :genres_id_in => [])
     end
     
     def correct_user

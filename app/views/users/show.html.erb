@@ -16,16 +16,19 @@
       　　<%= image_tag @user.picture.thumb.url, class: "img-circle" %>
       </div>
       <% if @user == current_user %>
-        <a href="<%= edit_user_path(current_user) %>" class="icon" role="button"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></a>
+        <a href="<%= edit_user_path(current_user) %>" class="icon" role="button"><span class="glyphicon glyphicon-cog" aria-hidden="true">プロフィール設定</span></a>
       <% end %>
       <h1>
         <div class = "<%= "male" if @user.gender == "男" %> <%= "female" if @user.gender == "女" %>">
-          <%= @user.name %>
+          <%= render "user_name", user: @user %>
         </div>
+        <br>
         <div class="profile-inner">
           <div class="profile-group">
             <div class="title">
               学年: <%= @user.grade %>
+              <br><br>
+              所属：<%= @user.college.name %>
             <div>
           </div>
         </div>  

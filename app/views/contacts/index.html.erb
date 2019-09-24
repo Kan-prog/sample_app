@@ -1,0 +1,33 @@
+<%= form_for(@contact, url: { action: :confirm }) do |f| %>
+  <div>
+    <h5>Contact</h5>
+    <p>ご不明な点等ございましたら、お気軽にお問い合わせください。</p>
+ 
+      <% if @contact.errors.any? %>
+        <div id="error_explanation">
+          <div class="alert alert-danger">
+            <%= @contact.errors.count %>件の入力ミスがあります。
+          </div>
+          <ul>
+          <% @contact.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+    
+    <div>
+      <%= f.label :name %>
+      <p><%= f.text_field :name, placeholder: '50文字以内', class: "form-control" %></p>
+    </div>
+    <div>
+      <%= f.label :email %>
+      <p><%= f.text_field :email, placeholder: '255文字以内', class: "form-control" %></p>
+    </div>
+    <div>
+      <%= f.label :content %>
+      <p><%= f.text_area :content, placeholder: '500文字以内', rows: 10, class: "form-control" %></p>
+    </div>
+      <%= f.submit '確認画面へ', :class =>"btn btn-info" %>
+  </div>
+<% end %>
