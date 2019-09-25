@@ -21,9 +21,11 @@ class MessagesController < ApplicationController
     @user = User.find(params[:user_id])
     @message = current_user.messages.build(message_params)
     @message.receive_user_id = @user.id
+    @send_user = current_user
     if @message.save
       @message.create_notification_by(current_user)
       flash[:success] = @user.name + 'さんへメッセージを送信しました。'
+      NotificationMailer.notification_mail(@user, @send_user, @message).deliver
       redirect_back(fallback_location: root_path)
     else
       flash[:danger] = @user,name + 'さんへメッセージを送信できませんでした。'

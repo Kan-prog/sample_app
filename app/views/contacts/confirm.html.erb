@@ -22,7 +22,7 @@
         <%= simple_format(@contact.content) %>
       </p>
     </div>
-      <%= f.submit '戻る', name: 'back' %>
-      <%= f.submit '送信する' %>
+      <%= f.submit '戻る', name: 'back', :class =>"btn btn-info" %>
+      <%= f.submit '送信する', :class =>"btn btn-info" %>
   </div>
 <% end %>
