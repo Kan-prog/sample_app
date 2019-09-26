@@ -25,19 +25,19 @@ class PictureUploader < CarrierWave::Uploader::Base
     process :resize_to_fill => [500, 500]
   end
   
-  # if Rails.env.development?
-  #   storage :file
-  # elsif Rails.env.test?
-  #   storage :file
-  # else
-  #   storage :fog
-  # end
-  
-  if Rails.env.production?
-    storage :fog
-  else
+  if Rails.env.development?
     storage :file
+  elsif Rails.env.test?
+    storage :file
+  else
+    storage :fog
   end
+  
+  # if Rails.env.production?
+  #   storage :fog
+  # else
+  #   storage :file
+  # end
   
   def auto
     manipulate! do |picture|
