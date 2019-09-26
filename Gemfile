@@ -32,8 +32,6 @@ gem 'omniauth-twitter'
 gem 'dotenv-rails'
 gem 'aws-sdk', '~> 2'
 gem 'serviceworker-rails'
-gem 'fog'
-gem 'fog-aws'
 
 
 group :development, :test do
@@ -60,9 +58,9 @@ end
 group :production do
   gem 'pg', '0.20.0'
   gem 'rails_12factor', '0.0.2'
-  # gem 'fog',          '1.36.0'
+  gem 'fog',          '1.36.0'
   gem 'heroku-deflater'
-  # gem 'fog-aws'
+  gem 'fog-aws'
 end
 
 # Windows環境ではtzinfo-dataというgemを含める必要があります
