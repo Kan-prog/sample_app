@@ -1,5 +1,8 @@
-<h1>Contact#contact_mail</h1>
-
-<p>
-  <%= @greeting %>, find me in app/views/contact_mailer/contact_mail.html.erb
-</p>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+</head>
+<h1><%= @contact.name %>様からメッセージが届きました。</h1>
+<p>メールアドレス:<%= @contact.email %></p>
+<p>内容:<%= @contact.content %></p>

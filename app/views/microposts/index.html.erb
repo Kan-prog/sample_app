@@ -2,7 +2,7 @@
 <div class="container-fluid">  
   <div class="home" style="padding: 0;">
     <div class="main-img" style="padding: 0;">
-      <h1>名工大生のためのフリマアプリ
+      <h1>大学生のためのフリマアプリ
       <br>
         <br>
         充実した大学生活を
@@ -11,6 +11,33 @@
   </div>  
 </div> 
 <div class="container">  
-  <h5>出品物一覧 (<%= @result_microposts.count %>件)</h5>
+  <!--<h5>出品物一覧 (<%#= @result_microposts.count %>件)</h5>-->
+  <div class="microposts-guide">
+    <span>出品物一覧 (<%= @result_microposts.count %>件)</span>
+    <span class="search-query">
+        <% unless params[:q] == nil %>
+        お探しの条件＝＞
+          <% unless params[:q][:name_cont].empty? %>
+            商品名：<%= params[:q][:name_cont] %>/
+          <% end %>
+          <% unless params[:q][:genres_id_in].reject(&:blank?).empty? %>
+            カテゴリー：<%= params[:q][:genres_id_in].reject(&:blank?).map{|genre_id| Genre.find(genre_id).name}.join(', ') %>/
+          <% end %>
+          <% unless params[:q][:user_college_name_cont].empty? %>
+            大学：<%= params[:q][:user_college_name_cont] %>/
+          <% end %>
+          <% if params[:q][:price_gteq] || params[:q][:price_lteq] %>
+            値段：
+            <% unless params[:q][:price_gteq].empty? %>
+              <%= params[:q][:price_gteq] %>円以上
+            <% end %>
+            <% unless params[:q][:price_lteq].empty? %>
+              <%= params[:q][:price_lteq] %>円以下
+            <% end %>
+          <% end %>  
+        <% end %>    
+    </span>
+  </div>
+  
   <%= render "microposts/micropost", microposts: @result_microposts %>
 </div>

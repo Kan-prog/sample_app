@@ -1,6 +1,6 @@
 <% if false %>
 <h2>
-<%= @user.name %>との相談室
+<%= @user.name %>との相談ルーム
 <br>
 （1対1で商品に関する質問や商品授受の打ち合わせを、相手に失礼のないように行いましょう。）
 </h2>
@@ -48,7 +48,7 @@
                 <%= receive_message.content %>
               </div>
               <div class="message__info">
-                <span class="text-muted"><%= time_ago_in_words(receive_message.created_at) %>前</span>
+                <span class="text-muted"><%= receive_message.created_at.strftime('%m/%d %H:%M') %></span>
               </div>
             </div>
           </div>  
@@ -69,7 +69,7 @@
                 <%= active_message.content %>
               </div>
               <div class="message__info">
-                 <span class="text-muted"><%= time_ago_in_words(active_message.created_at) %>前</span>
+                 <span class="text-muted"><%= active_message.created_at.strftime('%m/%d %H:%M') %></span>
               </div>
             </div>
           </div>

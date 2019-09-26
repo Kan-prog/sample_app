@@ -107,6 +107,21 @@
     left: 0;
     content: ' ';
 }
+
+.microposts-guide{
+    font-size: 1.5em;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #ddd;
+    padding: 2vh 0;
+}
+
+.search-query{
+  font-size: 0.75em;
+  color: #000;
+  opacity: 0.5;
+  letter-spacing: 1px;
+}
 @media (max-width:767px) {
   .micropost{
   width: 30vw;  

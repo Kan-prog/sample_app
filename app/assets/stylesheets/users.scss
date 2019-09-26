@@ -16,9 +16,13 @@
 .user-img img{
   width: 150px;
   height: auto;
+  // position: relative;
+  // right: 10px;
+  // vertical-align: bottom;
 }
 .user-img-small img{
-  width: 75px;
+  width: 50px;
+  margin-right: 5px;
 }
 @media (max-width:767px) {
   .user-img-small img{

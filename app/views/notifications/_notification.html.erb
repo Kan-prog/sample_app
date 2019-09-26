@@ -37,7 +37,7 @@
               <%= @message.content %>
             </div>
             <span class="moderate-font">
-              (<%= time_ago_in_words(notification.created_at) %>前)
+              (<%= notification.created_at.strftime('%m/%d %H:%M') %>)
             </span>
           <%# end %>  
         <% end %>

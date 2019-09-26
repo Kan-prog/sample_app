@@ -1,7 +1,9 @@
-<h5><%= @send_user.name %>からのメッセージが届きました。</h5>
-------------------------------------------------
-<div class="noti-message">
-  <%= @message.content %>
-</div>
+<%= @send_user.name %>から相談メールが届きました。
 
-------------------------------------------------
+<%= @message.content %>
+
+メール日時：<%= @message.created_at.strftime('%m/%d %H:%M') %>
+
+<%= link_to "#{@send_user.name}との相談ルームへはこちら", user_messages_path(@send_user) %>
+
+なお、このメールには返信できませんのでご注意ください。

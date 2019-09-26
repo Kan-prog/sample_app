@@ -56,7 +56,31 @@
         	</a>
         </div>
       </div>
-      <% if @micropost.user == current_user %>
+      <table class="table table-bordered">
+        <tbody>
+      		<tr>
+      			<th class="active">商品名</th>
+      			<td><%= @micropost.name %></td>
+      		</tr>
+      		<tr>
+      			<th class="active">カテゴリー</th>
+      			<td><%= @micropost.genres.map{|genre| genre.name}.join(', ') %></td>
+      		</tr>
+      		<tr>
+      			<th class="active">検討価格</th>
+      			<td><%= @micropost.price %></td>
+      		</tr>
+      		<tr>
+      			<th class="active">原価</th>
+      			<td><%= @micropost.cost %></td>
+      		</tr>
+      		<tr>
+      			<th class="active">商品説明</th>
+      			<td><%= @micropost.content %></td>
+      		</tr>
+      	</tbody>
+    	</table>
+    	<% if @micropost.user == current_user %>
         <% if @micropost.sold == false %>
           <%= form_for(@micropost, url: update_sold_micropost_path, html: { method: :put }) do |f| %>
             <%= hidden_field_tag :sold, true %>
@@ -68,10 +92,12 @@
             <%= f.submit "締め切り解除", class: "btn btn-warning"%>
           <% end %>
         <% end %>
-        <%= link_to "編集", edit_micropost_path(@micropost) %>
-        <%= link_to "取り消し", @micropost, method: :delete,
+        <br>
+        <%= link_to "編集", edit_micropost_path(@micropost), class: "btn btn-success" %>
+        <%= link_to "取り消し", @micropost, method: :delete, class: "btn btn-danger",
                                            data: { confirm: "本当に取り消してよろしいですか？" } %>
       <% end %>
+    	<% if false%>
       <div class="name">
         商品名：<%= @micropost.name %>
       </div>
@@ -87,6 +113,8 @@
       <div class="content">
         商品説明：<%= @micropost.content %>
       </div>
+      <% end %>
+      
       <% unless @micropost.user == current_user %>
         <% if @micropost.sold == false %>
           <%= link_to @micropost.user.name + "との相談ルームへ", user_messages_path(@micropost.user) %>
