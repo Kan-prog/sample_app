@@ -1,7 +1,7 @@
 require 'carrierwave/storage/abstract'
 require 'carrierwave/storage/file'
 require 'carrierwave/storage/fog'
-require self.fog_provider
+# require self.fog_provider
 
 if Rails.env.production?
   CarrierWave.configure do |config|
