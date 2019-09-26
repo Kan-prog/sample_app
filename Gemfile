@@ -4,8 +4,10 @@ gem 'rails',        '5.1.6'
 gem 'rails-i18n'
 gem 'bcrypt',       '3.1.12'
 gem 'faker',        '1.4.2'
-gem 'carrierwave',  '0.10.0'
-gem 'mini_magick',  '3.8.0'
+# gem 'carrierwave',  '0.10.0'
+# gem 'mini_magick',  '3.8.0'
+gem 'carrierwave',             '1.2.2'
+gem 'mini_magick',             '4.7.0'
 gem 'bootstrap-sass', '3.3.7'
 gem 'puma',         '3.9.1'
 gem 'sass-rails',   '5.0.6'
@@ -30,6 +32,8 @@ gem 'omniauth-twitter'
 gem 'dotenv-rails'
 gem 'aws-sdk', '~> 2'
 gem 'serviceworker-rails'
+gem 'fog'
+gem 'fog-aws'
 
 
 group :development, :test do
@@ -56,9 +60,9 @@ end
 group :production do
   gem 'pg', '0.20.0'
   gem 'rails_12factor', '0.0.2'
-  gem 'fog',          '1.36.0'
+  # gem 'fog',          '1.36.0'
   gem 'heroku-deflater'
-  gem 'fog-aws'
+  # gem 'fog-aws'
 end
 
 # Windows環境ではtzinfo-dataというgemを含める必要があります

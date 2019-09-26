@@ -1,0 +1,78 @@
+{
+  "name": "Tradents",
+  "short_name": "Tradents",
+  "start_url": "/",
+  "icons": [
+  
+    {
+      "src": "/assets/serviceworker-rails/icon-36x36-1e5b94f02d1c0540fb5503c6dd032751ce6a1e75964a96da4a073266266eeca1.png",
+      "sizes": "36x36",
+      "type": "image/png"
+    },
+  
+    {
+      "src": "/assets/serviceworker-rails/icon-48x48-2b66346756477c419233e103f4c57e5b586c59d5c8fff864f0b7a2c4376f27b3.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    },
+  
+    {
+      "src": "/assets/serviceworker-rails/icon-60x60-dc547deffe226963f6bd9b5063dba714faa37a0e1b8fe96a738cb869f7b17f5e.png",
+      "sizes": "60x60",
+      "type": "image/png"
+    },
+  
+    {
+      "src": "/assets/serviceworker-rails/icon-72x72-ad4b48366e6f3906fd9078fbc67830710f9e01e8245c13f5572905baca564625.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    },
+  
+    {
+      "src": "/assets/serviceworker-rails/icon-76x76-f2e8125294f3c4fcd5c9bfa74c3de04043f2bd275ea14d88dacc7b13f04e9f09.png",
+      "sizes": "76x76",
+      "type": "image/png"
+    },
+  
+    {
+      "src": "/assets/serviceworker-rails/icon-96x96-520bfac1d5bd3de8ff556b8c5b811b60e9df2be136e0448f9ac2296766dcac66.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+  
+    {
+      "src": "/assets/serviceworker-rails/icon-120x120-8970d362e5ee41d8d2802b1dcca51ba1e67036dec78c3913314f711e18382f56.png",
+      "sizes": "120x120",
+      "type": "image/png"
+    },
+  
+    {
+      "src": "/assets/serviceworker-rails/icon-152x152-835f697df6f4346bd2acbe71801f0c603f6597e44a04775ee19da8fbabb08b0a.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    },
+  
+    {
+      "src": "/assets/serviceworker-rails/icon-180x180-9d66f4d951c54e68d0904e5592b5104da850218195153cfe30c90c523d2a8039.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+  
+    {
+      "src": "/assets/serviceworker-rails/icon-192x192-303c68a14c7268081f81228fd8190a3823a9785b02934b9196ccc4b360f456eb.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+  
+    {
+      "src": "/assets/serviceworker-rails/icon-512x512-efec371bb4cf01022c421ce3d1b9964d07ec5653e5ca07c02294cddbe1c4afe0.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  
+  ],
+  "theme_color": "#000000",
+  "background_color": "#ff7171",
+  "display": "standalone",
+  "orientation": "portrait"
+}
