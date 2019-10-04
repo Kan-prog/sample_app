@@ -1,4 +1,3 @@
-
 <% provide(:title, "プロフィール編集") %>
 <h5>プロフィール編集</h5>
 <div class="col-xs-12 col-sm-offset-4 col-sm-4">
@@ -6,8 +5,8 @@
 </div> 
 <div class="row">
   <div class="col-xs-12">
+     
     <%= form_for(@user, html: { multipart: true }) do |f| %>
-      
       <span class="picture　col-xs-12 col-md-6 ">
         <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png',id: 'picture' %>
         <div class="user-img">  
@@ -23,7 +22,7 @@
         <br>
         
         <%= f.label :college_id, "大学", class:"control-label" %>
-        <%= f.collection_select :college_id, College.all, :id, :name, class:"form-control dropdown-menu" %>
+        <%= f.collection_select :college_id, College.all.order(:name), :id, :name, class:"form-control dropdown-menu" %>
         <br>
         
         <%= f.label :grade, class: "dropdown control-label" %>
@@ -36,6 +35,7 @@
         
         <%= f.submit "更新する", class: "btn btn-primary col-xs-12 col-md-12", data: { disable_with: "送信中..." } %>
       </div>
+      
       
     <% end %>
   </div>

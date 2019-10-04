@@ -1,7 +1,7 @@
 <% provide(:title, '商品詳細') %>
 
 <!--名前設定-->
-<% if @micropost.user.email.split("@").last == @micropost.user.college.last_email %>
+<% if @micropost.user.email.split("@").last.include?(@micropost.user.college.last_email) %>
   <% micropost_user_name = fa_icon("check-circle", text: @micropost.user.name)%>
 <% else %>
   <% micropost_user_name = @micropost.user.name %>
@@ -115,11 +115,13 @@
       </div>
       <% end %>
       
-      <% unless @micropost.user == current_user %>
-        <% if @micropost.sold == false %>
-          <%= link_to @micropost.user.name + "との相談ルームへ", user_messages_path(@micropost.user) %>
-        <% else %>
-          <%= @micropost.user.name %>との相談ルームは締め切られています。
+      <% if logged_in? %>
+        <% unless @micropost.user == current_user %>
+          <% if @micropost.sold == false %>
+            <%= link_to @micropost.user.name + "との相談ルームへ", user_messages_path(@micropost.user) %>
+          <% else %>
+            <%= @micropost.user.name %>との相談ルームは締め切られています。
+          <% end %>
         <% end %>
       <% end %>  
     </div>  

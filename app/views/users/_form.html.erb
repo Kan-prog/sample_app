@@ -28,7 +28,7 @@
       <%= f.select :gender, [["男", "男"], ["女", "女"]],class:"form-control" %><br>
       
       <%= f.label :college_id, "大学" %>
-      <%= f.collection_select :college_id, College.all, :id, :name %>
+      <%= f.collection_select :college_id, College.all.order(:name), :id, :name %>
       <br>
       
       <%= f.label :grade, class: "dropdown" %>

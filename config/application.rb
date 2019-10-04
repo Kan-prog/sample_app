@@ -22,5 +22,8 @@ module SampleApp
     config.action_view.embed_authenticity_token_in_remote_forms = true
     
     config.time_zone = 'Tokyo'
+    
+    config.assets.paths << config.root.join("vendor/assets/javascripts")
+    config.assets.paths << config.root.join("vendor/assets/stylesheets")
   end
 end

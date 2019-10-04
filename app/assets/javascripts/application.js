@@ -13,8 +13,9 @@
 //= require serviceworker-companion
 //= require rails-ujs
 //= require jquery
+//= require jquery_ujs
 //= require bootstrap
 //= require_tree .
 //= require bxslider
-
+//= require cropper.min.js
 // 除去 require turbolinks//= require serviceworker-companion

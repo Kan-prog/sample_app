@@ -9,7 +9,7 @@ footer{
 .copy-right p{
   text-align: center;
 }
-.gide li{
+.footer-guide li{
   font-size: 130%;
   list-style: none;
   text-decoration: none;
@@ -17,6 +17,69 @@ footer{
   color: #ddd;
   padding-right: 3vw;
 }
-.gide{
+.footer-guide{
   height: 30px;
 }
+
+.multipletab{
+  // width:50%;
+  margin:0 auto;
+  // background:#eee;
+  overflow:hidden;
+  position:relative;
+}
+.tab-buttons{
+  display:inline-block;
+  width:100%;
+  border-bottom:2px solid #ff0000cc;
+}
+.tab-buttons>span{
+  display: block;
+  float: left;
+  cursor: pointer;
+  color: #337ab7;
+  font: 400 15px 'pt sans',sans-serif;
+  background: #fff;
+  padding: 0 15px;
+  line-height: 40px !important;
+  text-align: center;
+}
+.tab-buttons>span.active{
+  background: #ff00004d;
+  color: #fff;
+  position: relative;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+.tab-content{
+  position:relative;
+}
+.tab-content>div{
+  position:absolute;
+}
+// .tab-nav{
+//   opacity:0;
+//   transition:all .3s linear;
+//   -moz-transition:all .3s linear;
+//   -webkit-transition:all .3s linear;
+// }
+// .multipletab:hover .tab-nav{
+//   opacity:1;
+// }
+// .tab-nav>span{
+//   position:absolute;
+//   top:50%;
+//   cursor:pointer;
+//   display:block;
+//   height:35px;
+//   width:35px;
+// }
+// .tab-nav>span.next{
+//   right:10px;
+//   background:#666 url(https://lh4.googleusercontent.com/S2yrb7GoLLN7s1-NmlkE_nS9Svzr5DQNM3dcCCp2Occ=s25-no) no-repeat;
+//   background-position:5px;
+// }
+// .tab-nav>span.prev{
+//   left:10px;
+//   background:#666 url(https://lh5.googleusercontent.com/-zhCZ92aPJSo/UzumzhVUMDI/AAAAAAAAEjA/Op4ySNrW3tk/s25-no/Left+Arrow.png) no-repeat;
+//   background-position:5px;
+// }

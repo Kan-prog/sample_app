@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+
   get 'messages/index'
 
   get 'messages/create'
@@ -9,7 +12,8 @@ Rails.application.routes.draw do
   get 'chat_messages/index'
   
   root 'microposts#index'
-
+  
+  get '/guide', to: 'static_pages#guide'
   get '/home', to: 'static_pages#home'
   get  '/about', to: 'static_pages#about'
   get  '/help', to: 'static_pages#help'

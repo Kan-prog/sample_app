@@ -36,7 +36,7 @@
         <div class="form-group">
           <%= f.label :genres, class: 'control-label' %>
           <div class="checkbox">
-            <%= collection_check_boxes(:micropost, :genre_ids, Genre.all, :id, :name) do |b| %>
+            <%= collection_check_boxes(:micropost, :genre_ids, Genre.all.order(:name), :id, :name) do |b| %>
               <%= b.label { b.check_box + b.text } %>
             <% end %>
           </div>

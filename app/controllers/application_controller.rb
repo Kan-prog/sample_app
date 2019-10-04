@@ -7,8 +7,9 @@ class ApplicationController < ActionController::Base
   # 検索はどこのページからでもしたいので、applicationコントローラ内に定義
   def set_global_search_variable
     @q = Micropost.ransack(params[:q])
-    @genres = Genre.all
+    @genres = Genre.all.order(:name)
   end
+  
   
   private
   
@@ -20,5 +21,6 @@ class ApplicationController < ActionController::Base
         redirect_to login_url
       end
     end
+    
     
 end

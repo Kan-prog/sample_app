@@ -31,3 +31,5 @@
 .env
 
 /config/secrets.yml
+
+/db/seeds.rb

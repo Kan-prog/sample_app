@@ -32,6 +32,9 @@ class StaticPagesController < ApplicationController
   def contact
   end
   
+  def guide
+  end
+  
   private
     
     # def search_params

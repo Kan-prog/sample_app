@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
+  
   before_action :logged_in_user, only: [:edit, :update, :destroy, :likes, :user_message]
   before_action :correct_user,   only: [:edit, :update, :destroy, :user_message]
+  before_action :admin_user,     only: :destroy
   
   def index
   end
@@ -40,6 +42,15 @@ class UsersController < ApplicationController
     end  
   end
   
+  def destroy
+    if current_user.admin = true
+      @user = User.find(params[:id])
+      User.find(params[:id]).destroy
+      flash[:success] = @user.name + "を削除しました"
+      redirect_to users_url
+    end
+  end
+  
   def likes
     @user = User.find(params[:id])
     @likes = @user.likes.page(params[:page]).includes(:user)
@@ -59,4 +70,10 @@ class UsersController < ApplicationController
         redirect_to(root_url)
       end  
     end
+    
+    # 管理者かどうか確認
+    def admin_user
+      redirect_to(root_url) unless current_user.admin?
+    end
+    
 end

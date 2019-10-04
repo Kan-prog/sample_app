@@ -5,7 +5,7 @@
     <% visiter = User.find_by(id: notification.visiter_id) %>
     
     <!--名前設定-->
-    <% if visiter.email.split("@").last == visiter.college.last_email %>
+    <% if visiter.email.split("@").last.include?(visiter.college.last_email) %>
       <% visiter_name = fa_icon("check-circle", text: visiter.name)%>
     <% else %>
       <% visiter_name = visiter.name %>

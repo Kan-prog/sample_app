@@ -1,4 +1,4 @@
-<% if user.email.split("@").last == user.college.last_email %>
+<% if user.email.split("@").last.include?(user.college.last_email) %>
   <% permit_name = fa_icon("check-circle", text: user.name)%>
   <% user_name = permit_name %>
   <%= user_name %>

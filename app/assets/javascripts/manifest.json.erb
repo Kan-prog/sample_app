@@ -4,7 +4,8 @@
   "short_name": "Tradents",
   "start_url": "/",
   "icons": [
-  <% icon_sizes.map { |s| "#{s}x#{s}" }.each.with_index do |dim, i| %>
+  <%# icon_sizes.map { |s| "#{s}x#{s}" }.each.with_index do |dim, i| %>
+  <% icon_sizes.map { |s| "#{s}" }.each.with_index do |dim, i| %>
     {
       "src": "<%= image_path "serviceworker-rails/icon-#{dim}.png" %>",
       "sizes": "<%= dim %>",
@@ -13,7 +14,7 @@
   <% end %>
   ],
   "theme_color": "#000000",
-  "background_color": "#ff7171",
+  "background_color": "#fff",
   "display": "standalone",
   "orientation": "portrait"
 }

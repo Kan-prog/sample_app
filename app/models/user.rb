@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
   belongs_to :college
   
+  # attr_accessor :image_x, :image_y, :image_w, :image_h #プロフィール画像トリミング
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save :downcase_email
   before_create :create_activation_digest
@@ -126,6 +127,7 @@ class User < ApplicationRecord
     self.likes.include?(micropost)
   end
   # ここまでお気に入り
+  
   
   private
     # メールアドレス小文字化
