@@ -5,10 +5,10 @@
 
 $(function () {
     $.FindContainer = function () {
-        $('.tab-content>div').each(function findcontent() {
+        $('.tab-contents>div').each(function findcontent() {
             var newindex = $('.activetab').index();
             var newheight = $('.activetab').height();
-            $('.tab-content').animate({
+            $('.tab-contents').animate({
                 'height': newheight+20
             }, 100);
             var otherindex = $(this).index();
@@ -21,15 +21,15 @@ $(function () {
         });
     };
     $.FindId = function () {
-        $('.tab-content>div').each(function () {
+        $('.tab-contents>div').each(function () {
             if ($(this).attr('id') == $('.active').attr('id')) {
-                $('.tab-content>div').removeClass('activetab');
+                $('.tab-contents>div').removeClass('activetab');
                 $(this).addClass('activetab');
             }
         });
     };
     $('.tab-buttons>span').first().addClass('active');
-    $('.tab-content>div').each(function () {
+    $('.tab-contents>div').each(function () {
         var activeid = $('.active').attr('id');
         if ($(this).attr('id') == activeid) {
             $(this).addClass('activetab');
@@ -44,7 +44,7 @@ $(function () {
                 'padding': '10px 20px'
         });
         $(this).attr('data-position', currentposition);
-        $('.tab-content').css('height', currentheight+20);
+        $('.tab-contents').css('height', currentheight+20);
     });
     $('.tab-buttons>span').click(function () {
 

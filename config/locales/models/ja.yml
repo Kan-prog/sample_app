@@ -8,7 +8,7 @@ ja:
         name: 商品名
         created_at: 出品日時
         updated_at: 更新日時
-        picture: トップ画像
+        picture: トップ画像(サムネイル)
         picture_1: 画像２
         picture_2: 画像３
         picture_3: 画像４

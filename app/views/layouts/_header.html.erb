@@ -1,8 +1,25 @@
 <header class="navbar navbar-fixed-top">
   <div class="container-fluid">
     <%= link_to image_tag("tradents-logo.jpg") , root_path, id: "logo" %>
-    <nav>
+    
         <% if logged_in? %>
+            <a href="#" class="menu_btn menu-trigger">
+              <span></span>
+              <span></span>
+              <span></span>
+            </a>
+            <div id="menu">
+              <ul id="menu-ul">
+                <li><%= link_to "お気に入りした商品", likes_user_path(current_user)%></li>
+                <li><%= link_to "メッセージ一覧", your_message_user_messages_path(current_user.id) %></li>
+                <li><%= link_to "アプリ概要", about_path %></li>
+                <li><%= link_to "アプリの使い方", guide_path %></li>
+                <li><%= link_to "よくある質問", help_path %></li>
+                <li><%= link_to "お問い合わせ", contact_index_path %></li>
+                <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
+              </ul>
+            </div>
+            <div class="menu-background"></div>
             <ul class="g-nav">
               <li class="mypage"><%= link_to "マイページ", user_path(current_user) %></li>
               <li class="search"><a href="#" data-toggle="modal" data-target="#sampleModal">検索</a></li>

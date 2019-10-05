@@ -23,8 +23,8 @@
   display: none;
 }
 
-.main-pane {
-}
+// .main-pane {
+// }
 
 .message-list {
   max-width: 650px;
@@ -154,4 +154,7 @@
   clear: both;
   content: "";
   display: block;
+}
+.tab-content > .active {
+  display: contents;
 }

@@ -1,4 +1,8 @@
-<% provide(:title, @user.name+"のマイページ") %>
+<% if @user == current_user && logged_in? %>
+  <% provide(:title, "マイページ")%>
+<% else %>
+  <% provide(:title, @user.name+"のマイページ") %>
+<% end %>  
 <% if current_user == @user %>
   <h5>マイページ</h5>
 <% else %>
@@ -66,7 +70,11 @@
   </aside>
   <div class="col-xs-12">
     <% if @user.microposts.any? %>
+      <% if @user == current_user && logged_in? %>
+      <h5>あなたの出品物一覧 (<%= @user.microposts.count %>件)</h5>
+      <% else %>
       <h5><%= @user.name %>の出品物一覧 (<%= @user.microposts.count %>件)</h5>
+      <% end %>
       <ol class="microposts">
         <%= render "microposts/micropost", microposts: @microposts %>
       </ol>

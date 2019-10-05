@@ -50,12 +50,15 @@ footer{
   position: relative;
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
-.tab-content{
+.tab-contents{
   position:relative;
 }
-.tab-content>div{
+.tab-contents>div{
   position:absolute;
 }
+
+
+
 // .tab-nav{
 //   opacity:0;
 //   transition:all .3s linear;

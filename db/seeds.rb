@@ -48,4 +48,8 @@ College.create(id:20, name:'東海学園大学', last_email:'tokaigakuen-u.ac.jp
 College.create(id:21, name:'愛知工業大学', last_email:'aitech.ac.jp')
 College.create(id:22, name:'愛知県立大学', last_email:'aichi-fam-u.ac.jp')
 College.create(id:23, name:'名古屋音楽大学', last_email:'meion.ac.jp')
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+AdminUser.create!(email: 'forwkan@gmail.com', password: 'tradmin#f$u%s', password_confirmation: 'tradmin#f$u%s') if Rails.env.development? || Rails.env.production?
+
+
+
+
