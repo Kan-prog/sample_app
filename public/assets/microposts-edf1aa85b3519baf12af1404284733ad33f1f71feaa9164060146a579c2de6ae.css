@@ -1,0 +1,185 @@
+@charset "UTF-8";
+/* line 4, app/assets/stylesheets/microposts.scss */
+.micropost-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* line 9, app/assets/stylesheets/microposts.scss */
+.micropost {
+  width: 15vw;
+  background: #fff;
+  margin: 0;
+  padding: 4vh;
+  text-decoration: none;
+}
+
+/* line 16, app/assets/stylesheets/microposts.scss */
+.micropost div {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* line 21, app/assets/stylesheets/microposts.scss */
+.micropost img {
+  width: 100%;
+}
+
+/* line 24, app/assets/stylesheets/microposts.scss */
+.name {
+  color: #000;
+  font-size: 120%;
+}
+
+/* line 28, app/assets/stylesheets/microposts.scss */
+.price {
+  font-weight: bold;
+  color: red;
+}
+
+/* line 33, app/assets/stylesheets/microposts.scss */
+.timestamp {
+  font-size: 80%;
+  color: gray;
+}
+
+/* line 37, app/assets/stylesheets/microposts.scss */
+.sold {
+  border: #eee 1px solid;
+  margin: 0 auto;
+  position: relative;
+  background-color: #000;
+  background-color: black;
+}
+
+/* line 44, app/assets/stylesheets/microposts.scss */
+.sold::before {
+  content: "";
+  top: 0;
+  left: 0;
+  border-bottom: 4em solid transparent;
+  border-left: 4em solid #fa5e5e;
+  /* ラベルの色はここで変更 */
+  position: absolute;
+  z-index: 100;
+}
+
+/* line 53, app/assets/stylesheets/microposts.scss */
+.sold::after {
+  content: "sold";
+  display: block;
+  top: 5px;
+  transform: rotate(-45deg);
+  color: #fff;
+  /* 文字色はここで変更 */
+  left: 0;
+  position: absolute;
+  z-index: 101;
+}
+
+/* line 63, app/assets/stylesheets/microposts.scss */
+.sold:first-child .item-picture {
+  opacity: 0.6;
+}
+
+/* line 66, app/assets/stylesheets/microposts.scss */
+.item img {
+  width: 100%;
+}
+
+/* line 69, app/assets/stylesheets/microposts.scss */
+.main-img {
+  position: relative;
+}
+
+/* line 72, app/assets/stylesheets/microposts.scss */
+.main-img h1 {
+  color: #fff;
+  text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000, 0px 1px 0 #000, -1px 0 #000, -1px 0 0 #000, 1px 0 0 #000;
+  font-size: 2.3em;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  letter-spacing: 8px;
+  font-weight: bold;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+/* line 88, app/assets/stylesheets/microposts.scss */
+.container-fluid {
+  padding: 0;
+}
+
+/* line 91, app/assets/stylesheets/microposts.scss */
+.main-img {
+  height: 50vh;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: cover;
+  background-image: url(campus.jpg);
+  object-fit: cover;
+  padding: 0;
+}
+
+/* line 101, app/assets/stylesheets/microposts.scss */
+.main-img::before {
+  background-color: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: ' ';
+}
+
+/* line 111, app/assets/stylesheets/microposts.scss */
+.microposts-guide {
+  font-size: 1.5em;
+  letter-spacing: 2px;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #ddd;
+  padding: 2vh 0;
+}
+
+/* line 119, app/assets/stylesheets/microposts.scss */
+.search-query {
+  font-size: 0.75em;
+  color: #000;
+  opacity: 0.5;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 767px) {
+  /* line 126, app/assets/stylesheets/microposts.scss */
+  .micropost {
+    width: 30vw;
+    font-size: 100%;
+    padding: 2vh;
+  }
+  /* line 131, app/assets/stylesheets/microposts.scss */
+  .item img {
+    width: 100%;
+  }
+  /* line 134, app/assets/stylesheets/microposts.scss */
+  .main-img {
+    height: 30vh;
+  }
+  /* line 137, app/assets/stylesheets/microposts.scss */
+  header a {
+    font-size: 0.8em;
+  }
+  /* line 140, app/assets/stylesheets/microposts.scss */
+  .main-img h1 {
+    font-size: 1.2em;
+    width: 250px;
+    letter-spacing: 1px;
+  }
+  /* line 145, app/assets/stylesheets/microposts.scss */
+  .price {
+    font-size: 80%;
+  }
+}

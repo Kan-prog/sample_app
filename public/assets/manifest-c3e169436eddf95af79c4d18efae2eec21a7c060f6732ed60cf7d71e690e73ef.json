@@ -1,0 +1,79 @@
+{
+  "name": "Tradents",
+  "short_name": "Tradents",
+  "start_url": "/",
+  "icons": [
+  
+  
+    {
+      "src": "/images/serviceworker-rails/icon-36.png",
+      "sizes": "36",
+      "type": "image/png"
+    },
+  
+    {
+      "src": "/images/serviceworker-rails/icon-48.png",
+      "sizes": "48",
+      "type": "image/png"
+    },
+  
+    {
+      "src": "/images/serviceworker-rails/icon-60.png",
+      "sizes": "60",
+      "type": "image/png"
+    },
+  
+    {
+      "src": "/images/serviceworker-rails/icon-72.png",
+      "sizes": "72",
+      "type": "image/png"
+    },
+  
+    {
+      "src": "/images/serviceworker-rails/icon-76.png",
+      "sizes": "76",
+      "type": "image/png"
+    },
+  
+    {
+      "src": "/images/serviceworker-rails/icon-96.png",
+      "sizes": "96",
+      "type": "image/png"
+    },
+  
+    {
+      "src": "/images/serviceworker-rails/icon-120.png",
+      "sizes": "120",
+      "type": "image/png"
+    },
+  
+    {
+      "src": "/images/serviceworker-rails/icon-152.png",
+      "sizes": "152",
+      "type": "image/png"
+    },
+  
+    {
+      "src": "/images/serviceworker-rails/icon-180.png",
+      "sizes": "180",
+      "type": "image/png"
+    },
+  
+    {
+      "src": "/images/serviceworker-rails/icon-192.png",
+      "sizes": "192",
+      "type": "image/png"
+    },
+  
+    {
+      "src": "/images/serviceworker-rails/icon-512.png",
+      "sizes": "512",
+      "type": "image/png"
+    }
+  
+  ],
+  "theme_color": "#000000",
+  "background_color": "#fff",
+  "display": "standalone",
+  "orientation": "portrait"
+}

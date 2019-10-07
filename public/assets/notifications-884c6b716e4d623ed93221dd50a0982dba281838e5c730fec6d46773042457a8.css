@@ -1,0 +1,20 @@
+/* line 4, app/assets/stylesheets/notifications.scss */
+.notifications {
+  border-bottom: 1px #ddd solid;
+}
+
+/* line 7, app/assets/stylesheets/notifications.scss */
+.noti-message {
+  color: #a7a3a3;
+}
+
+/* line 10, app/assets/stylesheets/notifications.scss */
+.announce {
+  float: left;
+}
+
+/* line 13, app/assets/stylesheets/notifications.scss */
+.user-view .user-img-small {
+  float: left;
+  padding: 2vh 0;
+}

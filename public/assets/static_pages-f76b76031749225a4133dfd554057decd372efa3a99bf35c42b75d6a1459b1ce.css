@@ -1,0 +1,71 @@
+/* line 4, app/assets/stylesheets/static_pages.scss */
+footer {
+  margin-top: 5vh;
+  height: 10vh;
+  border-top: 2px #ddd solid;
+}
+
+/* line 9, app/assets/stylesheets/static_pages.scss */
+.copy-right p {
+  text-align: center;
+}
+
+/* line 12, app/assets/stylesheets/static_pages.scss */
+.footer-guide li {
+  font-size: 130%;
+  list-style: none;
+  text-decoration: none;
+  float: right;
+  color: #ddd;
+  padding-right: 3vw;
+}
+
+/* line 20, app/assets/stylesheets/static_pages.scss */
+.footer-guide {
+  height: 30px;
+}
+
+/* line 24, app/assets/stylesheets/static_pages.scss */
+.multipletab {
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+}
+
+/* line 31, app/assets/stylesheets/static_pages.scss */
+.tab-buttons {
+  display: inline-block;
+  width: 100%;
+  border-bottom: 2px solid #ff0000cc;
+}
+
+/* line 36, app/assets/stylesheets/static_pages.scss */
+.tab-buttons > span {
+  display: block;
+  float: left;
+  cursor: pointer;
+  color: #337ab7;
+  font: 400 15px 'pt sans',sans-serif;
+  background: #fff;
+  padding: 0 15px;
+  line-height: 40px !important;
+  text-align: center;
+}
+
+/* line 47, app/assets/stylesheets/static_pages.scss */
+.tab-buttons > span.active {
+  background: #ff00004d;
+  color: #fff;
+  position: relative;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* line 53, app/assets/stylesheets/static_pages.scss */
+.tab-contents {
+  position: relative;
+}
+
+/* line 56, app/assets/stylesheets/static_pages.scss */
+.tab-contents > div {
+  position: absolute;
+}
