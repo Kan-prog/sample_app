@@ -128,20 +128,23 @@
   </div>
   <div class="col-xs-12 col-md-4 col-md-offset-2">
     <div class="user-info">
-      <p class="text-muted">出品者情報</p>
-      <div class="user-img">
-        <%= image_tag @micropost.user.picture.thumb.url, class: "img-circle" %>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">出品者情報</h3>
+        </div>
+        <div class="panel-body user-img">
+          <%= image_tag @micropost.user.picture.thumb.url, class: "img-circle" %>
+          <div class="user-name panel-body">
+            <%= link_to micropost_user_name, user_path(@micropost.user_id) %>
+          </div>
+          <div class="user_college panel-body">
+            <%= @micropost.user.college.name %>
+          </div>
+          <div class="user-description panel-body">
+            <%= @micropost.user.description %>
+          </div>
+        </div>
       </div>
-      <div class="user-name">
-        <%= link_to micropost_user_name, user_path(@micropost.user_id) %>
-      </div>
-      <div class="user_college">
-        <%= @micropost.user.college.name %>
-      </div>
-      <div class="user-description">
-        <%= @micropost.user.description %>
-      </div>
-      
     </div>
   </div>
 </div>

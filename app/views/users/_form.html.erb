@@ -4,7 +4,16 @@
 
 <div class="row login-form">
   <div class="col-xs-12 col-sm-4 col-sm-offset-4">
-    <p>
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">おすすめの設定</h3>
+      </div>
+      <div class="panel-body">
+        <p class="email-announce">学生メールにて登録していただくと、大学関係者ということが証明され、信頼を得やすくなります！<br>
+                                  (その際は、実際に大学で使用しているパスワードを推測できないものに必ず設定するようお願い致します)
+        </p>
+      </div>
+    </div>
       <%= link_to '/auth/twitter', class: "btn btn-social btn-twitter" do %>
         <span class="fa fa-twitter"></span> Twitterアカウントでログイン
       <% end %>
