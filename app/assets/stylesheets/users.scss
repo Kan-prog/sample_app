@@ -20,6 +20,10 @@
   // right: 10px;
   // vertical-align: bottom;
 }
+.show-user img {
+  position: relative;
+  right: 13px;
+}
 .user-img-small img{
   width: 50px;
   margin-right: 5px;
@@ -44,9 +48,3 @@
 .user-description{
   margin: 0 16%;
 }
-// .email-announce{
-//   color: red;
-//   font-weight: bold;
-//   border: #ddd solid 2px;
-//   text-decoration: underline dotted red;
-// }

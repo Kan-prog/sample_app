@@ -387,11 +387,28 @@ input {
     height: 100%;
     opacity: 1; /* メニューが表示されているときには背景が表示 */
   }
-}
-
-@media (min-width:897px){ /* 画面が大きくなるとハンバーガーメニューは消える */
-  .menu-trigger, #menu, .menu-background{
-    display: none;
+  .fa-repeat{
+    font-size: 200%;
+    position: fixed;
+    right: 59px;
+    top: 7px;
+    color: #f50b0c;
   }
 }
 
+@media (min-width:897px){ /* 画面が大きくなるとハンバーガーメニュー/reloadは消える */
+  .menu-trigger, #menu, .menu-background, .fa-repeat {
+    display: none;
+  }
+}
+//検索ボタン
+@media (max-width:896px){
+  .modal-content{
+    height: 590px;
+  }
+}
+@media (min-width:897px){
+  .modal-content{
+    height: 485px;
+  }
+}

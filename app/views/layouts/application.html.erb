@@ -51,7 +51,9 @@
                 </div>  
               </div>
               <div class="action">
-              <%= f.submit "この条件で検索する", class: 'btn btn-success btn-xs' %>
+              <%= button_tag :type => "submit", :class =>"btn btn-success col-xs-12" do %>
+                <i class="fa fa-search">この条件で検索する</i>
+              <% end %>  
               </div>
             <% end %>
           </div>  

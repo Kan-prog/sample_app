@@ -1,20 +1,20 @@
-class Ability
-  include CanCan::Ability
+# class Ability
+#   include CanCan::Ability
 
-  def initialize(user)
-    cannot :manage, :all
+#   def initialize(user)
+#     cannot :manage, :all
 
-    user ||= User.new
-    # user = current_user
-    if user.admin?
-      can :manage, :all
-    else
-      can :read, :all
-      cannot :manage, ActiveAdmin::Page # roleがadmin以外であればactiveadminの各種ページにアクセス出来ないようにした
-    end
-  end
+#     user ||= User.new
+#     # user = current_user
+#     if user.admin?
+#       can :manage, :all
+#     else
+#       can :read, :all
+#       cannot :manage, ActiveAdmin::Page # roleがadmin以外であればactiveadminの各種ページにアクセス出来ないようにした
+#     end
+#   end
   
-end
+# end
 
 # class Ability
 #   include CanCan::Ability

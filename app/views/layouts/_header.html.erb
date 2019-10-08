@@ -1,7 +1,7 @@
 <header class="navbar navbar-fixed-top">
   <div class="container-fluid">
     <%= link_to image_tag("tradents-logo.jpg") , root_path, id: "logo" %>
-    
+        <span class="fa fa-repeat" onclick="window.location.reload();"></span>
         <% if logged_in? %>
             <a href="#" class="menu_btn menu-trigger">
               <span></span>
@@ -10,13 +10,13 @@
             </a>
             <div id="menu">
               <ul id="menu-ul">
-                <li><%= link_to "お気に入りした商品", likes_user_path(current_user)%></li>
-                <li><%= link_to "メッセージ一覧", your_message_user_messages_path(current_user.id) %></li>
-                <li><%= link_to "アプリ概要", about_path %></li>
-                <li><%= link_to "アプリの使い方", guide_path %></li>
-                <li><%= link_to "よくある質問", help_path %></li>
-                <li><%= link_to "お問い合わせ", contact_index_path %></li>
-                <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
+                <li><%= link_to "お気に入りした商品", likes_user_path(current_user), class: "menu-li" %></li>
+                <li><%= link_to "メッセージ一覧", your_message_user_messages_path(current_user.id), class: "menu-li" %></li>
+                <li><%= link_to "アプリ概要", about_path, class: "menu-li" %></li>
+                <li><%= link_to "アプリの使い方", guide_path, class: "menu-li" %></li>
+                <li><%= link_to "よくある質問", help_path, class: "menu-li" %></li>
+                <li><%= link_to "お問い合わせ", contact_index_path, class: "menu-li" %></li>
+                <li><%= link_to "ログアウト", logout_path, method: :delete, class: "menu-li" %></li>
               </ul>
             </div>
             <div class="menu-background"></div>
