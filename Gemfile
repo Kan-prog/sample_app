@@ -33,10 +33,12 @@ gem 'omniauth-twitter'
 gem 'dotenv-rails'
 gem 'aws-sdk', '~> 2'
 gem 'serviceworker-rails'
-# gem 'activeadmin', github: 'activeadmin'
 gem 'activeadmin', git: "https://github.com/gregbell/active_admin.git"
-# gem 'enumerize'
+gem 'enumerize'
 gem 'devise'
+gem 'cancancan'
+gem 'exception_notification', :github => 'smartinez87/exception_notification'
+gem 'slack-notifier'
 
 group :development, :test do
   gem 'sqlite3', '1.3.13'

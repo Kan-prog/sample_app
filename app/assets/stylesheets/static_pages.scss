@@ -17,6 +17,11 @@ footer{
   color: #ddd;
   padding-right: 3vw;
 }
+@media (max-width:895px){
+  .footer-guide li{
+    font-size: 80%;
+  }
+}
 .footer-guide{
   height: 30px;
 }
@@ -45,7 +50,9 @@ footer{
   text-align: center;
 }
 .tab-buttons>span.active{
-  background: #ff00004d;
+  // background: #ff00004d;
+  background-color: #5bc0de;
+  border-color: #46b8da;
   color: #fff;
   position: relative;
   box-shadow: 0 0 10px rgba(0,0,0,0.5);

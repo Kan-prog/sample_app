@@ -15,10 +15,10 @@
       </span>
       <div class="col-xs-12 col-md-6">
         <%= f.label :name, class:"control-label" %>
-        <%= f.text_field :name, placeholder: "○○字以内", class:'form-control' %>
+        <%= f.text_field :name, placeholder: "50字以内", class:'form-control' %>
         
         <%= f.label :gender, class:"dropdown control-label" %>
-        <%= f.select :gender, [["男", "男"], ["女", "女"]], class:"form-control dropdown-menu" %>
+        <%= f.select :gender, [["男性", "男"], ["女性", "女"]], class:"form-control dropdown-menu" %>
         <br>
         
         <%= f.label :college_id, "大学", class:"control-label" %>
@@ -29,6 +29,9 @@
         <%= f.select :grade, [["入学予定", "入学予定"], ["B1", "B1"], ["B2", "B2"], ["B3", "B3"], ["B4", "B4"], ["M1", "M1"], ["M2", "M2"], ["D1", "D1"], ["D2", "D2"], ["D3", "D3"], ["卒業生", "卒業生"]],class:"form-control dropdown-menu" %>
         <br>
         
+        <%= f.label :description, class:"control-label" %>
+        <%= f.text_field :description, placeholder: "50字以内の簡単な紹介をしてみましょう！", class:'form-control', rows: 2 %>
+        <br>
         <!--<p>（学生メールと選択した大学が正しい場合、大学ユーザバッジがつき、信頼性が上がります）</p>-->
         <%#= f.label :email, class:"control-label" %>
         <%#= f.email_field :email, class: 'form-control' %>

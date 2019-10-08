@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/smartinez87/exception_notification.git
+  revision: 6c7849f470beeeeae37c2a9c4d6cdd72352a0e01
+  specs:
+    exception_notification (4.4.0)
+      actionmailer (>= 4.0, < 7)
+      activesupport (>= 4.0, < 7)
+
+GIT
   remote: https://github.com/gregbell/active_admin.git
   revision: 45ac6a00be09c64809bd29ce6b88f417bc5f0c09
   specs:
@@ -91,6 +99,7 @@ GEM
       uniform_notifier (~> 1.11)
     bxslider-rails (4.2.5.1)
     byebug (9.0.6)
+    cancancan (3.0.1)
     carrierwave (1.2.3)
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
@@ -116,6 +125,8 @@ GEM
       dotenv (= 2.7.5)
       railties (>= 3.2, < 6.1)
     dry-inflector (0.1.2)
+    enumerize (2.3.1)
+      activesupport (>= 3.2)
     erubi (1.9.0)
     excon (0.67.0)
     execjs (2.7.0)
@@ -434,6 +445,7 @@ GEM
     serviceworker-rails (0.6.0)
       railties (>= 3.1)
     shellany (0.0.1)
+    slack-notifier (2.3.2)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -489,10 +501,13 @@ DEPENDENCIES
   bullet
   bxslider-rails
   byebug (= 9.0.6)
+  cancancan
   carrierwave (~> 1.2.2)
   coffee-rails (= 4.2.2)
   devise
   dotenv-rails
+  enumerize
+  exception_notification!
   faker (= 1.4.2)
   fog (= 1.36.0)
   fog-aws
@@ -521,6 +536,7 @@ DEPENDENCIES
   ransack
   sass-rails (= 5.0.6)
   serviceworker-rails
+  slack-notifier
   spring (= 2.0.2)
   spring-watcher-listen (= 2.0.1)
   sqlite3 (= 1.3.13)

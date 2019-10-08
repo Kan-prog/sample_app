@@ -2,7 +2,6 @@ class UsersController < ApplicationController
   
   before_action :logged_in_user, only: [:edit, :update, :destroy, :likes, :user_message]
   before_action :correct_user,   only: [:edit, :update, :destroy, :user_message]
-  before_action :admin_user,     only: :destroy
   
   def index
   end
@@ -59,7 +58,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, :picture, :gender, :grade, :college_id)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :picture, :description, :gender, :grade, :college_id)
     end
     
     # 正しいユーザーかどうか確認
@@ -71,9 +70,5 @@ class UsersController < ApplicationController
       end  
     end
     
-    # 管理者かどうか確認
-    def admin_user
-      redirect_to(root_url) unless current_user.admin?
-    end
     
 end

@@ -23,6 +23,8 @@ Genre.create(id:15, name:'棚')
 Genre.create(id:16, name:'カーペット')
 Genre.create(id:17, name:'その他家電製品')
 Genre.create(id:18, name:'その他雑貨')
+Genre.create(id:19, name:'スキル')
+Genre.create(id:20, name:'勉強')
 
 
 College.create(id:1, name:'名古屋工業大学', last_email:'nitech.ac.jp')
@@ -48,6 +50,8 @@ College.create(id:20, name:'東海学園大学', last_email:'tokaigakuen-u.ac.jp
 College.create(id:21, name:'愛知工業大学', last_email:'aitech.ac.jp')
 College.create(id:22, name:'愛知県立大学', last_email:'aichi-fam-u.ac.jp')
 College.create(id:23, name:'名古屋音楽大学', last_email:'meion.ac.jp')
+
+
 AdminUser.create!(email: 'forwkan@gmail.com', password: 'tradmin#f$u%s', password_confirmation: 'tradmin#f$u%s') if Rails.env.development? || Rails.env.production?
 
 

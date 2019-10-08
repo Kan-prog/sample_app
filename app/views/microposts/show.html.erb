@@ -118,7 +118,7 @@
       <% if logged_in? %>
         <% unless @micropost.user == current_user %>
           <% if @micropost.sold == false %>
-            <%= link_to @micropost.user.name + "との相談ルームへ", user_messages_path(@micropost.user) %>
+            <%= link_to @micropost.user.name + "との相談ルームへ", user_messages_path(@micropost.user), class: "btn btn-info" %>
           <% else %>
             <%= @micropost.user.name %>との相談ルームは締め切られています。
           <% end %>
@@ -137,6 +137,9 @@
       </div>
       <div class="user_college">
         <%= @micropost.user.college.name %>
+      </div>
+      <div class="user-description">
+        <%= @micropost.user.description %>
       </div>
       
     </div>

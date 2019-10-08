@@ -6,6 +6,8 @@ ActiveAdmin.setup do |config|
   #
   config.site_title = "Tradents"
   config.skip_before_action :set_global_search_variable
+  config.current_user_method = :current_admin_user # 現在ログインしているユーザーへのアクセスに利用するメソッド ||| app/admin_users.rb内のActiveAdmin.register　内でcurrent_admin_userを呼び出す事でcurrent_admin_userのAdminUserモデルが取得できます。
+  # config.before_action :access_denied
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
   #
@@ -34,7 +36,7 @@ ActiveAdmin.setup do |config|
   #
   # Default:
   # config.default_namespace = :admin
-  #
+  # config.default_namespace = :tapass
   # You can customize the settings for each namespace by using
   # a namespace block. For example, to change the site title
   # within a namespace:
@@ -54,7 +56,7 @@ ActiveAdmin.setup do |config|
   #
   # This setting changes the method which Active Admin calls
   # within the application controller.
-  config.authentication_method = :authenticate_admin_user!
+  config.authentication_method = :authenticate_admin_user! # コントローラーが強制的に認証する際に利用するメソッド
 
   # == User Authorization
   #
@@ -82,7 +84,8 @@ ActiveAdmin.setup do |config|
   # because, by default, user gets redirected to Dashboard. If user
   # doesn't have access to Dashboard, he'll end up in a redirect loop.
   # Method provided here should be defined in application_controller.rb.
-  # config.on_unauthorized_access = :access_denied
+  config.on_unauthorized_access = :access_denied
+  config.authorization_adapter = ActiveAdmin::CanCanAdapter
 
   # == Current User
   #

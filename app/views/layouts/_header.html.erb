@@ -27,7 +27,10 @@
               <li class="bell">
                 <%= link_to "お知らせ", notifications_path %>
                 <% if unchecked_notifications.any? %>
-                  <i class="fa fa-circle notification-circle" style="color:blue"></i>
+                  <span class="fa-stack">
+                    <span class="fa fa-circle fa-stack-2x dot"></span>
+                    <span class="fa fa-stack-1x notification-number"><%= unchecked_notifications.count %></span>
+                  </span>
                 <% end %>
               </li>
               <li class="mail">
@@ -35,6 +38,20 @@
               </li>
             </ul>
         <% else %>
+            <a href="#" class="menu_btn menu-trigger">
+              <span></span>
+              <span></span>
+              <span></span>
+            </a>
+            <div id="menu">
+              <ul id="menu-ul">
+                <li><%= link_to "アプリ概要", about_path %></li>
+                <li><%= link_to "アプリの使い方", guide_path %></li>
+                <li><%= link_to "よくある質問", help_path %></li>
+                <li><%= link_to "お問い合わせ", contact_index_path %></li>
+              </ul>
+            </div>
+            <div class="menu-background"></div>
           <ul class="g-nav">
             <li class="search"><a href="#" data-toggle="modal" data-target="#sampleModal">検索</a></li>
             <li class="login"><%= link_to "ログイン",login_path %></li>

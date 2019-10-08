@@ -19,7 +19,7 @@ $gray-medium-light: #eaeaea;
 }
 
 .navbar-fixed-top {
-  border-bottom: 1px #ddd solid;
+  border-bottom: 2px #ddd solid;
 }
 
 .g-nav{
@@ -64,6 +64,19 @@ body {
 }
 .bell > a:before{
   content: '\f0f3';
+}
+
+.dot{
+  color:#5bc0de;
+}
+.fa-stack {
+  font-size: 80%;
+  position: absolute;
+  right: 29%;
+  bottom: 46%;
+}
+.notification-number{
+  color:#fff;
 }
 .mail > a:before{
   content: '\f0e0';
@@ -245,6 +258,9 @@ input {
   }
 }
 
+
+// ハンバーガーメニュー関連
+
 @media (max-width:896px) {
   .menu-trigger,
   .menu-trigger span {
@@ -264,7 +280,7 @@ input {
     left: 0;
     width: 100%;
     height: 4px;
-    background-color: #000;
+    background-color: #f50b0c;
     border-radius: 4px;
   }
   .menu-trigger span:nth-of-type(1) {
@@ -373,7 +389,7 @@ input {
   }
 }
 
-@media (min-width:897px){
+@media (min-width:897px){ /* 画面が大きくなるとハンバーガーメニューは消える */
   .menu-trigger, #menu, .menu-background{
     display: none;
   }

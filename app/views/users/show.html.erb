@@ -39,13 +39,17 @@
               学年: <%= @user.grade %>
               <br><br>
               所属：<%= @user.college.name %>
-            <div>
+              <br><br>
+              <div class="user-description">
+                <%= @user.description %>
+              </div>
+            </div>
           </div>
         </div>  
       </h1>
       <% if logged_in? %>
         <% unless @user == current_user %>
-          <%= link_to @user.name + "との相談ルームへ", user_messages_path(@user) %>
+          <%= link_to @user.name + "との相談ルームへ", user_messages_path(@user), class: "btn btn-info" %>
         <% end %>
       <% end %>  
     </div>
