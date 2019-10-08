@@ -27,19 +27,16 @@ window.addEventListener('DOMContentLoaded', function(){
   
   // MENUボタンがクリックされたときの処理
   $('.menu_btn').click(function(){
-    console.log("clicked");
     if($(this).hasClass('active_menu')) {
       $(this).removeClass('active_menu');
       // $(this).text('MENU');
       $('#menu').removeClass('open');
       $('.menu-background').removeClass('open');
-      console.log("activated");
     } else {
       $(this).addClass('active_menu');
       // $(this).text('×');
       $('#menu').addClass('open');
       $('.menu-background').addClass('open');
-      console.log("fatal to activated");
     }
   });
   

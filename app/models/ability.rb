@@ -4,8 +4,8 @@ class Ability
   def initialize(user)
     cannot :manage, :all
 
-    # user ||= User.new
-    user = current_user
+    user ||= User.new
+    # user = current_user
     if user.admin?
       can :manage, :all
     else
