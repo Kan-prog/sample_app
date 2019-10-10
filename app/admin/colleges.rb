@@ -5,7 +5,7 @@ ActiveAdmin.register College do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :name, :last_email
+  permit_params :id, :name, :last_email
   #
   # or
   #
