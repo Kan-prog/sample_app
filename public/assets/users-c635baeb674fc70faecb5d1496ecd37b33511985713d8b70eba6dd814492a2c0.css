@@ -1,0 +1,67 @@
+/* line 4, app/assets/stylesheets/users.scss */
+.item-info {
+  padding: 20px;
+  background: #fff;
+}
+
+/* line 8, app/assets/stylesheets/users.scss */
+.user-info {
+  padding: 20px;
+  background: #fff;
+  text-align: center;
+}
+
+/* line 13, app/assets/stylesheets/users.scss */
+.user-name {
+  text-align: center;
+}
+
+/* line 16, app/assets/stylesheets/users.scss */
+.user-img img {
+  width: 150px;
+  height: auto;
+}
+
+/* line 23, app/assets/stylesheets/users.scss */
+.show-user img {
+  position: relative;
+  right: 13px;
+}
+
+/* line 27, app/assets/stylesheets/users.scss */
+.user-img-small img {
+  width: 50px;
+  margin-right: 5px;
+}
+
+@media (max-width: 767px) {
+  /* line 32, app/assets/stylesheets/users.scss */
+  .user-img-small img {
+    width: 40px;
+  }
+}
+
+/* line 36, app/assets/stylesheets/users.scss */
+.male {
+  color: #497fe6;
+}
+
+/* line 39, app/assets/stylesheets/users.scss */
+.female {
+  color: #e85fbd;
+}
+
+/* line 42, app/assets/stylesheets/users.scss */
+.profile-inner div {
+  font-size: 80%;
+}
+
+/* line 45, app/assets/stylesheets/users.scss */
+.profile-group {
+  padding: 1vh;
+}
+
+/* line 48, app/assets/stylesheets/users.scss */
+.user-description {
+  margin: 0 16%;
+}
