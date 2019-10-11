@@ -26,7 +26,7 @@
           <% unless params[:q][:user_college_name_cont].empty? %>
             大学：<%= params[:q][:user_college_name_cont] %>/
           <% end %>
-          <% if params[:q][:price_gteq] || params[:q][:price_lteq] %>
+          <% unless params[:q][:price_gteq].blank? && params[:q][:price_lteq].blank? %>
             値段：
             <% unless params[:q][:price_gteq].empty? %>
               <%= params[:q][:price_gteq] %>円以上

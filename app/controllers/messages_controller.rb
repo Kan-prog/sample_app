@@ -1,5 +1,7 @@
 class MessagesController < ApplicationController
   
+  before_action :logged_in_user, only: [:index, :create, :destroy]
+  
   def index
     @user = User.find(params[:user_id])
     # ログインユーザーが送ったメールのidの中から、あるユーザー@userのidを探す
