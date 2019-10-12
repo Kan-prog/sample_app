@@ -2,8 +2,8 @@
 <h5>あなたのメッセージポスト</h5>
 <!-- タブ・メニュー -->
 <ul class="nav nav-tabs">
-	<li class="active col-xs-6 col-md-1"><a href="#sampleContentA" data-toggle="tab">送信</a></li>
-	<li class="col-xs-6 col-md-1"><a href="#sampleContentB" data-toggle="tab">受信</a></li>
+	<li class="active col-xs-6 col-md-6"><a href="#sampleContentA" data-toggle="tab">送信</a></li>
+	<li class="col-xs-6 col-md-6"><a href="#sampleContentB" data-toggle="tab">受信</a></li>
 </ul>
 
 <!-- タブ内容 -->
@@ -22,7 +22,7 @@
           		  <% end %>
           		</h2>
           		<tr>
-          		  <% @active_messages.each do |active_message| %>
+          		  <% @active_messages.order('id DESC').each do |active_message| %>
           		  <tr><td>
           		    <div class="media-left user-img-small">
                 　　<%= image_tag current_user.picture.thumb.url, class: "img-circle" %>
@@ -30,7 +30,7 @@
                   <div class="media-body">
                     <div>
                       あなた → <%= link_to active_message.receive_user.name,  user_messages_path(active_message.receive_user.id) %>
-                      <span class="text-muted"><%= time_ago_in_words(active_message.created_at) %>前</span>
+                      <span class="text-muted"><%= active_message.created_at.strftime('%y/%m/%d %H:%M') %></span>
                     </div>
                     <div>
                       <%= active_message.content %>
@@ -64,14 +64,14 @@
           		  <% end %>
           		</h2>
           		<tr>
-          		  <% @receive_messages.each do |receive_message| %>
+          		  <% @receive_messages.order('id DESC').each do |receive_message| %>
             		  <tr><td>
             		    <div class="media-left user-img-small">
                   　　<%= image_tag receive_message.user.picture.thumb.url, class: "img-circle" %>
                     </div>
                     <div class="media-body">
                       <div>
-                        <%= link_to receive_message.user.name, user_path(receive_message.user.id) %> <span class="text-muted"><%= time_ago_in_words(receive_message.created_at) %>前</span>
+                        <%= link_to receive_message.user.name, user_path(receive_message.user.id) %> <span class="text-muted"><%= receive_message.created_at.strftime('%y/%m/%d %H:%M') %></span>
                       </div>
                       <div>
                         <%= receive_message.content %>

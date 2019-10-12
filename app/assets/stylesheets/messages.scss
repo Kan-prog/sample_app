@@ -39,6 +39,9 @@
 
 .message {
   clear: both;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  padding: 20px 0;
 }
 .message__user-name {
   font-size: 0.8rem;
@@ -47,7 +50,7 @@
 .message__body {
   position: relative;
   max-width: 50vw;
-  overflow: hidden;
+  // overflow: hidden;
   margin-bottom: 10px;
   padding: 8px;
   background-color: #e7e7e7;
@@ -55,7 +58,7 @@
 
 .message__text,
 .favorite__text {
-  font-size: 1rem;
+  font-size: 100%;
   font-weight: bold;
 }
 
@@ -157,4 +160,21 @@
 }
 .tab-content > .active {
   display: contents;
+}
+.message_form{
+  clear: both;
+}
+
+.sent_message_time{
+  position: absolute;
+  width: max-content;
+  left: -96px;
+  bottom: 2px;
+}
+
+.received_message_time{
+  position: absolute;
+  width: max-content;
+  right: -96px;
+  bottom: 2px;
 }

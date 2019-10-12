@@ -17,6 +17,8 @@ class MessagesController < ApplicationController
     # 受信したメッセージ
     @receive_messages = Message.where(receive_user_id: current_user.id).includes(:user)
     @user_receive_messages = Message.where(id: receive_ids).includes(:user)
+    # 送受信全部のメッセージ
+    @all_messages = Message.where(id: receive_ids + send_ids)
   end
 
   def create
