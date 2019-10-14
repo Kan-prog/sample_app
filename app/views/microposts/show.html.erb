@@ -59,20 +59,20 @@
       <table class="table table-bordered">
         <tbody>
       		<tr>
-      			<th class="active">商品名</th>
-      			<td><%= @micropost.name %></td>
+      			<th class="active col-xs-3">商品名</th>
+      			<td class="col-xs-9"><%= @micropost.name %></td>
       		</tr>
       		<tr>
-      			<th class="active">カテゴリー</th>
-      			<td><%= @micropost.genres.map{|genre| genre.name}.join(', ') %></td>
+      			<th class="active col-xs-3">カテゴリー</th>
+      			<td class="col-xs-9"><%= @micropost.genres.map{|genre| genre.name}.join(', ') %></td>
       		</tr>
       		<tr>
-      			<th class="active">検討価格</th>
-      			<td><%= @micropost.price %></td>
+      			<th class="active col-xs-3">検討価格</th>
+      			<td class="col-xs-9"><%= @micropost.price %></td>
       		</tr>
       		<tr>
-      			<th class="active">原価</th>
-      			<td><%= @micropost.cost %></td>
+      			<th class="active col-xs-3">原価</th>
+      			<td class="col-xs-9"><%= @micropost.cost %></td>
       		</tr>
       		<tr>
       			<th class="active">商品説明</th>

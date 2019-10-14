@@ -7,19 +7,52 @@
     
     <span id='content1' class="col-xs-6 col-md-3">買う</span>
     <span id='content2' class="col-xs-6 col-md-3">売る</span>
-    <span id='content3' class="col-xs-6 col-md-3">お気に入り登録</span>
-    <span id='content4' class="col-xs-6 col-md-3">通知</span>
-    <span id='content5' class="col-xs-6 col-md-3">相談メール</span>
+    <!--<span id='content3' class="col-xs-6 col-md-3">お気に入り登録</span>-->
+    <!--<span id='content4' class="col-xs-6 col-md-3">通知</span>-->
+    <!--<span id='content5' class="col-xs-6 col-md-3">相談メール</span>-->
     <!--add more button right after it with same id attribute of that container. Make sure to use span tag.-->
   </div>
   <div class='tab-contents'>
     
-    <div id='content1'><h5>買う</h5></div>
-    <div id='content2'><h5>売る</h5></div>
-    <div id='content3'><h5>お気に入り登録</h5></div>
-    <div id='content4'><h5>通知</h5></div>
-    <div id='content5'><h5>相談メール</h5></div>
-    <!--add more container right after it with same id attribute of that button. Make sure to use div tag.-->
+    <div id='content1'>
+      <h6>買う</h6>
+      <ul class="content-list">
+        <li>①まずは、欲しい商品の詳細ページに行きます。商品の名前をクリックすることで行くことができます。</li>
+        <li>
+          ②次に画像のように詳細ページ下部にある相談ルームへのボタンをクリックします。
+          <br>
+          <div class="content-image">
+            <%= image_tag('soudann-room.png') %>
+          </div>  
+        </li>
+        <li>
+          ③最後に相談ルームにて画像のように打ち合わせを行い、実際に商品を受け取って支払いをして終了です。
+          <br>
+          <div class="content-image">
+            <%= image_tag('message.png') %>
+          </div>  
+        </li>  
+      </ul>  
+    </div>
+    <div id='content2'>
+      <h6>売る</h6>
+      <ul class="content-list">
+        <li>①まずは、画面上部のメニューバーから「出品」を押して出品ページへ行きます。</li>
+        <li>②次に、出品ページで各項目に商品の情報を入力し、出品を押します。なお、画像は1~4枚載せることができます。</li>
+        <li>③実際に商品一覧ページに載っているか確認をします。修正したい場合は、自分の出品した商品詳細ページから「編集」をおせば編集ページに行くことができます。</li>
+        <li>
+          ③次に、相談ルームにて画像のように相談メールが届き次第打ち合わせを行い、実際に商品を渡して支払いを受け取り終了です。
+          <br>
+          <div class="content-image">
+            <%= image_tag('message.png') %>
+          </div>  
+        </li>
+        <li>④最後に、売れた商品詳細ページから「出品を締め切る」を押せば相談メールを届かないようにして終了です。(出品を取り消したい場合は、お問い合わせください)</li>
+      </ul>  
+    </div>
+    <!--<div id='content3'><h6>お気に入り登録</h6></div>-->
+    <!--<div id='content4'><h6>通知</h6></div>-->
+    <!--<div id='content5'><h6>相談メール</h6></div>-->
   </div>
   <div class='tab-nav'>
     <span class='next'></span>

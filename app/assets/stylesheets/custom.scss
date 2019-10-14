@@ -75,6 +75,16 @@ body {
   right: 29%;
   bottom: 46%;
 }
+@media (max-width:600px){
+  .fa-stack{
+    right: 27%;
+  }
+}
+@media (max-width:895px){
+  .fa-stack{
+    right: 28%;
+  }
+}
 .notification-number{
   color:#fff;
 }
@@ -118,14 +128,33 @@ h5 {
   margin-bottom: 30px;
   border-bottom: 2px solid #ddd;
   padding: 2vh 0;
+  border-left: 4px solid red;
+  padding-left: 10px;
+  margin-top: 4vh;
 }
 @media (max-width:767px) {
   h5{
-    padding-top: 50px;
+    padding-top: 2vh;
+    margin-top: 2vh;
+  }
+}
+h6 {
+  font-size: 1.5em;
+  letter-spacing: 2px;
+  margin-bottom: 30px;
+  padding: 2vh 0;
+  border-left: 4px solid #5bc0de;
+  padding-left: 10px;
+  margin-top: 4vh;
+}
+@media (max-width:767px) {
+  h6{
+    padding-top: 2vh;
+    margin-top: 2vh;
   }
 }
 h2 {
-  font-size: 1.2em;
+  font-size: 2em;
   letter-spacing: -1px;
   margin-bottom: 30px;
   text-align: center;

@@ -65,7 +65,13 @@ footer{
 }
 
 
+.content-list{
+  list-style: none;
+}
 
+.content-image > img{
+  width: 100%;
+}
 // .tab-nav{
 //   opacity:0;
 //   transition:all .3s linear;

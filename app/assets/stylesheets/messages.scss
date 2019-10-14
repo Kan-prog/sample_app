@@ -1,6 +1,9 @@
 // Place all the styles related to the messages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+p.want{
+  font-size: 55%;
+}
 .visiter{
   display: block;
   float: left;
@@ -162,6 +165,7 @@
   display: contents;
 }
 .message_form{
+  margin-top: 9vh; 
   clear: both;
 }
 
