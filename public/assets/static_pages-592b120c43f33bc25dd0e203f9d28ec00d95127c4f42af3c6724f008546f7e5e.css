@@ -1,0 +1,104 @@
+/* line 4, app/assets/stylesheets/static_pages.scss */
+footer {
+  margin-top: 5vh;
+  height: 10vh;
+  border-top: 2px #ddd solid;
+}
+
+/* line 9, app/assets/stylesheets/static_pages.scss */
+.copy-right p {
+  text-align: center;
+}
+
+/* line 12, app/assets/stylesheets/static_pages.scss */
+.footer-guide li {
+  font-size: 130%;
+  list-style: none;
+  text-decoration: none;
+  float: right;
+  color: #ddd;
+  padding-right: 3vw;
+}
+
+@media (max-width: 895px) {
+  /* line 21, app/assets/stylesheets/static_pages.scss */
+  .footer-guide li {
+    font-size: 80%;
+  }
+}
+
+/* line 25, app/assets/stylesheets/static_pages.scss */
+.footer-guide {
+  height: 30px;
+}
+
+/* line 29, app/assets/stylesheets/static_pages.scss */
+.multipletab {
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+}
+
+/* line 36, app/assets/stylesheets/static_pages.scss */
+.tab-buttons {
+  display: inline-block;
+  width: 100%;
+  border-bottom: 2px solid #ff0000cc;
+}
+
+/* line 41, app/assets/stylesheets/static_pages.scss */
+.tab-buttons > span {
+  display: block;
+  float: left;
+  cursor: pointer;
+  color: #337ab7;
+  font: 400 15px 'pt sans',sans-serif;
+  background: #fff;
+  padding: 0 15px;
+  line-height: 40px !important;
+  text-align: center;
+}
+
+/* line 52, app/assets/stylesheets/static_pages.scss */
+.tab-buttons > span.active {
+  background-color: #5bc0de;
+  border-color: #46b8da;
+  color: #fff;
+  position: relative;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* line 60, app/assets/stylesheets/static_pages.scss */
+.tab-contents {
+  position: relative;
+}
+
+/* line 63, app/assets/stylesheets/static_pages.scss */
+.tab-contents > div {
+  position: absolute;
+}
+
+/* line 68, app/assets/stylesheets/static_pages.scss */
+.content-list {
+  list-style: none;
+}
+
+/* line 72, app/assets/stylesheets/static_pages.scss */
+.content-image > img {
+  width: 100%;
+}
+
+/* line 75, app/assets/stylesheets/static_pages.scss */
+.tab-content > ul {
+  padding: 0;
+}
+
+/* line 78, app/assets/stylesheets/static_pages.scss */
+ul.content-list {
+  padding: 0;
+}
+
+/* line 81, app/assets/stylesheets/static_pages.scss */
+.tab-content {
+  padding: 0;
+}
