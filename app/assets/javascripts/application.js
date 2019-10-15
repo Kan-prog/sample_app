@@ -50,6 +50,20 @@ window.addEventListener('DOMContentLoaded', function(){
     }
   });
   
+  $(function(){
+  $(".item >  img").click(function() {  //詳細ページの画像クリックでモーダル表示
+    $("#graydisplay").html($(this).prop('outerHTML'));
+    $("#graydisplay").fadeIn(200);
+  });
+  $("#graydisplay, #graydisplay img").click(function() {
+    $("#graydisplay").fadeOut(200);
+  });
+
+    
+  });
+
+    
+  
 
 });  
 
