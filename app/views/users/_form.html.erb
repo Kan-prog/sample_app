@@ -14,20 +14,23 @@
         </p>
       </div>
     </div>
-      <%= link_to '/auth/twitter', class: "btn btn-social btn-twitter" do %>
-        <span class="fa fa-twitter"></span> Twitterアカウントでログイン
-      <% end %>
-    </p>
-    <p>
-      <%= link_to '/auth/facebook', class: "btn btn-social btn-facebook" do %>
-        <span class="fa fa-facebook"></span> Facebookアカウントでログイン
-      <% end %>
-    </p>
-    <p>
-      <%= link_to '/auth/google_oauth2', class: "btn btn-social btn-google" do %>
-        <span class="fa fa-google"></span> Googleアカウントでログイン
-      <% end %>
-    </p>
+    <% if false %>
+      <p>
+        <%= link_to '/auth/twitter', class: "btn btn-social btn-twitter" do %>
+          <span class="fa fa-twitter"></span> Twitterアカウントでログイン
+        <% end %>
+      </p>
+      <p>
+        <%= link_to '/auth/facebook', class: "btn btn-social btn-facebook" do %>
+          <span class="fa fa-facebook"></span> Facebookアカウントでログイン
+        <% end %>
+      </p>
+      <p>
+        <%= link_to '/auth/google_oauth2', class: "btn btn-social btn-google" do %>
+          <span class="fa fa-google"></span> Googleアカウントでログイン
+        <% end %>
+      </p>
+    <% end %>  
     <%= form_for(user) do |f| %>
     
       <%= f.label :name %>
@@ -53,8 +56,13 @@
 
       <%= f.label :password_confirmation %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
-
-      <%= f.submit yield(:button_text), class: "btn btn-info col-xs-12", data: { disable_with: "送信中..." } %>
+      
+      <% if Rails.env.development? %>
+        <%= f.submit yield(:button_text), class: "btn btn-info col-xs-12", data: { disable_with: "送信中..." } %>
+      <% elsif Rails.env.production? %>  
+        <%= invisible_recaptcha_tags({ text: "登録する", class: "btn btn-info  col-xs-12", data: { disable_with: "送信中..." } }) %>
+      <% end %>
+   
     <% end %>
   </div>
 </div>

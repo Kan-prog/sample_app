@@ -2,11 +2,11 @@ class User < ApplicationRecord
   
   has_many :microposts, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  has_many :likes, through: :favorites, source: :micropost
+  has_many :likes, through: :favorites, source: :micropost, dependent: :destroy
   has_many :messages, dependent: :destroy
-  has_many :sent_messages, through: :messages, source: :receive_user
-  has_many :reverses_of_message, class_name: 'Message', foreign_key: 'receive_user_id'
-  has_many :received_messages, through: :reverses_of_message, source: :user
+  has_many :sent_messages, through: :messages, source: :receive_user, dependent: :destroy
+  has_many :reverses_of_message, class_name: 'Message', foreign_key: 'receive_user_id', dependent: :destroy
+  has_many :received_messages, through: :reverses_of_message, source: :user, dependent: :destroy
   # 自分が作った通知=active_notification
   has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
   # 自分宛ての通知=passive_notifications

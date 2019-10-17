@@ -40,6 +40,7 @@ gem 'cancancan'
 gem 'exception_notification', :github => 'smartinez87/exception_notification'
 gem 'slack-notifier'
 gem 'derailed_benchmarks', group: :development
+gem 'recaptcha', require: 'recaptcha/rails'
 
 group :development, :test do
   gem 'sqlite3', '1.3.13'
