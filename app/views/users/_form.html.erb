@@ -57,11 +57,11 @@
       <%= f.label :password_confirmation %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
       
-      <% if Rails.env.development? %>
+      <%# if Rails.env.development? %>
         <%= f.submit yield(:button_text), class: "btn btn-info col-xs-12", data: { disable_with: "送信中..." } %>
-      <% elsif Rails.env.production? %>
+      <% if Rails.env.production? %>
         <% if @show_checkbox_recaptcha %>
-          <%= recaptcha_tags({ text: "登録する", class: "btn btn-info  col-xs-12", data: { disable_with: "送信中..." } }) %>
+          <%= recaptcha_tags %>
         <% else %>
           <%= recaptcha_v3(action: 'registration') %>
         <% end %>
