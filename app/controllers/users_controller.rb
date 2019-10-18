@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if Rails.env.production?
-      recaptcha_valid = verify_recaptcha(model: @user, action: 'registration')
+      recaptcha_valid = verify_recaptcha(model: @user, action: 'users/create')
       if recaptcha_valid
         if @user.save
           @user.send_activation_email
