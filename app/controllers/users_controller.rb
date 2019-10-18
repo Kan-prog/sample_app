@@ -18,13 +18,28 @@ class UsersController < ApplicationController
   
   def create
     @user = User.new(user_params)
-    if @user.save
-      @user.send_activation_email
-      flash[:info] = "お客様のメールアドレスに登録確認メールを送りましたので確認お願いします。"
-      redirect_to root_url
-    else
-      render "new"
-    end
+    if Rails.env.production?
+      recaptcha_valid = verify_recaptcha(model: @user, action: 'registration')
+      if recaptcha_valid
+        if @user.save
+          @user.send_activation_email
+          flash[:info] = "お客様のメールアドレスに登録確認メールを送りましたので確認お願いします。"
+          redirect_to root_url
+        else
+          render "new"
+        end
+      else
+        render 'new'
+      end  
+    elsif Rails.env.development?
+      if @user.save
+        @user.send_activation_email
+        flash[:info] = "お客様のメールアドレスに登録確認メールを送りましたので確認お願いします。"
+        redirect_to root_url
+      else
+        render "new"
+      end
+    end  
   end
   
   def edit
@@ -69,6 +84,8 @@ class UsersController < ApplicationController
         redirect_to(root_url)
       end  
     end
+    
+    
     
     
 end

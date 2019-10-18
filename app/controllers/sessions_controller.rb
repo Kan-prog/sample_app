@@ -39,17 +39,21 @@ class SessionsController < ApplicationController
   # end
   
   def create
+    # reCAPTCHA
+    success = verify_recaptcha(action: 'login', minimum_score: 0.5)
+    checkbox_success = verify_recaptcha unless success
     # SNSログイン
-    auth = request.env['omniauth.auth']
-    if auth.present?
-      @user = User.find_or_create_from_auth(request.env['omniauth.auth'])
-      log_in @user
-      # session[:user_id] = user.id
-      params[:uid] = @user.id
-      flash[:success] = "ようこそ"+ @user.name + "様！"
-      redirect_to @user
-    else #既存パタン
+    # auth = request.env['omniauth.auth']
+    # if auth.present?
+    #   @user = User.find_or_create_from_auth(request.env['omniauth.auth'])
+    #   log_in @user
+    #   # session[:user_id] = user.id
+    #   params[:uid] = @user.id
+    #   flash[:success] = "ようこそ"+ @user.name + "様！"
+    #   redirect_to @user
+    # else #既存パタン
       # email,passwordログイン
+    if success || checkbox_success
       user = User.find_by(email: params[:session][:email].downcase)
       if user && user.authenticate(params[:session][:password])
         if user.activated?
@@ -67,7 +71,12 @@ class SessionsController < ApplicationController
         flash.now[:danger] = 'パスワードまたはメールアドレスが間違っているようです。'
         render 'new'
       end
-    end
+    else
+      if !success
+        @show_checkbox_recaptcha = true
+      end
+      render 'new'
+    end  
   end
   
   def destroy

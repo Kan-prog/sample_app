@@ -205,3 +205,7 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
+  recaptcha:
+    errors:
+      verification_failed: '機会に因る操作であると認識されました。'
+      recaptcha_unreachable: 'reCAPTCHAにエラーが見られました。時間を置いた後もう一度お試しください'
