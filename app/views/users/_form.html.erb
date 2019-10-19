@@ -49,10 +49,10 @@
 
 
       <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control' %>
+      <%= f.email_field :email, class: 'form-control', placeholder: "メールアドレスは後から変更できません。" %>
 
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
+      <%= f.label :password, "パスワード　(大・小文字・特殊文字(@,$など)・数字を各最低1文字含み、8文字以上)" %>
+      <%= f.password_field :password, class: 'form-control', placeholder: "安全性の向上にご理解お願いします。" %>
 
       <%= f.label :password_confirmation %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>

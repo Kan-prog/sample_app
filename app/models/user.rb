@@ -26,13 +26,17 @@ class User < ApplicationRecord
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
   has_secure_password
-  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+  validates :password, presence: true, length: { minimum: 8 }, allow_nil: true
+  validate :password_complexity
   validate  :picture_size
   # validates :name, presence: true, unless: :uid? #他省略
   # validates :email, presence: true, unless: :uid?
   # has_secure_password validations: false
   # validates :password, presence: true, unless: :uid?
-  
+  def password_complexity
+    return if password.blank? || password =~ /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,30}$/
+    errors.add :password, "パスワードの強度が不足しています。パスワードの長さは8〜30文字とし、大文字と小文字と数字と特殊文字をそれぞれ1文字以上含める必要があります。"
+  end
   
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
