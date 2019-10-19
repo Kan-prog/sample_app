@@ -41,11 +41,13 @@ gem 'exception_notification', :github => 'smartinez87/exception_notification'
 gem 'slack-notifier'
 gem 'derailed_benchmarks', group: :development
 gem 'recaptcha', require: 'recaptcha/rails'
+gem 'rack-attack'
 
 group :development, :test do
   gem 'sqlite3', '1.3.13'
   gem 'bullet'
   gem 'byebug',  '9.0.6', platform: :mri
+  gem 'brakeman', :require => false
 end
 
 group :development do
