@@ -15,5 +15,5 @@ class Rack::Attack
     request.path.start_with?("/tapass")
   end
   
-  Rack::Attack.safelist_ip("192.168.56.1")
+  Rack::Attack.safelist_ip("126.141.229.170")
 end
