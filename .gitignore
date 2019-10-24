@@ -33,3 +33,5 @@
 /config/secrets.yml
 
 /db/seeds.rb
+
+/config/initializers/rack_attack.rb

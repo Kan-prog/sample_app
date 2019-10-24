@@ -1,5 +1,5 @@
-<% provide(:title, 'Reset password') %>
-<h1>パスワード再設定</h1>
+<% provide(:title, 'パスワード再設定') %>
+<h5>パスワード再設定</h5>
 
 <div class="row">
   <div class="col-xs-12 col-sm-4 col-sm-offset-4">
@@ -8,7 +8,7 @@
 
       <%= hidden_field_tag :email, @user.email %>
 
-      <%= f.label :password %>
+      <%= f.label :password, "パスワード　(大・小文字・特殊文字(@,$など)・数字を各最低1文字含み、8文字以上)" %>
       <%= f.password_field :password, class: 'form-control' %>
 
       <%= f.label :password_confirmation %>

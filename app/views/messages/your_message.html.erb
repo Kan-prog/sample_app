@@ -14,7 +14,7 @@
     	  <div class="tab-pane active" id="active_messages">
       		<tr class="active_messages info">
       		  <td>
-        		  <h2>
+        		  <h2 class="message_title">
           		  <% if @active_messages.empty? %>
           		    まだメッセージは空です。
           		  <% else %>
@@ -56,7 +56,7 @@
     	  <div class="tab-pane" id="receive_messages">
       		<tr class="receive_messages info">
       		  <td>
-        		  <h2>
+        		  <h2 class="message_title">
           		  <% if @receive_messages.empty? %>
           		    まだメッセージは空です。
           		  <% else %>

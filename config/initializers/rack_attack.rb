@@ -9,4 +9,11 @@ class Rack::Attack
       req.ip
     end
   end
+  
+  Rack::Attack.blocklist("block all access to admin") do |request|
+    # Requests are blocked if the return value is truthy
+    request.path.start_with?("/tapass")
+  end
+  
+  Rack::Attack.safelist_ip("192.168.56.1")
 end
