@@ -16,4 +16,5 @@ class Rack::Attack
   end
   
   Rack::Attack.safelist_ip("126.141.229.170")
+  Rack::Attack.safelist_ip("192.168.56.1")
 end
