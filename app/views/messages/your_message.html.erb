@@ -29,7 +29,7 @@
                   </div>
                   <div class="media-body">
                     <div>
-                      あなた → <%= link_to active_message.receive_user.name,  user_messages_path(active_message.receive_user.id) %>
+                      あなた → <%= link_to active_message.receive_user.name,  user_path(active_message.receive_user.id) %>
                       <span class="text-muted"><%= active_message.created_at.strftime('%y/%m/%d %H:%M') %></span>
                     </div>
                     <div>
