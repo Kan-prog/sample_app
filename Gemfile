@@ -33,7 +33,7 @@ gem 'omniauth-twitter'
 gem 'dotenv-rails'
 gem 'aws-sdk', '~> 2'
 gem 'serviceworker-rails'
-gem 'activeadmin', git: "https://github.com/gregbell/active_admin.git"
+gem 'activeadmin'
 gem 'enumerize'
 gem 'devise'
 gem 'cancancan'
