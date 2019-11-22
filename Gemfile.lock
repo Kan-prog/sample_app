@@ -1,12 +1,4 @@
 GIT
-  remote: git://github.com/smartinez87/exception_notification.git
-  revision: 6c7849f470beeeeae37c2a9c4d6cdd72352a0e01
-  specs:
-    exception_notification (4.4.0)
-      actionmailer (>= 4.0, < 7)
-      activesupport (>= 4.0, < 7)
-
-GIT
   remote: https://github.com/gregbell/active_admin.git
   revision: 45ac6a00be09c64809bd29ce6b88f417bc5f0c09
   specs:
@@ -139,6 +131,9 @@ GEM
     enumerize (2.3.1)
       activesupport (>= 3.2)
     erubi (1.9.0)
+    exception_notification (4.4.0)
+      actionmailer (>= 4.0, < 7)
+      activesupport (>= 4.0, < 7)
     excon (0.67.0)
     execjs (2.7.0)
     faker (1.4.2)
@@ -530,7 +525,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   enumerize
-  exception_notification!
+  exception_notification
   faker (= 1.4.2)
   fog (= 1.36.0)
   fog-aws

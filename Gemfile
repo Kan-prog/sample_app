@@ -37,7 +37,7 @@ gem 'activeadmin', git: "https://github.com/gregbell/active_admin.git"
 gem 'enumerize'
 gem 'devise'
 gem 'cancancan'
-gem 'exception_notification', :github => 'smartinez87/exception_notification'
+gem 'exception_notification'
 gem 'slack-notifier'
 gem 'derailed_benchmarks', group: :development
 gem 'recaptcha', require: 'recaptcha/rails'
