@@ -34,4 +34,6 @@
 
 /db/seeds.rb
 
+/vendor/bundle/ruby
+
 /config/initializers/rack_attack.rb
