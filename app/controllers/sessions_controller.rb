@@ -41,7 +41,7 @@ class SessionsController < ApplicationController
   def create
     # reCAPTCHA
     # if Rails.env.production?
-      success = verify_recaptcha(action: 'login', minimum_score: 0.5)
+      success = verify_recaptcha(action: 'login', minimum_score: 0.1)
       checkbox_success = verify_recaptcha unless success
       # SNSログイン
       auth = request.env['omniauth.auth']
