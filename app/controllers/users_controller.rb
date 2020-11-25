@@ -16,30 +16,41 @@ class UsersController < ApplicationController
     @user = User.new
   end
   
+  # def create
+  #   @user = User.new(user_params)
+  #   if Rails.env.production?
+  #     recaptcha_valid = verify_recaptcha(model: @user, action: 'registration')
+  #     if recaptcha_valid
+  #       if @user.save
+  #         @user.send_activation_email
+  #         flash[:info] = "お客様のメールアドレスに登録確認メールを送りましたので確認お願いします。"
+  #         redirect_to root_url
+  #       else
+  #         render "new"
+  #       end
+  #     else
+  #       render 'new'
+  #     end
+  #   elsif Rails.env.development?
+  #     if @user.save
+  #       @user.send_activation_email
+  #       flash[:info] = "お客様のメールアドレスに登録確認メールを送りましたので確認お願いします。"
+  #       redirect_to root_url
+  #     else
+  #       render "new"
+  #     end
+  #   end  
+  # end
+  
   def create
     @user = User.new(user_params)
-    if Rails.env.production?
-      recaptcha_valid = verify_recaptcha(model: @user, action: 'registration')
-      if recaptcha_valid
-        if @user.save
-          @user.send_activation_email
-          flash[:info] = "お客様のメールアドレスに登録確認メールを送りましたので確認お願いします。"
-          redirect_to root_url
-        else
-          render "new"
-        end
-      else
-        render 'new'
-      end
-    elsif Rails.env.development?
-      if @user.save
-        @user.send_activation_email
-        flash[:info] = "お客様のメールアドレスに登録確認メールを送りましたので確認お願いします。"
-        redirect_to root_url
-      else
-        render "new"
-      end
-    end  
+    if @user.save
+      @user.send_activation_email
+      flash[:info] = "お客様のメールアドレスに登録確認メールを送りましたので確認お願いします。"
+      redirect_to root_url
+    else
+      render "new"
+    end
   end
   
   def edit
@@ -60,7 +71,7 @@ class UsersController < ApplicationController
     if current_user.admin = true
       @user = User.find(params[:id])
       User.find(params[:id]).destroy
-      flash[:success] = @user.name + "を削除しました"
+      flash[:success] = @user.display_name + "を削除しました"
       redirect_to users_url
     end
   end

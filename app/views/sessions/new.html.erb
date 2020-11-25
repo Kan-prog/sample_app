@@ -31,13 +31,14 @@
         <span>次回から自動ログイン</span>
       <% end %>
           <%= f.submit "ログイン", class: "btn btn-info  col-xs-12" %>
-        <% if Rails.env.production? %>  
-          <% if @show_checkbox_recaptcha %>
-            <%= recaptcha_tags %>
-          <% else %>
-            <%= recaptcha_v3({ action: 'login', text: "登録する", class: "btn btn-info  col-xs-12", data: { disable_with: "送信中..." } }) %>
-          <% end %>
-        <% end %>
+        <%# if Rails.env.production? %>  
+          <%# if @show_checkbox_recaptcha %>
+            <%#= recaptcha_tags %>
+          <%# else %>
+            <%#= f.submit "登録する", class: "btn btn-info  col-xs-12", data: { disable_with: "送信中..." } %>
+            <%#= recaptcha_v3({ action: 'login', text: "登録する", class: "btn btn-info  col-xs-12", data: { disable_with: "送信中..." } }) %>
+          <%# end %>
+        <%# end %>
     <% end %>
 
     <p><%= link_to "会員登録がお済みでない方はこちら", signup_path %></p>

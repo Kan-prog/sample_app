@@ -1,7 +1,7 @@
 <% if @user == current_user && logged_in? %>
   <% provide(:title, "マイページ")%>
 <% else %>
-  <% provide(:title, @user.name+"のマイページ") %>
+  <% provide(:title, @user.display_name+"のマイページ") %>
 <% end %>  
 <% if current_user == @user %>
   <h5>マイページ</h5>
@@ -44,7 +44,7 @@
       </h1>
       <% if logged_in? %>
         <% unless @user == current_user %>
-          <%= link_to @user.name + "との相談ルームへ", user_messages_path(@user), class: "btn btn-info" %>
+          <%= link_to @user.display_name + "との相談ルームへ", user_messages_path(@user), class: "btn btn-info" %>
         <% end %>
       <% end %>  
     </div>
@@ -72,12 +72,14 @@
       <% if @user == current_user && logged_in? %>
       <h5>あなたの出品物一覧 (<%= @user.microposts.count %>件)</h5>
       <% else %>
-      <h5><%= @user.name %>の出品物一覧 (<%= @user.microposts.count %>件)</h5>
+      <h5><%= @user.display_name %>の出品物一覧 (<%= @user.microposts.count %>件)</h5>
       <% end %>
       <ol class="microposts">
         <%= render "microposts/micropost", microposts: @microposts %>
       </ol>
       <%= will_paginate @microposts %>
+    <% else%>
+      <p>出品はありません。</p>
     <% end %>
   </div>
 </div>

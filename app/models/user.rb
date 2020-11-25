@@ -136,11 +136,12 @@ class User < ApplicationRecord
   
   # ユーザーの表示名 
   def display_name
-    logger.debug college
 
     if college
       if email.split("@").last.include?(college.last_email)
-        permit_name = fa_icon("check-circle", text: name)
+        # permit_name = fa_icon("check-circle", text: name)
+        permit_name = "<i class='fa fa-check-circle'>" + name + "</i>"
+        permit_name = permit_name.html_safe
         user_name = permit_name
       else
         user_name = name

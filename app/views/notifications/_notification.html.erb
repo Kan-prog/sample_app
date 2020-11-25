@@ -4,13 +4,6 @@
     <% post = notification.micropost %>
     <% visiter = User.find_by(id: notification.visiter_id) %>
     
-    <!--名前設定-->
-    <% if visiter.email.split("@").last.include?(visiter.college.last_email) %>
-      <% visiter_name = fa_icon("check-circle", text: visiter.name)%>
-    <% else %>
-      <% visiter_name = visiter.name %>
-    <% end %>
-    
     <div class="user-view clearfix">
       <%= link_to user_path(notification.visiter_id) do %>
       <span class="user-img-small">
@@ -23,7 +16,7 @@
           <% when "favorite" then %>
           <%# if notification.action = "favorite" %>
             <div class="announce">
-              <%= link_to visiter_name, user_path(@visiter.id) %>が<%= link_to post.name, micropost_path(post.id)  %>をお気に入り登録しました
+              <%= link_to visiter.display_name, user_path(@visiter.id) %>が<%= link_to post.name, micropost_path(post.id)  %>をお気に入り登録しました
             </div>
             <span class="moderate-font">
               (<%= notification.created_at.strftime('%m/%d %H:%M') %>)
@@ -31,7 +24,7 @@
           <%# elsif notification.action = "message"  %>
           <% when "message" then%>
             <div class="announce">
-              <%= link_to visiter_name, user_path(notification.visiter_id) %>から相談メールが届きました
+              <%= link_to visiter.display_name, user_path(notification.visiter_id) %>から相談メールが届きました
             </div>
             <div class="noti-message">
               <%= @message.content %>

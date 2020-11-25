@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8"/>
 </head>
-<h1><%= @send_user.name %>からの相談メールが届きました</h1>
+<h1><%= @send_user.display_name %>からの相談メールが届きました</h1>
 <p>メール日時：<%= @message.created_at.strftime('%m/%d %H:%M') %></p>
 <div class="noti-message">
   <%= @message.content %>
 </div>
-<p><%= link_to "#{@send_user.name}との相談ルームへはこちら", user_messages_url(@send_user) %></p>
+<p><%= link_to "#{@send_user.display_name}との相談ルームへはこちら", user_messages_url(@send_user) %></p>
                                                              
 <p>なお、このメールには返信できませんのでご注意ください。</p>

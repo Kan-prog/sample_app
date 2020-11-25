@@ -111,9 +111,9 @@
       <% if logged_in? %>
         <% unless @micropost.user == current_user %>
           <% if @micropost.sold == false %>
-            <%= link_to @micropost.user.name + "との相談ルームへ", user_messages_path(@micropost.user), class: "btn btn-info" %>
+            <%= link_to @micropost.user.display_name + "との相談ルームへ", user_messages_path(@micropost.user), class: "btn btn-info" %>
           <% else %>
-            <%= @micropost.user.name %>との相談ルームは締め切られています。
+            <%= @micropost.user.display_name %>との相談ルームは締め切られています。
           <% end %>
         <% end %>
       <% end %>  

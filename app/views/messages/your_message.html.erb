@@ -29,7 +29,7 @@
                   </div>
                   <div class="media-body">
                     <div>
-                      あなた → <%= link_to active_message.receive_user.name,  user_path(active_message.receive_user.id) %>
+                      あなた → <%= link_to active_message.receive_user.display_name,  user_path(active_message.receive_user.id) %>
                       <span class="text-muted"><%= active_message.created_at.strftime('%y/%m/%d %H:%M') %></span>
                     </div>
                     <div>
@@ -37,7 +37,7 @@
                       <%= link_to "取り消し", user_message_path(current_user,active_message), method: :delete, data: { confirm: "本当によろしいですか？" }, class: 'btn btn-danger btn-xs' %>
                     </div>
                     <% unless @user == current_user %>
-                      <%= link_to active_message.receive_user.name + "との相談ルームへ", user_messages_path(active_message.receive_user.id) %>
+                      <%= link_to active_message.receive_user.display_name + "との相談ルームへ", user_messages_path(active_message.receive_user.id) %>
                     <% end %>
                   </div>
                 </td></tr>
@@ -71,13 +71,13 @@
                     </div>
                     <div class="media-body">
                       <div>
-                        <%= link_to receive_message.user.name, user_path(receive_message.user.id) %> <span class="text-muted"><%= receive_message.created_at.strftime('%y/%m/%d %H:%M') %></span>
+                        <%= link_to receive_message.user.display_name, user_path(receive_message.user.id) %> <span class="text-muted"><%= receive_message.created_at.strftime('%y/%m/%d %H:%M') %></span>
                       </div>
                       <div>
                         <%= receive_message.content %>
                       </div>
                       <% unless @user == current_user %>
-                        <%= link_to receive_message.user.name + "との相談ルームへ", user_messages_path(receive_message.user.id) %>
+                        <%= link_to receive_message.user.display_name + "との相談ルームへ", user_messages_path(receive_message.user.id) %>
                       <% end %>
                     </div>
                   </td></tr>

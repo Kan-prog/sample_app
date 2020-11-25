@@ -59,14 +59,15 @@
       
       <%# if Rails.env.development? %>
           <%= f.submit yield(:button_text), class: "btn btn-info col-xs-12", data: { disable_with: "送信中..." } %>
-        <% if Rails.env.production? %>
-          <% if @show_checkbox_recaptcha %> <!--@show_checkbox_recaptcha(不正ユーザーとみなした場合trueとなり、recaptcha_tagが現れる)--!>
-            <%= recaptcha_tags %>
-          <% else %> <!--不正ユーザーでない場合は、普通に登録ボタンがあるのみ--!>
-            <%= recaptcha_v3({ action: 'registration', text: "登録する", class: "btn btn-info  col-xs-12", data: { disable_with: "送信中..." } }) %>
-          <% end %>
+        <%# if Rails.env.production? %>
+          <%# if @show_checkbox_recaptcha %> <!--@show_checkbox_recaptcha(不正ユーザーとみなした場合trueとなり、recaptcha_tagが現れる)--!>
+            <%#= recaptcha_tags %>
+          <%# else %> <!--不正ユーザーでない場合は、普通に登録ボタンがあるのみ--!>
+            <%= f.submit "登録する", class: "btn btn-info  col-xs-12", data: { disable_with: "送信中..." } %>
+            <%#= recaptcha_v3({ action: 'registration', text: "登録する", class: "btn btn-info  col-xs-12", data: { disable_with: "送信中..." } }) %>
+          <%# end %>
           <%#= invisible_recaptcha_tags({ text: "登録する", class: "btn btn-info  col-xs-12", data: { disable_with: "送信中..." } }) %>
-        <% end %>
+        <%# end %>
       <%# end %>
    
     <% end %>
