@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
   # 自分宛ての通知=passive_notifications
   has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
-  belongs_to :college
+  belongs_to :college, optional: true
   
   # attr_accessor :image_x, :image_y, :image_w, :image_h #プロフィール画像トリミング
   attr_accessor :remember_token, :activation_token, :reset_token
@@ -26,17 +26,17 @@ class User < ApplicationRecord
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
   has_secure_password
-  validates :password, presence: true, length: { minimum: 8 }, allow_nil: true
-  validate :password_complexity
+  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+  # validate :password_complexity
   validate  :picture_size
   # validates :name, presence: true, unless: :uid? #他省略
   # validates :email, presence: true, unless: :uid?
   # has_secure_password validations: false
   # validates :password, presence: true, unless: :uid?
-  def password_complexity
-    return if password.blank? || password =~ /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,30}$/
-    errors.add :password, "パスワードの強度が不足しています。パスワードの長さは8〜30文字とし、大文字と小文字と数字と特殊文字をそれぞれ1文字以上含める必要があります。"
-  end
+  # def password_complexity
+  #   return if password.blank? || password =~ /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,30}$/
+  #   errors.add :password, "パスワードの強度が不足しています。パスワードの長さは8〜30文字とし、大文字と小文字と数字と特殊文字をそれぞれ1文字以上含める必要があります。"
+  # end
   
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
@@ -105,6 +105,7 @@ class User < ApplicationRecord
     image = auth[:info][:image]
     email = auth[:info][:email]
     #ユーザはSNSで登録情報を変更するかもしれので、毎回データベースの情報も更新する
+    # providerとuidを参照して、同じ値が見つかればそのまま。違う値が見つかればそれぞれの情報をアップデートする
     self.find_or_create_by(provider: provider, uid: uid) do |user|
       user.name = name
       user.picture = image
@@ -132,6 +133,21 @@ class User < ApplicationRecord
     self.likes.include?(micropost)
   end
   # ここまでお気に入り
+  
+  # ユーザーの表示名 
+  def display_name
+
+    if college
+      if email.split("@").last.include?(college.last_email)
+        permit_name = fa_icon("check-circle", text: name)
+        user_name = permit_name
+      end
+    else
+        user_name = name
+    end
+    
+    return user_name
+  end
   
   private
     # メールアドレス小文字化

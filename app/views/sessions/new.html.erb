@@ -2,7 +2,6 @@
 <h5>ログイン</h5>
 <div class="row login-form">
   <div class="col-xs-12 col-sm-offset-4 col-sm-4">
-    <% if false %>
       <p>
         <%= link_to '/auth/twitter', class: "btn btn-social btn-twitter" do %>
           <span class="fa fa-twitter"></span> Twitterアカウントでログイン
@@ -18,7 +17,6 @@
           <span class="fa fa-google"></span> Googleアカウントでログイン
         <% end %>
       </p>
-    <% end %>  
     <%= form_for(:session, url: login_path) do |f| %>
 
       <%= f.label :email , "メールアドレス" %>
@@ -32,7 +30,6 @@
         <%= f.check_box :remember_me %>
         <span>次回から自動ログイン</span>
       <% end %>
-      <%# if Rails.env.development? %>
           <%= f.submit "ログイン", class: "btn btn-info  col-xs-12" %>
         <% if Rails.env.production? %>  
           <% if @show_checkbox_recaptcha %>
@@ -41,7 +38,6 @@
             <%= recaptcha_v3({ action: 'login', text: "登録する", class: "btn btn-info  col-xs-12", data: { disable_with: "送信中..." } }) %>
           <% end %>
         <% end %>
-      <%# end %>
     <% end %>
 
     <p><%= link_to "会員登録がお済みでない方はこちら", signup_path %></p>
