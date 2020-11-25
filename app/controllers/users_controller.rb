@@ -30,7 +30,7 @@ class UsersController < ApplicationController
         end
       else
         render 'new'
-      end  
+      end
     elsif Rails.env.development?
       if @user.save
         @user.send_activation_email

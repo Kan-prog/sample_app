@@ -42,6 +42,7 @@ gem 'slack-notifier'
 gem 'derailed_benchmarks', group: :development
 gem 'recaptcha', require: 'recaptcha/rails'
 gem 'rack-attack'
+gem 'browser'
 
 group :development, :test do
   gem 'sqlite3', '1.3.13'

@@ -425,6 +425,11 @@ input {
   }
 }
 
+// .mobile_footer{
+//   position: fixed;
+//   bottom: 0px;
+// }
+
 @media (min-width:897px){ /* 画面が大きくなるとハンバーガーメニュー/reloadは消える */
   .menu-trigger, #menu, .menu-background, .fa-repeat {
     display: none;

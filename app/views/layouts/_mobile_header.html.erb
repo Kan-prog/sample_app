@@ -20,23 +20,6 @@
               </ul>
             </div>
             <div class="menu-background"></div>
-            <ul class="g-nav">
-              <li class="mypage"><%= link_to "マイページ", user_path(current_user) %></li>
-              <li class="search"><a href="#" data-toggle="modal" data-target="#sampleModal">検索</a></li>
-              <li class="plus"><%= link_to "出品", new_micropost_path %></li>
-              <li class="bell">
-                <%= link_to "お知らせ", notifications_path %>
-                <% if unchecked_notifications.any? %>
-                  <span class="fa-stack">
-                    <span class="fa fa-circle fa-stack-2x dot"></span>
-                    <span class="fa fa-stack-1x notification-number"><%= unchecked_notifications.count %></span>
-                  </span>
-                <% end %>
-              </li>
-              <li class="mail">
-                <%= link_to "メッセージ", your_message_user_messages_path(current_user.id) %>
-              </li>
-            </ul>
         <% else %>
             <a href="#" class="menu_btn menu-trigger">
               <span></span>
@@ -52,11 +35,6 @@
               </ul>
             </div>
             <div class="menu-background"></div>
-          <ul class="g-nav">
-            <li class="search"><a href="#" data-toggle="modal" data-target="#sampleModal">検索</a></li>
-            <li class="login"><%= link_to "ログイン",login_path %></li>
-            <li class="signup"><%= link_to "会員登録", signup_path %></li>
-          </ul>  
         <% end %>
     </nav>
   </div>
