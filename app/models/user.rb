@@ -113,7 +113,13 @@ class User < ApplicationRecord
       # パスワードを適当に用意＝＞バリデーション回避
       user.password = format("%0#{n}d", SecureRandom.random_number(10**n))
       user.remember_token = auth["credentials"]["token"]
-      user.save!
+      if user.save!
+        return user
+      else
+        flash[:danger] = "エラーが発生しました"
+        render '/login'
+        return false
+      end
     end
   end
   
