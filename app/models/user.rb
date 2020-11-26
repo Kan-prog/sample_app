@@ -104,23 +104,34 @@ class User < ApplicationRecord
     name = auth[:info][:name]
     image = auth[:info][:image]
     email = auth[:info][:email]
+    sns_user = User.where(email: email).find_by(provider: provider, uid: uid)
+    email_user = User.find_by(emial: email)
+    if sns_user === email_user
+      return sns_user
+    elsif email_user && !sns_user # メールアドレスで登録しているが、snsで登録していない場合
+      flash[:danger] = "アカウント情報が正しくない、もしくは、既にメールアドレスを使用した別のアカウントが存在します。"
+      render login_path
+      return false
+    else # メールアドレスでの登録もなく、snsでの登録もない場合
+      self.create(
+        name: name,
+        picture: image,
+        email: email,
+        password: format("%0#{n}d", SecureRandom.random_number(10**n)),
+        remember_token: auth["credentials"]["token"]
+      ).save!
+    end
     #ユーザはSNSで登録情報を変更するかもしれので、毎回データベースの情報も更新する
     # providerとuidを参照して、同じ値が見つかればそのまま。違う値が見つかればそれぞれの情報をアップデートする
-    self.find_or_create_by(provider: provider, uid: uid) do |user|
-      user.name = name
-      user.picture = image
-      user.email = email
-      # パスワードを適当に用意＝＞バリデーション回避
-      user.password = format("%0#{n}d", SecureRandom.random_number(10**n))
-      user.remember_token = auth["credentials"]["token"]
-      if user.save!
-        return user
-      else
-        flash[:danger] = "エラーが発生しました"
-        render '/login'
-        return false
-      end
-    end
+    # self.find_or_create_by(provider: provider, uid: uid) do |user|
+    #   user.name = name
+    #   user.picture = image
+    #   user.email = email
+    #   # パスワードを適当に用意＝＞バリデーション回避
+    #   user.password = format("%0#{n}d", SecureRandom.random_number(10**n))
+    #   user.remember_token = auth["credentials"]["token"]
+    #   user.save!
+    # end
   end
   
   # 以下お気に入り機能
