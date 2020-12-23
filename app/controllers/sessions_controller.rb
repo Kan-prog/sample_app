@@ -107,7 +107,7 @@ class SessionsController < ApplicationController
         log_in @user
         # session[:user_id] = user.id
         params[:uid] = @user.id
-        flash[:success] = "ようこそ"+ @user.display_name + "様！"
+        flash[:success] = "ようこそ"+ @user.name + "様！"
         redirect_to @user
       # email,passwordログイン
       else
@@ -116,7 +116,7 @@ class SessionsController < ApplicationController
           if user.activated?
             log_in user
             params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-            flash[:success] = "ようこそ" + current_user.display_name + "様!"
+            flash[:success] = "ようこそ" + current_user.name + "様!"
             redirect_back_or user
           else
             message  = "アカウントが有効になっていません。 "
