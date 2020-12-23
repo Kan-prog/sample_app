@@ -105,7 +105,7 @@ class User < ApplicationRecord
     image = auth[:info][:image]
     email = auth[:info][:email]
     sns_user = User.where(email: email).find_by(provider: provider, uid: uid)
-    email_user = User.find_by(emial: email)
+    email_user = User.find_by(email: email)
     if sns_user === email_user
       return sns_user
     elsif email_user && !sns_user # メールアドレスで登録しているが、snsで登録していない場合
