@@ -1,9 +1,9 @@
-<%= @send_user.display_name %>から相談メールが届きました。
+<%= @send_user.name %>から相談メールが届きました。
 
 <%= @message.content %>
 
 メール日時：<%= @message.created_at.strftime('%m/%d %H:%M') %>
 
-<%= link_to "#{@send_user.display_name}との相談ルームへはこちら", user_messages_url(@send_user) %>
+<%= link_to "#{@send_user.name}との相談ルームへはこちら", user_messages_url(@send_user) %>
 
 なお、このメールには返信できませんのでご注意ください。

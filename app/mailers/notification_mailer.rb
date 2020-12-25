@@ -7,6 +7,6 @@ class NotificationMailer < ApplicationMailer
     # logger.debug @receive_user
     # logger.debug @send_user
     # logger.debug @message
-    mail to: @receive_user.email, subject: "#{@send_user.display_name}から相談メールが届きました。確認してみましょう"
+    mail to: @receive_user.email, subject: "#{@send_user.name}から相談メールが届きました。確認してみましょう"
   end
 end
