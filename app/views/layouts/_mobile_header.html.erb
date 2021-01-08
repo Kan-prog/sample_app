@@ -10,6 +10,7 @@
             </a>
             <div id="menu">
               <ul id="menu-ul">
+                <li><%= link_to "マイページ", user_path(current_user) %></li>
                 <li><%= link_to "お気に入りした商品", likes_user_path(current_user), class: "menu-li" %></li>
                 <li><%= link_to "メッセージ一覧", your_message_user_messages_path(current_user.id), class: "menu-li" %></li>
                 <li><%= link_to "アプリ概要", about_path, class: "menu-li" %></li>
@@ -19,6 +20,19 @@
                 <li><%= link_to "ログアウト", logout_path, method: :delete, class: "menu-li" %></li>
               </ul>
             </div>
+            <ul class="g-nav">
+              <li class="search"><a href="#" data-toggle="modal" data-target="#sampleModal">検索</a></li>
+              <li class="plus"><%= link_to "出品", new_micropost_path %></li>
+              <li class="bell">
+                <%= link_to "お知らせ", notifications_path %>
+                <% if unchecked_notifications.any? %>
+                  <span class="fa-stack">
+                    <span class="fa fa-circle fa-stack-2x dot"></span>
+                    <span class="fa fa-stack-1x notification-number"><%= unchecked_notifications.count %></span>
+                  </span>
+                <% end %>
+              </li>
+            </ul>
             <div class="menu-background"></div>
         <% else %>
             <a href="#" class="menu_btn menu-trigger">
