@@ -3,7 +3,7 @@ class NotificationsController < ApplicationController
   
   include NotificationsHelper
   def index
-    @notifications = current_user.passive_notifications.paginate(page: params[:page], per_page: 10).includes(:message, :micropost)
+    @notifications = current_user.passive_notifications.paginate(page: params[:page], per_page: 10)
     @notifications.where(checked: false).each do |notification|
       notification.update_attributes(checked: true)
     end

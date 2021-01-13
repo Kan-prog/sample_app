@@ -8,10 +8,10 @@ class MicropostsController < ApplicationController
   def index
     @genres = Genre.all
     unless params[:q].blank?
-      @q = Micropost.search(search_params)
-      @result_microposts = @q.result.paginate(:page => params[:page]).includes(:user)
+      @q = Micropost.preload(:user).search(search_params)
+      @result_microposts = @q.result.paginate(:page => params[:page])
     else
-      @result_microposts = Micropost.all.paginate(:page => params[:page]).includes(:user)
+      @result_microposts = Micropost.preload(:user).all.paginate(:page => params[:page])
     end
   end
   
