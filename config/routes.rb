@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
   
+  # active adminのためにdeviseを導入
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
+  # デフォルトページ
+  root 'microposts#index'
+  
   get 'messages/index'
 
   get 'messages/create'
@@ -11,13 +15,19 @@ Rails.application.routes.draw do
 
   get 'chat_messages/index'
   
-  root 'microposts#index'
-  
+  # 固定ページ
   get '/guide', to: 'static_pages#guide'
   get '/home', to: 'static_pages#home'
   get  '/about', to: 'static_pages#about'
   get  '/help', to: 'static_pages#help'
   get '/contact', to: 'static_pages#contact'
+  
+  # お問い合わせ関連
+  get  '/contact_index' =>'contacts#index'
+  post '/contact_confirm' => 'contacts#confirm'
+  post '/contact_done' => 'contacts#done'
+  
+  # ログイン認証関係
   get  '/signup',  to: 'users#new'
   post '/signup',  to: 'users#create'
   get    '/login',   to: 'sessions#new'
@@ -25,9 +35,6 @@ Rails.application.routes.draw do
   # get '/auth/:provider/callback', to: 'sessions#create'
   match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
   delete '/logout',  to: 'sessions#destroy'
-  get  '/contact_index' =>'contacts#index'
-  post '/contact_confirm' => 'contacts#confirm'
-  post '/contact_done' => 'contacts#done'
   
   resources :users do
     resources :messages, only: [:index, :create, :destroy] do
@@ -47,7 +54,9 @@ Rails.application.routes.draw do
        put :update_sold
     end
     collection do
-      match 'search' => 'microposts#search', via: [:get, :post], as: :search
+      # match 'search' => 'microposts#search', via: [:get, :post], as: :search
+      # get 'search' => 'microposts#search'
+      post 'search' => 'microposts#search'
     end  
   end  
   resources :favorites, only: [:create, :destroy]

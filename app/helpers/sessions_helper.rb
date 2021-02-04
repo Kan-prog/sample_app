@@ -51,13 +51,17 @@ module SessionsHelper
   end
   
   # 記憶したURL (もしくはデフォルト値) にリダイレクト
+  # 要ログイン操作で弾かれた場合のログイン後のページ遷移で使用
   def redirect_back_or(default)
+    # forwarding_urlがない場合は、default(基本はユーザーページ)へリダイレクト
     redirect_to(session[:forwarding_url] || default)
+    # ログイン後はforwading_urlをクリアにしておく
     session.delete(:forwarding_url)
   end
 
   # アクセスしようとしたURLを覚えておく
   def store_location
+    # ActionDispatch::Request クラスでoriginal_urlメソッドは定義されている
     session[:forwarding_url] = request.original_url if request.get?
   end
 end

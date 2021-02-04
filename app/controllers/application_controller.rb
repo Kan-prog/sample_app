@@ -4,17 +4,23 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsHelper
   
-  # 検索はどこのページからでもしたいので、applicationコントローラ内に定義
+  # 検索はどこのページからでもしたい(navbarに設置したい)ので、applicationコントローラ内に定義
+  # search_form_for内で使う@q検索パラメータと@genresを取得できるようにしておく
   def set_global_search_variable
     @q = Micropost.ransack(params[:q])
     @genres = Genre.all.order(:name)
+    logger.debug("applicationコントローラー")
+    logger.debug(@q)
   end
   
   private
   
      # ログイン済みユーザーかどうか確認
     def logged_in_user
+      # loginが必要な操作でloginしていない場合、requestを受けたurlを保存し、ログインページへリダイレクト
+      # その後loginした場合は、session[:forwarding_url]に再遷移させる
       unless logged_in?
+        # requestを受けたurlをsesstion[:forwarding_url]に登録
         store_location
         flash[:danger] = "ログインしてください。"
         redirect_to login_url

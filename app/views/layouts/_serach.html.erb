@@ -6,6 +6,8 @@
 				<h4 class="modal-title">検索フォーム</h4>
 			</div>
 			<div class="modal-body">
+			  <!-- 検索フォーム。search_microposts_path:microposts/searchにpostリクエストする内容 -->
+			  <!-- ransackでは、search_form_for(@q, url: path, method)でparams[:q]で検索クエリ取得可能-->
         <%= search_form_for(@q, url: search_microposts_path, html: { method: :post })  do |f| %>
         
           <div class="form-group">

@@ -9,16 +9,20 @@ class MessagesController < ApplicationController
     # 上の逆
     receive_ids = @user.messages.where(receive_user_id: current_user.id).pluck(:id)
     # メッセージ全体の中から、send_idsとreceive_idsを共通して持つメールを特定
-    @messages = Message.preload(:user).where(id: send_ids + receive_ids).order(created_at: :desc)
-    @message = Message.new
+    # @messages = Message.preload(:user).where(id: send_ids + receive_ids).order(created_at: :desc)
     # 送信したメッセージ
-    @active_messages = Message.preload(:user).where(user_id: current_user.id)
-    @user_active_messages = Message.preload(:user).where(id: send_ids)
+    # @active_messages = Message.where(user_id: current_user.id).includes(:user)
+    # @user_active_messages = Message.preload(:user).where(id: send_ids)
     # 受信したメッセージ
-    @receive_messages = Message.preload(:user).where(receive_user_id: current_user.id)
-    @user_receive_messages = Message.preload(:user).where(id: receive_ids)
-    # 送受信全部のメッセージ
-    @all_messages = Message.preload(:user).where(id: receive_ids + send_ids)
+    # @receive_messages = Message.where(receive_user_id: current_user.id).includes(:user)
+    # @user_receive_messages = Message.preload(:receive_user).where(id: receive_ids)
+    
+    # 送受信全部のメッセージ。トークルームで使用
+    # 相手との送受信を全て投稿順に表示するためにまとめてwhereをかける
+    @all_messages = Message.preload(:user).where(id: receive_ids + send_ids).includes(:user)
+    
+    # 新規メッセージ作成
+    @message = Message.new
   end
 
   def create
@@ -45,8 +49,8 @@ class MessagesController < ApplicationController
   end
   
   def your_message
-    @active_messages = Message.where(user_id: current_user.id)
-    @receive_messages = Message.where(receive_user_id: current_user.id)
+    @active_messages = Message.where(user_id: current_user.id).includes(receive_user: :college)
+    @receive_messages = Message.where(receive_user_id: current_user.id).includes(user: :college)
   end
   
   private

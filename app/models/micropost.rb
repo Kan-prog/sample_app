@@ -5,11 +5,16 @@ class Micropost < ApplicationRecord
   has_many :micropost_genres, dependent: :destroy
   has_many :genres, through: :micropost_genres, source: :genre
   has_many :notifications,dependent: :destroy
+  
+  
   default_scope -> { order(created_at: :desc) }
+  
   mount_uploader :picture, PictureUploader
   mount_uploader :picture_1, PictureUploader
   mount_uploader :picture_2, PictureUploader
   mount_uploader :picture_3, PictureUploader
+  before_destroy :clean_s3
+  
   validates :user_id, presence: true
   validates :name, presence: true
   validates :picture, presence: true
@@ -17,8 +22,7 @@ class Micropost < ApplicationRecord
   validates :price, numericality: { only_integer: true }
   validates :content, presence: true, length: { maximum: 500 }
   validates :sold, inclusion: {in: [true, false]}, allow_nil: true
-  validate :picture_size
-  
+  validate  :picture_size
   
   accepts_nested_attributes_for :micropost_genres, allow_destroy: true
   

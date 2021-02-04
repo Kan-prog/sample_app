@@ -3,18 +3,18 @@
   <br>
   <p class="want">買うときはまず何が欲しいのか相手に伝えましょう。</p>
 </h2>
+<!--ユーザー間に関するすべてのメッセージが@all_messagesに入っており、送信メッセージか受信メッセージをそれぞれについて判別しclassを振り分けている-->
 <% @all_messages.each do |message| %>
-  <!--messageに-->
   <div class="<%= "message message--received" if message.user_id == @user.id %> <%= "message message--sent" if message.user_id == current_user.id %>">
     <div class="message__profile">
       <%= image_tag message.user.picture.thumb.url, class: "img-circle" %>
     </div>
     <div class="message__body">
-      <!--<% if false %>-->
+      <% if false %>
       <div class="message__user-name">
         <%= link_to message.user.display_name, user_path(message.user.id) %>
       </div>  
-      <!--<% end %>-->
+      <% end %>
       <div class="message__text">
         <%= message.content %>
       </div>

@@ -8,14 +8,18 @@ class MicropostsController < ApplicationController
   def index
     @genres = Genre.all
     unless params[:q].blank?
-      @q = Micropost.preload(:user).search(search_params)
-      @result_microposts = @q.result.paginate(:page => params[:page])
+      # 検索オブジェクト生成
+      @q = Micropost.ransack(search_params)
+      @result_microposts = @q.result.paginate(:page => params[:page]).includes(:user)
     else
-      @result_microposts = Micropost.preload(:user).all.paginate(:page => params[:page])
+      @result_microposts = Micropost.all.paginate(:page => params[:page]).includes(:user)
     end
   end
   
+  # 検索後のURLはmicroposts/search
+  # postがmicroposts/searchにきて、microposts/indexを描画する
   def search
+    # microposts/indexページでは、micoposts/indexのivewの描画を行う
     index
     render :index
   end

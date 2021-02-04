@@ -1,33 +1,69 @@
+<% if false %>
+  <% @notifications.each do |notification| %>
+    <div class="notifications">
+      <% message = notification.message %>
+      <% post = notification.micropost %>
+      <% visiter = User.find_by(id: notification.visiter_id) %>
+      
+      <div class="user-view clearfix">
+        <%= link_to user_path(notification.visiter_id) do %>
+        <span class="user-img-small">
+          <%=  image_tag visiter.picture.thumb.url, class: "user-thumb img-circle" %>
+        </span>  
+        <% end %>
+        <%= notification_form(notification) %>
+        <% unless @visiter == current_user %>
+          <% case notification.action %>
+            <% when "favorite" then %>
+            <%# if notification.action = "favorite" %>
+              <div class="announce">
+                <%= link_to visiter.display_name, user_path(@visiter.id) %>が<%= link_to post.name, micropost_path(post.id)  %>をお気に入り登録しました
+              </div>
+              <span class="moderate-font">
+                (<%= notification.created_at.strftime('%m/%d %H:%M') %>)
+              </span>
+            <%# elsif notification.action = "message"  %>
+            <% when "message" then%>
+              <div class="announce">
+                <%= link_to visiter.display_name, user_path(notification.visiter_id) %>から相談メールが届きました
+              </div>
+              <div class="noti-message">
+                <%= @message.content %>
+              </div>
+              <span class="moderate-font">
+                (<%= notification.created_at.strftime('%m/%d %H:%M') %>)
+              </span>
+            <%# end %>  
+          <% end %>
+        <% end %>
+      </div>
+    </div>  
+  <% end %>
+<% end %>
+
 <% @notifications.each do |notification| %>
   <div class="notifications">
-    <% message = notification.message %>
-    <% post = notification.micropost %>
-    <% visiter = User.find_by(id: notification.visiter_id) %>
-    
     <div class="user-view clearfix">
-      <%= link_to user_path(notification.visiter_id) do %>
+      <%= link_to user_path(notification.visiter.id) do %>
       <span class="user-img-small">
-        <%=  image_tag visiter.picture.thumb.url, class: "user-thumb img-circle" %>
+        <%=  image_tag notification.visiter.picture.thumb.url, class: "user-thumb img-circle" %>
       </span>  
       <% end %>
-      <%== notification_form(notification) %>
-      <% unless @visiter == current_user %>
+      <% unless notification.visiter == current_user %>
         <% case notification.action %>
           <% when "favorite" then %>
-          <%# if notification.action = "favorite" %>
             <div class="announce">
-              <%= link_to visiter.display_name, user_path(@visiter.id) %>が<%= link_to post.name, micropost_path(post.id)  %>をお気に入り登録しました
+              <%= link_to notification.visiter.display_name, user_path(notification.visiter.id) %>が<%= link_to notification.micropost.name, micropost_path(notification.micropost.id)  %>をお気に入り登録しました
             </div>
             <span class="moderate-font">
               (<%= notification.created_at.strftime('%m/%d %H:%M') %>)
             </span>
-          <%# elsif notification.action = "message"  %>
           <% when "message" then%>
             <div class="announce">
-              <%= link_to visiter.display_name, user_path(notification.visiter_id) %>から相談メールが届きました
+              <%= link_to notification.visiter.display_name, user_path(notification.visiter_id) %>から相談メールが届きました
             </div>
             <div class="noti-message">
-              <%= @message.content %>
+              <%= notification.message.content %>
             </div>
             <span class="moderate-font">
               (<%= notification.created_at.strftime('%m/%d %H:%M') %>)
@@ -36,5 +72,5 @@
         <% end %>
       <% end %>
     </div>
-  </div>  
+  </div>
 <% end %>
