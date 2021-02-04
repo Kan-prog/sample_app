@@ -61,7 +61,7 @@
             </thead>
             <tbody>
               <tr><td><%= link_to "お気に入りした商品", likes_user_path(current_user)%></td></tr>
-              <tr><td><%= link_to "メッセージ一覧", your_message_user_messages_path(current_user.id) %></td></tr>
+              <tr><td><%= link_to "メッセージ一覧", messages_your_message_path %></td></tr>
               <tr><td><%= link_to "アプリ概要", about_path %></td></tr>
               <tr><td><%= link_to "アプリの使い方", guide_path %></td></tr>
               <tr><td><%= link_to "よくある質問", help_path %></td></tr>

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  # active adminのためにdeviseを導入
+  # active adminのためにdeviseを導入。ActiveAdim導入時に自動追加された
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   get 'messages/create'
 
   get 'messages/destroy'
+  
+  get 'messages/your_message'
 
   get 'chat_messages/index'
   
@@ -38,9 +40,9 @@ Rails.application.routes.draw do
   
   resources :users do
     resources :messages, only: [:index, :create, :destroy] do
-      collection do
-        get :your_message
-      end
+      # collection do
+      #   get :your_message
+      # end
     end
     member do
       get :likes

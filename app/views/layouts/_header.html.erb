@@ -11,7 +11,7 @@
             <div id="menu">
               <ul id="menu-ul">
                 <li><%= link_to "お気に入りした商品", likes_user_path(current_user), class: "menu-li" %></li>
-                <li><%= link_to "メッセージ一覧", your_message_user_messages_path(current_user.id), class: "menu-li" %></li>
+                <li><%= link_to "メッセージ一覧", messages_your_message_path, class: "menu-li" %></li>
                 <li><%= link_to "アプリ概要", about_path, class: "menu-li" %></li>
                 <li><%= link_to "アプリの使い方", guide_path, class: "menu-li" %></li>
                 <li><%= link_to "よくある質問", help_path, class: "menu-li" %></li>
@@ -34,7 +34,7 @@
                 <% end %>
               </li>
               <li class="mail">
-                <%= link_to "メッセージ", your_message_user_messages_path(current_user.id) %>
+                <%= link_to "メッセージ", messages_your_message_path %>
               </li>
             </ul>
         <% else %>

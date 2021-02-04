@@ -1,7 +1,4 @@
 class MicropostsController < ApplicationController
-  # before_action :logged_in_user, only: [:new, :create, :edit, :update, :destroy]
-  # before_action :correct_user,   only: [:edit, :update, :destroy]
-  
   before_action :logged_in_user, only: [:new, :create, :edit, :update]
   before_action :correct_user,   only: [:edit, :update]
   
@@ -10,16 +7,17 @@ class MicropostsController < ApplicationController
     unless params[:q].blank?
       # 検索オブジェクト生成
       @q = Micropost.ransack(search_params)
+      # ransack検索オブジェクト.resultで結果を取得
       @result_microposts = @q.result.paginate(:page => params[:page]).includes(:user)
     else
       @result_microposts = Micropost.all.paginate(:page => params[:page]).includes(:user)
     end
   end
   
-  # 検索後のURLはmicroposts/search
+  # 検索後のURLはmicroposts/search。search_form_forでsearcu_microposts_oath(method: post)でpost先として指定される
   # postがmicroposts/searchにきて、microposts/indexを描画する
   def search
-    # microposts/indexページでは、micoposts/indexのivewの描画を行う
+    # microposts/searchページでは、micoposts/indexのivewの描画を行う
     index
     render :index
   end
