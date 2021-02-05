@@ -18,12 +18,13 @@ class User < ApplicationRecord
   
   # attr_accessor :image_x, :image_y, :image_w, :image_h #プロフィール画像トリミング
   attr_accessor :remember_token, :activation_token, :reset_token
-  before_save :downcase_email
-  before_create :create_activation_digest
-  before_destroy :clean_s3
+  
   mount_uploader :picture, PictureUploader
   validates :name, presence: true, length: { maximum: 50 }
   validates :description, length: { maximum: 50 }
+  
+  # パスワード関連
+  # 正規表現でメールのフォーマット確認
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
@@ -41,6 +42,12 @@ class User < ApplicationRecord
   #   errors.add :password, "パスワードの強度が不足しています。パスワードの長さは8〜30文字とし、大文字と小文字と数字と特殊文字をそれぞれ1文字以上含める必要があります。"
   # end
   
+  before_save :downcase_email
+  before_create :create_activation_digest
+  before_destroy :clean_s3
+  
+  # パスワードの引数stringをハッシュ化する
+  # ActiveModel::SecurePassword.min_costはテスト環境だとtrueを返す。テスト環境では簡易的に、本番環境では本格的に暗号化をするcost
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                   BCrypt::Engine.cost
@@ -52,7 +59,7 @@ class User < ApplicationRecord
     SecureRandom.urlsafe_base64
   end
   
-  # 永続セッションのためにユーザーをデータベースに記憶する
+  # 永続セッションのためにユーザーをデータベースに記憶する。永続＝データベースに保存する必要あり。
   def remember
     self.remember_token = User.new_token
     update_attribute(:remember_digest, User.digest(remember_token))
@@ -65,7 +72,7 @@ class User < ApplicationRecord
     BCrypt::Password.new(digest).is_password?(token)
   end
   
-  # ユーザーのログイン情報を破棄する
+  # ユーザーのログイン情報を破棄する。永続データを消去
   def forget
     update_attribute(:remember_digest, nil)
   end

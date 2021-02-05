@@ -103,12 +103,12 @@ class SessionsController < ApplicationController
       # SNSログイン
       auth = request.env['omniauth.auth']
       if auth.present?
-        @user = User.find_or_create_from_auth(request.env['omniauth.auth'])
-        log_in @user
+        user = User.find_or_create_from_auth(request.env['omniauth.auth'])
+        log_in user
         # session[:user_id] = user.id
-        params[:uid] = @user.id
-        flash[:success] = "ようこそ"+ @user.name + "様！"
-        redirect_to @user
+        params[:uid] = user.id
+        flash[:success] = "ようこそ"+ user.name + "様！"
+        redirect_to user
       # email,passwordログイン
       else
         user = User.find_by(email: params[:session][:email].downcase)

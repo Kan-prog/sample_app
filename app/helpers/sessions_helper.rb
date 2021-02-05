@@ -5,6 +5,7 @@ module SessionsHelper
   
   def remember(user)
     user.remember
+    # 標準搭載のsigned[:hoge]でhogeを暗号化してcookieに保存できる
     cookies.permanent.signed[:user_id] = user.id
     cookies.permanent[:remember_token] = user.remember_token
   end
